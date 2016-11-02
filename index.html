@@ -265,6 +265,100 @@
             
               
                 
+                <a class="post-title-link" href="/2016/11/02/DBB-test1/" itemprop="url">
+                  Hello World
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-02T20:02:09+08:00" content="2016-11-02">
+              2016-11-02
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <html><br>  <head><br>    <meta charset="utf-8"><br>    <title></title><br>    <style media="screen"><br>       *{<br>         margin: 0;<br>         padding: 0;<br>       }<br>      .header_div{<br>        margin: auto;<br>        margin-top: 20px;<br>         width: 500px;<br>         background-color: black;<br>         opacity: 0.6;<br>         height: 40px;<br>         text-align: center;<br>      }<br>      h1{<br>        margin: 0 auto;<br>        color: white;<br>        line-height: 40px;<br>        width: 200px;<br>      }<br>      h1:hover{<br>        border-radius: 10px;<br>      }<br>      .section1{<br>        margin-top: 20px;<br>        text-align: center;<br>      }<br>      .section1_div{<br>         margin: 0 auto;<br>         margin-top: 20px;<br>         width: 600px;<br>         height: 400px;<br>         text-align: left;<br>      }<br>      .section1_div_left{<br>         width: 35%;<br>         height: 100%;<br>         border: solid gray 1px;<br>         border-radius: 20px;<br>         margin-right: 5px;<br>         float: left;<br>      }<br>      .section1_div_right{<br>         width: 60%;<br>         height: 100%;<br>         border: solid gray 1px;<br>         border-radius: 20px;<br>         float: left;<br>      }<br>      ul{<br>        margin-top: 5px;<br>        margin-left: 30px;<br>      }<br>      ul li{<br>        line-height: 50px;<br>        font-size: 20px;<br>      }<br>      p{<br>        text-indent: 30px;<br>        margin: 30px;<br>        font-size: 20px;<br>        line-height: 40px;<br>        overflow:auto;<br>        height: 340px;<br>      }<br>      .footer{<br>        position: fixed;<br>        bottom: 10px;<br>        right: 0;<br>        background-color: black;<br>        text-align: center;<br>        opacity: 0.6;<br>      }<br>      h2{<br>        color: white;<br>      }<br>    </style><br>  </head><br>  <body><br>    <article class=""><br>        <header><br>            <div class="header_div"><br>               <h1>DDB的第一篇博文</h1><br>            </div><br>        </header><br>        <section class="section1"><br>           <img src="http://img0.imgtn.bdimg.com/it/u=3898901637,2524328695&fm=21&gp=0.jpg" alt=""><br>           <div class="section1_div"><br>             <div class="section1_div_left"><br>                <ul><br>                  <li>html5 viewport</li><br>                  <li>html5 脱离文档流的两种方式</li><br>                  <li>html5 表单form</li><br>                  <li>html5 响应式布局</li><br>                  <li>CSS媒体查询</li><br>                  <li>html5 居中方式</li><br>                  <li>iOS之沙盒</li><br>                </ul><br>             </div><br>             <div class="section1_div_right"><br>               <p><br>                 viewport：实际显示网页的区域<br>viewport不局限于浏览器可视区域的大小（浏览器可视区域一般指代所用设备的屏幕大小）。可能比浏览器的可视区域要大，也可能比浏览器的可视区域小。默认情况，移动设备上的viewport都是要大于浏览器可视区域的，这是因为考虑到移动设备的分辨率相对于桌面电脑来说都比较小，为了能够在移动设备正常显示那些传统的为桌面浏览器设计的网站，移动设备上的浏览器会把自己默认的viewport设置为980px或1024px（也可能是其他值），但带来的后果就是浏览器会出现横向滚动条，这也并不是我们所想要的结果。viewport大小类比UIScrollView里的contentSize。css中的1px并不等于设备的1px，css中的像素只是一个抽象的单位，在不同的设备或不同的环境中，css中的1px所代表的设备物理像素是不同的。当用户把页面放大一倍，那么css中的1px所代表的物理像素也会增加一倍；反之页面缩小一倍，css中1px所代表的物理像素也会减小一倍。（个人理解：此处物理像素由屏幕实际尺寸决定，不会改变，在物理像素不变的情况下，由于页面进行了缩放设置，使得能见到的css中的像素发生的改变，如页面放大一倍，那么我们所能见到的css的px为以前的一半，而物理像素又不会改变，那么当前的css中的px所代表的物理像素则必然会增加一倍）。同理也有，在没有进行缩放时，css的px可由屏幕尺寸决定，这时若提高设备的分辨率，即在设备屏幕尺寸不变的情况下，提高了物理像素。那么由于css的px不变，css的px所代表的物理像素自然而然的也会增加（类比物理中的控制变量法）。三个viewport的理论<br>目的：为了在移动设备上可以正常显示所有的网站，即使是那些不是为移动设备设计的网站。手机分辨率高，只能使css得1px代表更多的物理像素，而屏幕尺寸决定了所能显示的css的px，进而决定了显示网页的区域。默认情况下，移动设备div的宽度设置300多px就是满屏的宽度了。layout viewport：为让移动设备的浏览器正常显示网页内容，而设置的viewport（默认980px或1024px）visual viewport：为表示浏览器可视区域的大小，从而设定的viewport。idealviewport：考虑到现在越来越多的网站都会为移动设备进行单独的设计，所以还必须要有一个能够完美适配移动设备的viewport。首先不需要用户缩放和横向滚动条就能正常的查看网页所有的内容；第二，显示的文字大小是合适的。为此设计的viewport称为ideal viewport。ideal viewport是最适合移动设备的viewport。其宽度等于移动设备的宽度。利用meta标签对viewport进行控制移动设备的默认viewport的是layout viewport，但进行移动设备的网站开发，所需要用到的是ideal viewport。为此，这里我们将会用到meta标签。<br>               </p><br>             </div><br>           </div><br>        </section><br>        <footer><br>           <div class="footer"><br>             <h2>DDB的第一天, 未完待续</h2><br>           </div><br>        </footer><br>    </article><br>  </body><br></html>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/31/hello-world/" itemprop="url">
                   Hello World
                 </a>
@@ -387,7 +481,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
