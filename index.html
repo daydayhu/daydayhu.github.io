@@ -87,24 +87,24 @@
     <title></title>
     <style media="screen">
       .stage{
-         perspective: 1500px;
+         -webkit-perspective: 1500px;
       }
       .cubeX{
         margin: 50px auto;
         width: 300px;
         height: 300px;
         transform-style: preserve-3d;
-        transform-origin: center center center;
+        -webkit-transform-origin: center center center;
         position: relative;
-        animation: Rcube 8s infinite;
+        -webkit-animation: Rcube 8s infinite;
 
       }
       @keyframes Rcube{
         from{
-          transform: rotateX(0deg);
+          -webkit-transform: rotateX(0deg);
         }
         to{
-          transform: rotateX(360deg);
+          -webkit-transform: rotateX(360deg);
         }
       }
       .cubeY{
@@ -112,17 +112,17 @@
         width: 300px;
         height: 300px;
         transform-style: preserve-3d;
-        transform-origin: center center center;
+        -webkit-transform-origin: center center center;
         position: relative;
-        animation: Ycube 8s infinite;
+        -webkit-animation: Ycube 8s infinite;
 
       }
       @keyframes Ycube{
         from{
-          transform: rotateY(0deg);
+          -webkit-transform: rotateY(0deg);
         }
         to{
-          transform: rotateY(360deg);
+          -webkit-transform: rotateY(360deg);
         }
       }
       .cubeZ{
@@ -130,17 +130,17 @@
         width: 300px;
         height: 300px;
         transform-style: preserve-3d;
-        transform-origin: center center center;
+        -webkit-transform-origin: center center center;
         position: relative;
         animation: Zcube 8s infinite;
 
       }
       @keyframes Zcube{
         from{
-          transform: rotateZ(0deg);
+          -webkit-transform: rotateZ(0deg);
         }
         to{
-          transform: rotateZ(360deg);
+          -webkit-transform: rotateZ(360deg);
         }
       }
       /*.cube:hover{
@@ -149,13 +149,13 @@
           transform: rotateX(360deg);
       }*/
       .cubeX:active{
-         animation-play-state: paused;
+         -webkit-animation-play-state: paused;
       }
       .cubeY:active{
-         animation-play-state: paused;
+         -webkit-animation-play-state: paused;
       }
       .cubeZ:active{
-         animation-play-state: paused;
+         -webkit-animation-play-state: paused;
       }
       .side{
         position: absolute;
@@ -165,22 +165,22 @@
         text-align: center;
       }
       .front{
-        transform: translateZ(150px);
+        -webkit-transform: translateZ(150px);
       }
       .back{
-        transform: rotateX(180deg) translateZ(150px);
+        -webkit-transform: rotateX(180deg) translateZ(150px);
       }
       .right{
-        transform: rotateY(-90deg) translateZ(150px);
+        -webkit-transform: rotateY(-90deg) translateZ(150px);
       }
       .left{
-        transform: rotateY(90deg) translateZ(150px);
+        -webkit-transform: rotateY(90deg) translateZ(150px);
       }
       .top{
-        transform: rotateX(90deg) translateZ(150px);
+        -webkit-transform: rotateX(90deg) translateZ(150px);
       }
       .bottom{
-        transform: rotateX(-90deg) translateZ(150px);
+        -webkit-transform: rotateX(-90deg) translateZ(150px);
       }
     </style>
   </head>
