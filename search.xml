@@ -169,23 +169,28 @@
         <a href="#" class="deployA"><span>配置</span></a>
       </div>
       <div class="introduce">
+        <h3>简介</h3>
          <p>
            本文将介绍如何使用Hexo+Github Page搭建个人博客的全部过程。搭建流程如下：
          </p>
          <ul>
            <li>注册Github账号</li>
-           <li>安装Git</li>
+           <li>安装Homebrew</li>
            <li>安装Node.js</li>
-           <li>配置SSH Key</li>
+           <li>安装Git</li>
+           <li>配置SSH Keys</li>
            <li>建立github仓库</li>
-           <li>安装Hexo，通过Hexo克隆主题</li>
+           <li>安装Hexo</li>
+           <li>同步Hexo博客到GitHub</li>
+           <li>Hexo的主题配置</li>
            <li>注册域名</li>
-           <li>使用DNS解析域名</li>
+           <li>DNS解析域名</li>
            <li>将独立域名与GitHub Pages的空间绑定</li>
            <li>通过Markdown进行文章的编写</li>
          </ul>
       </div>
       <div class="Git">
+        <h3>Git</h3>
          <p>
            Git是一款免费、开源的分布式版本控制系统。
            版本控制是一种软件工程技巧，可以在开发的过程中，确保由不同人所编写的同一档案都得到更新。<br>
@@ -199,6 +204,7 @@
          </p>
       </div>
       <div class="Hexo">
+        <h3>Hexo</h3>
           <p>
             Node.js是一个运行在服务器端的框架，作为JavaScript的运行环境(runtime)。它是对Google V8引擎进行了封装，即底层所使用的是V8引擎。用于方便地搭建响应速度快、易于扩展的网络应用。Node.js 使用事件驱动，非阻塞I/O模型而得以轻量和高效，非常适合在分布式设备上运行数据密集型的实时应用。<br>
             npm是Node.js的包管理工具 (package manager)。
@@ -207,7 +213,8 @@
           </p>
       </div>
       <div class="deploy">
-         <h2>本文配置是针对Mac系统进行的相关说明</h2>
+         <!-- 本文配置是针对Mac系统进行的相关说明 -->
+         <h3>配置</h3>
          <p>
            1.注册GitHub账号<br>
            访问：http://www.github.com/，注册你的username和邮箱，邮箱十分重要，GitHub上很多通知都是通过邮箱的。比如你的主页上传并构建成功会通过邮箱通知，更重要的是，如果构建失败的话也会在邮件中说明原因。
@@ -221,9 +228,8 @@
            安装完成后,可在终端输出brew命令，如果在终端显示如下提示，则表示安装成功。
            <img src="http://ww4.sinaimg.cn/mw690/005uY5V3gw1f9mqkz6wrcj30fv0913z7.jpg" alt="">
          </p>
-
          <p>
-           3.安装Node.js<br>
+           3.安装Node.js <br>
            可在网上直接下载一键安装，也可以使用homebrew来安装。打开终端, 输入以下命令:<br>
            <span>$ brew install node</span><br>
            即可安装Node.js, 安装成功后即可使用npm命令了。
@@ -236,8 +242,9 @@
            运行Xcode后，选择菜单“Xcode”->“Preference”, 在弹出的窗口中找到"Downloads"，选择"Command Line Tools" 项并点击“下载”图标即可完成安装。如果已经完成安装，该选项"Command Line Tools"将不会存在。如下图所示：
            <img src="http://ww4.sinaimg.cn/mw690/005uY5V3gw1f9mql2rmj5j30kq0f6412.jpg" alt="">
          </p>
+
          <p>
-           5.配置SSH Keys (安全外壳 密钥) <br>
+           5.配置SSH Keys
            SSH key提供了一种与GitHub通信的方式，通过这种方式，能够在不输入密码的情况下，将Github作为自己的remote端服务器，进行版本控制。 <br>
            配置SSH keys的主要目的是让本地git项目和远程github建立联系。 <br>
            5.1 检查SSH key <br>
@@ -360,22 +367,122 @@
           themes:主题 文件夹。Hexo会根据主题来生成静态页面。<br>
           hexo的_config.yml配置 <br>
           可以在hexo安装文件目录下的_config.yml中修改大部份的配置, 具体如下参考： <br>
-          <!-- <img src="" alt="" /> <br> -->
-          主题的的_config.yml配置 <br>
-          配置文件_config.yml位于主题根目录下, 参考配置如下： <br>
-          <!-- <img src="" alt="" /> <br> -->
+          <span class="hexo_config.yml">
+            # Hexo Configuration <br>
+            ## Docs: https://hexo.io/docs/configuration.html <br>
+            ## Source: https://github.com/hexojs/hexo/ <br>
+
+            # Site  网站 <br>
+            title: DDB Space	#网站标题 <br>
+            subtitle: 另外半只脚印		#网站副标题 <br>
+            description: 记录，为遗忘的过去		#网站描述 <br>
+            author: Hu tianshu	#网站作者 <br>
+            language: zh-Hans	#网站使用的语言 <br>
+            timezone:	 #网站时区。Hexo 默认使用您电脑的时区 <br>
+
+            # URL 网址 <br>
+            ## 如果您的网站存放在子目录中，例如 http://yoursite.com/blog，则请将您的 url 设为 <br> http://yoursite.com/blog 并把 root 设为 /blog/。 <br>
+            ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/' <br>
+            url: http://yoursite.com <br>
+            root: / <br>
+            permalink: :year/:month/:day/:title/ <br>
+            permalink_defaults: <br>
+
+            # Directory	目录配置 <br>
+            source_dir: source  #源文件夹，这个文件夹用来存放内容。 <br>
+            public_dir: public  #公共文件夹，这个文件夹用于存放生成的站点文件。 <br>
+            tag_dir: tags		#标签文件夹 <br>
+            archive_dir: archives	 	#归档文件夹 <br>
+            category_dir: categories	#分类文件夹 <br>
+            code_dir: downloads/code 	#nclude code 文件夹 <br>
+            i18n_dir: :lang   #国际化（i18n）文件夹 <br>
+            skip_render:	 #跳过指定文件的渲染，您可使用 glob 表达式来匹配路径。 <br>
+
+            # Writing	文章 <br>
+            new_post_name: :title.md 	#File name of new posts  新建文章默认文件名 <br>
+            default_layout: post  	#默认布局 <br>
+            titlecase: false 		#Transform title into titlecase <br>
+            external_link: true 	#Open external links in new tab  在新标签中打开一个外部链接，默认为true <br>
+            filename_case: 0  	<br>	#转换文件名，1代表小写；2代表大写；默认为0，意思就是创建文章的时候，是否自动帮你转换文件名，默认就行，意义不大。 <br>
+            render_drafts: false  	#是否渲染_drafts目录下的文章，默认为false <br>
+            post_asset_folder: false  	#启动 Asset 文件夹 <br>
+            relative_link: false  		#把链接改为与根目录的相对位址，默认false <br>
+            future: true  	#显示未来的文章，默认false <br>
+            highlight:   	#代码块的设置 <br>
+              enable: true <br>
+              line_number: true <br>
+              auto_detect: false <br>
+              tab_replace: <br>
+
+            # Category & tag 分类和标签的设置 <br>
+            default_category: uncategorized  #默认分类 <br>
+            category_map:  #分类别名 <br>
+            tag_map:  #标签别名 <br>
+
+            # Date / Time format <br>
+            ## Hexo uses Moment.js to parse and display date <br>
+            ## You can customize the date format as defined in <br>
+            ## http://momentjs.com/docs/#/displaying/format/ <br>
+            date_format: YYYY-MM-DD <br>
+            time_format: HH:mm:ss <br>
+
+            # Pagination  分页 <br>
+            ## Set per_page to 0 to disable pagination <br>
+            per_page: 10	#每页显示的文章量 (0 = 关闭分页功能) <br>
+            pagination_dir: page  #分页目录 <br>
+
+            # Extensions <br>
+            ## Plugins: https://hexo.io/plugins/ <br>
+            ## Themes: https://hexo.io/themes/ <br>
+            theme: next <br>
+
+            # Deployment <br>
+            ## Docs: https://hexo.io/docs/deployment.html <br>
+            deploy: <br>
+              type: git <br>
+              repository: https://github.com/daydayhu/daydayhu.github.io.git <br>
+              branch: master <br>
+          </span>
+          在主题的_config.yml里也可进行主题样式的配置，可参考 <a href="http://theme-next.iissnan.com/theme-settings.html" target="_blank">next主题的设置</a> <br>
          </p>
          <p>
-           注册域名
+           10.注册域名 <br>
+           这里使用 <a href="https://wanwang.aliyun.com" target="_blank" rel="external">万网</a>
          </p>
          <p>
-           使用DNS解析域名
+           11.DNS(域名系统)解析域名 <br>
+           DNS作用: 将域名解析成某个IP地址后，访问所指向的服务器获取资源。 <br>
+           以万网为例，具体操作如下所示 <br>
+           注册域名成功之后，登入自己的阿里云，在管理控制台选中域名 <br>
+           <img src="http://ww4.sinaimg.cn/mw690/005uY5V3gw1f9rxf92j73j30gm0d040e.jpg" alt="">  <br>
+           进入之后，找到自己所需要解析的域名，点击解析 <br>
+           <img src="http://ww2.sinaimg.cn/mw690/005uY5V3gw1f9rxf9fcowj30qa03u0tc.jpg" alt="">  <br>
+           进入到解析界面，添加解析 <br>
+           <img src="http://ww2.sinaimg.cn/mw690/005uY5V3gw1f9rxf9xkqej30fa0ccdhb.jpg" alt="">  <br>
+           会显示如下所示的弹窗 <br>
+           <img src="http://ww1.sinaimg.cn/mw690/005uY5V3gw1f9rxfaju3jj30pv0cm434.jpg" alt="">  <br>
+           记录类型：可选A记录或者CNAME记录。 <br>
+           A记录（若需要将域名指向一个ip地址，选择添加A记录) <br>
+           CNAME记录（如果需要将域名指向另一个域名，再由另一个域名提供ip地址，就需要添加CNAME记录）<br>
+           主机记录：填子域名（比如需要添加www.123.com的解析，只需要在主机记录处填写www即可；如果只想添加123.com的解析，主机记录直接留空，系统会自动填一个“@”到输入框）。 <br>
+           线路类型:（默认为必填项，否则会导致部分用户无法解析；在上图中，默认的作用为：除了联通用户之外的所有用户，都会指向1.1.1.1）。 <br>
+           记录值: 为ip地址。  当选用A记录时，此处填写github Pages的提供的IP地址，默认为如下两个: <br>
+           192.30.252.153 <br>
+           192.30.252.154 <br>
+           如博客不能登录，有可能是github更改了空间服务的ip地址，记得及时到在GitHub Pages查看最新的ip即可。 <br>
+           当选用CNAME记录时， 此处填写你的Github Pages Repository所绑定的域名。如我的是daydayhu.github.io <br>
+           MX优先级: 不需要填写。 <br>
+           TTL: 不需要填写，添加时系统会自动生成，默认为600秒（TTL为缓存时间，数值越小，修改记录各地生效时间越快）。它值的平均值，四舍五入取整数。 <br>
+           添加完成之后解析即可，大概需要等待几分钟 <br>
          </p>
          <p>
-           将独立域名与GitHub Pages的空间绑定
+           12.将独立域名与GitHub Pages的空间绑定 <br>
+           方法推荐使用 <br>
+           在你存放博客文件夹中的source文件夹中新建一个CNAME文件（无后缀名），然后用文本编辑器打开，在首行添加你的网站域名，如http://xxxx.com，注意前面没有http://，也没有www，然后使用hexo g && hexo d上传部署。 <br>
+           之后稍等几分钟就可以通过你的独立域名访问自己的博客了 <br>
          </p>
          <p>
-           编写博客
+           13.编写博客
          </p>
       </div>
     </div>
