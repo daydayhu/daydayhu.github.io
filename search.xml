@@ -4,6 +4,14 @@
   
     
     <entry>
+      <title><![CDATA[new]]></title>
+      <url>http://www.skyshu.com/2018/06/18/new/</url>
+      <content type="html"><![CDATA[<html>
+    <div style="background: #0ae90d; height: 100px; width: 100px"></div>
+</html>]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[基于GitHub和Hexo的博客环境搭建]]></title>
       <url>http://www.skyshu.com/2016/11/08/blog_bulid1/</url>
       <content type="html"><![CDATA[<!DOCTYPE html>
