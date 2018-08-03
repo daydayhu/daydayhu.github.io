@@ -4,6 +4,20 @@
   
     
     <entry>
+      <title><![CDATA[js之深拷贝与浅拷贝]]></title>
+      <url>http://www.skyshu.com/2018/08/03/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/</url>
+      <content type="html"><![CDATA[<p><strong>基本概念</strong></p>
+<p>从指针的角度出发，浅拷贝只是增加了一个指针，指向已经存在的内存，而深拷贝就是增加一个指针并且申请一个新的内存。</p>
+<p><strong>浅拷贝与深拷贝解读</strong></p>
+<p>js包括<strong>基本数据类型</strong>与<strong>引用数据类型</strong>。基本数据类型即 number、string、boolean、null、undefined五类。引用数据类型即 Object、Array、function。</p>
+<p>从堆栈关系来说，二者的主要区别在于数据存储的位置不同，基础数据类型值存储在栈区，而引用数据类型值存储在堆区，其地址存储在栈区。</p>
+<p>基础数据类型赋值时，会在栈区开辟一块新的内存，将值存储在栈区，以确保赋值与被赋值变量二者的独立性。</p>
+<p>引用数据类型赋值时，也会在栈区开辟一块新的内存，不过存储的是值所在的地址(指针)，而值所在的堆区保持不变。赋值与被赋值变量二者存储的地址指向的是同一块堆区内存。通过这种赋值方式，由于使用同一块堆区内存，只要一方的数据发生变化，另一方数据也会随之变化，也将这种赋值称作浅拷贝。若不想产生这种相互干扰，得让双方不共用同一块堆区内存，开辟一块新的堆区内存，以实现深拷贝。由此可以看出浅拷贝与深拷贝是针对引用数据类型进行的。</p>
+<p><strong>如何实现深拷贝</strong></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[浏览器探讨(—)]]></title>
       <url>http://www.skyshu.com/2018/08/03/brower/</url>
       <content type="html"><![CDATA[<p><strong>浏览器的主要功能</strong></p>
