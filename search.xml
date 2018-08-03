@@ -4,11 +4,33 @@
   
     
     <entry>
-      <title><![CDATA[new]]></title>
-      <url>http://www.skyshu.com/2018/06/18/new/</url>
-      <content type="html"><![CDATA[<html>
-    <div style="background: #0ae90d; height: 100px; width: 100px"></div>
-</html>]]></content>
+      <title></title>
+      <url>http://www.skyshu.com/2018/08/02/defineProperty/</url>
+      <content type="html"><![CDATA[<h1 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty()"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="external">Object.defineProperty()</a></h1><p><strong>作用</strong> 该方法会直接在一个对象上定义一个新属性, 或者修改一个对象的现有属性, 并返回这个对象。</p>
+<p><strong>语法</strong> <code>Object.defineProperty(obj, prop, descriptor)</code></p>
+<p><strong>参数</strong>  </p>
+<p><code>obj</code>: 要在其上定义属性的对象。</p>
+<p><code>prop</code>: 要定义或修改的属性的名称。</p>
+<p><code>descriptor</code>: 将被定义或修改的属性描述符。</p>
+<p><strong>属性描述符</strong> </p>
+<p> 对象里目前存在的属性描述符有两种主要形式<strong>数据描述符</strong>和<strong>存取描述符</strong>。<strong>数据描述符</strong>是一个具有值的属性，该值可能是可写的，也可能不是可写的。<strong>存取描述符</strong>是由getter-setter函数对描述的属性。描述符必须是这两种形式之一；不能同时是两者。</p>
+<p><strong>数据描述符和存取描述符均具</strong>有以下可选键值：</p>
+<p><code>configurable</code><br>当且仅当该属性的 configurable 为 true 时，该属性描述符才能够被改变，同时该属性也能从对应的对象上被删除。默认为 false。</p>
+<p><code>enumerable</code> 当且仅当该属性的enumerable为true时，该属性才能够出现在对象的枚举属性中。默认为 false。</p>
+<p><strong>数据描述符同时具有以下可选键值</strong>:</p>
+<p><code>value</code>  该属性对应的值。可以是任何有效的 JavaScript 值（数值，对象，函数等）。默认为 undefined。</p>
+<p><code>writable</code> 当且仅当该属性的writable为true时，value才能被赋值运算符改变。默认为 false。</p>
+<p><strong>存取描述符同时具有以下可选键值</strong></p>
+<p><code>get</code>  一个给属性提供 getter 的方法，如果没有 getter 则为 undefined。当访问该属性时，该方法会被执行，方法执行时没有参数传入，但是会传入this对象（由于继承关系，这里的this并不一定是定义该属性的对象）。默认为 undefined。</p>
+<p><code>set</code>  一个给属性提供 setter 的方法，如果没有 setter 则为 undefined。当属性值修改时，触发执行该方法。该方法将接受唯一参数，即该属性新的参数值。默认为 undefined。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[dasdasd]]></title>
+      <url>http://www.skyshu.com/2018/06/18/macdown%E8%AF%AD%E6%B3%95/</url>
+      <content type="html"><![CDATA[<h1 id="macdown语法"><a href="#macdown语法" class="headerlink" title="macdown语法"></a>macdown语法</h1><p><img src="http://img5.imgtn.bdimg.com/it/u=1109917053,4211270766&amp;fm=27&amp;gp=0.jpg" alt="atr"></p>
+]]></content>
     </entry>
     
     <entry>
