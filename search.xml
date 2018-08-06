@@ -4,12 +4,9 @@
   
     
     <entry>
-      <title></title>
+      <title><![CDATA[Function.prototype 的常用属性和方法解读]]></title>
       <url>http://www.skyshu.com/2018/08/06/Function.prototype/</url>
-      <content type="html"><![CDATA[<hr>
-<p>title：Function.prototype 的常用属性和方法解读</p>
-<hr>
-<p>此处仅对常用的Funtion原型属性/方法进行分析。</p>
+      <content type="html"><![CDATA[<p>此处仅对常用的Funtion原型属性/方法进行分析。</p>
 <p><strong>属性</strong></p>
 <p><code>Function.arguments</code>:以数组形式获取传入函数的所有参数。<br>补充说明：已定义参数、未定义参数(rest)与arguments关系。相关代码如下：</p>
 <pre><code>function foo(a, b, ...rest) {
