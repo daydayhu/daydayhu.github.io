@@ -340,8 +340,8 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2018-08-03T19:16:59+08:00">
-              2018-08-03
+            <time title="Post modified" itemprop="dateModified" datetime="2018-08-06T16:16:11+08:00">
+              2018-08-06
             </time>
 
           </span>
@@ -389,7 +389,80 @@
 <p>基础数据类型赋值时，会在栈区开辟一块新的内存，将值存储在栈区，以确保赋值与被赋值变量二者的独立性。</p>
 <p>引用数据类型赋值时，也会在栈区开辟一块新的内存，不过存储的是值所在的地址(指针)，而值所在的堆区保持不变。赋值与被赋值变量二者存储的地址指向的是同一块堆区内存。通过这种赋值方式，由于使用同一块堆区内存，只要一方的数据发生变化，另一方数据也会随之变化，也将这种赋值称作浅拷贝。若不想产生这种相互干扰，得让双方不共用同一块堆区内存，开辟一块新的堆区内存，以实现深拷贝。由此可以看出浅拷贝与深拷贝是针对引用数据类型进行的。</p>
 <p><strong>如何实现深拷贝</strong></p>
-
+<p><strong>1.递归</strong></p>
+<p>通过层层递归，可将引用数据类型的赋值，转成基础数据类型的赋值，代码实现如下：</p>
+<pre><code>var obj1 = {name:&apos;DDB&apos;,age:18,arr:[1,2,3,4]};
+var obj2 = {};
+function deepCloneByRecurve(primaryObj,copyObj) {
+   var _copyObj = copyObj || {};
+   for (var key in primaryObj){
+     if(typeof primaryObj[key] === &apos;object&apos;){
+       _copyObj[key] = (primaryObj[key].constructor === Array) ? []:{};
+       deepCloneByRecurve(primaryObj[key],_copyObj[key]);
+     }else {
+       _copyObj[key] = primaryObj[key];
+     }
+   }
+   return _copyObj;
+}
+obj2 = deepCloneByRecurve(obj1,obj2);
+obj2.arr.push(5);
+console.log(obj1.arr); // [1,2,3,4]
+console.log(obj2.arr); // [1,2,3,4,5]
+</code></pre><p><strong>2.json</strong></p>
+<p>可利用JSON进行深拷贝，代码实现如下：  </p>
+<pre><code>var obj1 = {name:&apos;DDB&apos;,age:18,arr:[1,2,3,4]};
+var obj3 = {};
+function deepCloneByJOSN(primaryObj) {
+  return JSON.parse(JSON.stringify(primaryObj));
+}
+var obj3 = deepCloneByJOSN(obj1);
+obj3.arr.push(6);
+console.log(obj1.arr); // [1,2,3,4]
+console.log(obj3.arr); // [1,2,3,4,6]
+</code></pre><p>对于一般的需求是可以满足的，但是它有缺点。下例中，可以看到JSON复制会忽略掉值为undefined以及函数表达式。</p>
+<pre><code>var obj = {
+  a: 1,
+  b: 2,
+  c: undefined,
+  sum: function() { return a + b; }
+};
+var obj2 = deepCloneByJOSN(obj);
+console.log(obj2);  //Object {a: 1, b: 2}
+</code></pre><p><strong>3.针对数组深拷贝的其他实现</strong></p>
+<p>3.1 <strong>slice</strong>方法</p>
+<p>slice() 返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。</p>
+<p>实现代码如下：</p>
+<pre><code>var arr = [1,2,3,4,5];
+var arr2 = arr.slice(0);
+arr2[2] = 5;
+console.log(arr); // [1,2,3,4,5]
+console.log(arr2); // [1,2,5,4,5]
+</code></pre><p>3.2 <strong>concat</strong>方法</p>
+<p>concat() 不会改变现有的数组，而仅仅会返回被连接数组的一个副本（新数组）。</p>
+<p>实现代码如下：</p>
+<pre><code>var arr = [1,2,3,4,5];
+var arr2 = arr.concat();
+arr2[2] = 5;
+console.log(arr); // [1,2,3,4,5]
+console.log(arr2); // [1,2,5,4,5]
+</code></pre><p>3.3 ES6的扩展方法 <strong>Array.from / …</strong></p>
+<p>1)  <strong>Array.from()</strong> 方法从一个类似数组或可迭代对象中创建一个新的数组实例。</p>
+<p>代码实现如下：</p>
+<pre><code>var arr1=[1,2,3];
+var arr2=Array.from(arr1);
+arr2.push(4);
+console.log(arr1); // [1,2,3]
+console.log(arr2); // [1,2,3,4]
+</code></pre><p>2)  <strong>扩展运算符(…)</strong></p>
+<p>扩展运算符(spread) 是3个点 (…)。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。</p>
+<p>代码实现如下：</p>
+<pre><code>var arr1=[1,2,3];
+var arr2=[...arr1];
+arr2.push(4);
+console.log(arr1); // [1,2,3]
+console.log(arr2); // [1,2,3,4]
+</code></pre>
           
         
       
@@ -519,16 +592,29 @@
       
         
           
-            <p><strong>浏览器的主要功能</strong></p>
-<p>浏览器的主要功能是通过从服务器请求并在浏览器窗口中显示它来显示您选择的Web资源。资源通常是HTML文档，但也可以是PDF，图像或其他类型的内容。用户使用<strong>URI</strong>（统一资源标识符）指定资源的位置。</p>
-<p><strong>浏览器的高级结构</strong></p>
-<p>1.<strong>用户界面</strong>：这包括地址栏，后退/前进按钮，书签菜单等。浏览器的每个部分都显示除了您看到所请求页面的窗口。</p>
-<p>2.<strong>浏览器引擎</strong>：在UI和呈现引擎之间编组操作。</p>
-<p>3.<strong>渲染引擎</strong>：负责显示请求的内容。例如，如果请求的内容是HTML，则呈现引擎解析HTML和CSS，并在屏幕上显示解析的内容。不同的浏览器使用不同的渲染引擎：<strong>Internet Explorer使用Trident，Firefox使用Gecko，Safari使用WebKit。Chrome和Opera（来自15版）使用Blink，一个WebKit的分支</strong>。</p>
-<p>4.<strong>网络</strong>：用于网络调用，例如HTTP请求，在独立于平台的界面后面使用不同平台的不同实现。</p>
-<p>5.<strong>UI后端</strong>：用于绘制组合框和窗口等基本小部件。此后端公开了一个非平台特定的通用接口。它下面使用操作系统用户界面方法。</p>
-<p>6.<strong>JavaScript解释器</strong>：用于解析和执行JavaScript代码。</p>
-<p>7.<strong>数据存储</strong>：这是一个持久层。浏览器可能需要在本地保存各种数据，例如cookie。浏览器还支持存储机制，例如localStorage，IndexedDB，WebSQL和FileSystem。</p>
+            
+**浏览器的主要功能**
+
+浏览器的主要功能是通过从服务器请求并在浏览器窗口中显示它来显示您选择的Web资源。资源通常是HTML文档，但也可以是PDF，图像或其他类型的内容。用户使用**URI**（统一资源标识符）指定资源的位置。
+
+**浏览器的高级结构**
+
+1.**用户界面**：这包括地址栏，后退/前进按钮，书签菜单等。浏览器的每个部分都显示除了您看到所请求页面的窗口。
+
+2.**浏览器引擎**：在UI和呈现引擎之间编组操作。
+
+3.**渲染引擎**：负责显示请求的内容。例如，如果请求的内容是HTML，则呈现引擎解析HTML和CSS，并在屏幕上显示解析的内容。不同的浏览器使用不同的渲染引擎：**Internet Explorer使用Trident，Firefox使用Gecko，Safari使用WebKit。Chrome和Opera（来自15版）使用Blink，一个WebKit的分支**。
+
+4.**网络**：用于网络调用，例如HTTP请求，在独立于平台的界面后面使用不同平台的不同实现。
+
+5.**UI后端**：用于绘制组合框和窗口等基本小部件。此后端公开了一个非平台特定的通用接口。它下面使用操作系统用户界面方法。
+
+6.**JavaScript解释器**：用于解析和执行JavaScript代码。
+
+7.**数据存储**：这是一个持久层。浏览器可能需要在本地保存各种数据，例如cookie。浏览器还支持存储机制，例如localStorage，IndexedDB，WebSQL和FileSystem。
+
+
+
 
           
         
