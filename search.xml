@@ -4,6 +4,81 @@
   
     
     <entry>
+      <title></title>
+      <url>http://www.skyshu.com/2018/08/06/Function.prototype/</url>
+      <content type="html"><![CDATA[<hr>
+<h2 id="title：Function-prototype-的常用属性和方法解读"><a href="#title：Function-prototype-的常用属性和方法解读" class="headerlink" title="title：Function.prototype 的常用属性和方法解读"></a>title：Function.prototype 的常用属性和方法解读</h2><p>此处仅对常用的Funtion原型属性/方法进行分析。</p>
+<p><strong>属性</strong></p>
+<p><code>Function.arguments</code>:以数组形式获取传入函数的所有参数。<br>补充说明：已定义参数、未定义参数(rest)与arguments关系。相关代码如下：</p>
+<pre><code>function foo(a, b, ...rest) {
+  console.log(&apos;a = &apos;+ a);
+  console.log(&apos;b = &apos;+ a);
+  console.log(rest);
+  console.log(arguments);
+}
+foo(1,2,3,4,5);
+
+// result
+// a = 1
+// b = 2
+// Array [3,4,5]
+// Array [1,2,3,4,5] 省略内置方法
+</code></pre><p><code>Function.prototype.constructor</code>：指定创建对象原型的函数。基于此，亦可用来判断数据类型。</p>
+<p><strong>方法</strong></p>
+<p><code>Function.prototype.apply()</code>: 在一个对象的上下文中应用另一个对象的方法；参数能够以数组形式传入。</p>
+<p><code>Function.prototype.call()</code>: 在一个对象的上下文中应用另一个对象的方法；参数能够以列表形式传入。</p>
+<p><strong>call()与apply()的实现原理</strong></p>
+<p>二者简而言之的目的，都是为了使用其他对象的方法。</p>
+<p>可分为3个步骤</p>
+<ol>
+<li>将函数设为对象的属性</li>
+<li>执行该函数</li>
+<li>删除该函数</li>
+</ol>
+<p>实现代码如下：</p>
+<pre><code>Function.prototype.call2 = function (context) {
+    var context = context || window;
+    context.fn = this;
+
+    var args = [];
+    for(var i = 1, len = arguments.length; i &lt; len; i++) {
+        args.push(&apos;arguments[&apos; + i + &apos;]&apos;);
+    }
+
+    var result = eval(&apos;context.fn(&apos; + args +&apos;)&apos;);
+
+    delete context.fn
+    return result;
+}
+
+var value = 2;
+var obj = {
+    value: 1
+}
+
+function bar(name, age) {
+    console.log(this.value);
+    return {
+        value: this.value,
+        name: name,
+        age: age
+    }
+}
+
+bar.call(null); // 2
+
+console.log(bar.call2(obj, &apos;kevin&apos;, 18));
+// 1
+// Object {
+//    value: 1,
+//    name: &apos;kevin&apos;,
+//    age: 18
+// }
+</code></pre><p>更改方法/函数内部this指向，本质上来说，是给需要使用该方法的对象，临时新增了该方法，并没有改变该方法的原始所属对象。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[js之深拷贝与浅拷贝]]></title>
       <url>http://www.skyshu.com/2018/08/03/%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D/</url>
       <content type="html"><![CDATA[<p><strong>基本概念</strong></p>
