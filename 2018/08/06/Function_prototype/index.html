@@ -100,7 +100,7 @@ Function.arguments:以数组形式获取传入函数的所有参数。补充说�
 function foo(a, b, ...rest) {
   console.log(&amp;apos;a = &amp;apos;+ a);
   console.log(&amp;apos;b = &amp;">
-<meta property="og:updated_time" content="2018-08-06T10:49:00.912Z">
+<meta property="og:updated_time" content="2018-08-07T08:10:59.965Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Function.prototype 的常用属性和方法解读">
 <meta name="twitter:description" content="此处仅对常用的Funtion原型属性/方法进行分析。
@@ -351,8 +351,8 @@ function foo(a, b, ...rest) {
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2018-08-06T18:49:00+08:00">
-              2018-08-06
+            <time title="Post modified" itemprop="dateModified" datetime="2018-08-07T16:10:59+08:00">
+              2018-08-07
             </time>
 
           </span>
@@ -408,9 +408,9 @@ foo(1,2,3,4,5);
 // Array [1,2,3,4,5] 省略内置方法
 </code></pre><p><code>Function.prototype.constructor</code>：指定创建对象原型的函数。基于此，亦可用来判断数据类型。</p>
 <p><strong>方法</strong></p>
-<p><code>Function.prototype.apply()</code>: 在一个对象的上下文中应用另一个对象的方法；参数能够以数组形式传入。</p>
-<p><code>Function.prototype.call()</code>: 在一个对象的上下文中应用另一个对象的方法；参数能够以列表形式传入。</p>
-<p><strong>call()与apply()的实现原理</strong></p>
+<p><code>Function.prototype.apply()</code>: 在一个对象的上下文中应用另一个对象的方法；参数能够以数组形式传入(参数指调用当前方法，可传入的实参)。</p>
+<p><code>Function.prototype.call()</code>: 在一个对象的上下文中应用另一个对象的方法；参数能够以列表形式传入(参数指调用当前方法，可传入的实参)。</p>
+<p><strong><a href="https://segmentfault.com/a/1190000009257663" target="_blank" rel="external">call()与apply()的实现原理</a></strong></p>
 <p>二者简而言之的目的，都是为了使用其他对象的方法。</p>
 <p>可分为3个步骤</p>
 <ol>
@@ -418,7 +418,7 @@ foo(1,2,3,4,5);
 <li>执行该函数</li>
 <li>删除该函数</li>
 </ol>
-<p>实现代码如下：</p>
+<p>以call()为例，实现代码如下：</p>
 <pre><code>Function.prototype.call2 = function (context) {
     var context = context || window;
     context.fn = this;
@@ -434,6 +434,7 @@ foo(1,2,3,4,5);
     return result;
 }
 
+// 测试一下
 var value = 2;
 var obj = {
     value: 1
@@ -458,6 +459,63 @@ console.log(bar.call2(obj, &apos;kevin&apos;, 18));
 //    age: 18
 // }
 </code></pre><p>更改方法/函数内部this指向，本质上来说，是给需要使用该方法的对象，临时新增了该方法，并没有改变该方法的原始所属对象。</p>
+<p><code>Function.prototype.bind</code>: bind()方法会创建一个新函数,称为绑定函数.当调用这个绑定函数时,绑定函数会以创建它时传入 bind()方法的第一个参数作为 this,传入 bind()方法的第二个以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数。</p>
+<p><a href="https://github.com/mqyqingfeng/Blog/issues/12" target="_blank" rel="external"><strong>bind()的实现原理</strong></a></p>
+<p>bind()函数的两个特点:</p>
+<ol>
+<li>返回一个函数</li>
+<li>可以传入参数</li>
+</ol>
+<p>实现代码如下：</p>
+<pre><code>Function.prototype.bind2 = function (context) {
+
+if (typeof this !== &quot;function&quot;) {
+  throw new Error(&quot;Function.prototype.bind - what is trying to be bound is not callable&quot;);
+}
+
+var self = this;
+var args = Array.prototype.slice.call(arguments, 1);
+
+var fNOP = function () {};
+
+var fBound = function () {
+    var bindArgs = Array.prototype.slice.call(arguments);
+    return self.apply(this instanceof fNOP ? this : context, args.concat(bindArgs));
+}
+
+fNOP.prototype = this.prototype;
+fBound.prototype = new fNOP();
+return fBound;
+}
+</code></pre><p>apply call bind三者比较：</p>
+<ol>
+<li><p>apply 、 call 、bind 三者都是用来改变函数的this对象的指向的。</p>
+</li>
+<li><p>apply 、 call 、bind 三者第一个参数都是this要指向的对象，也就是想指定的上下文。</p>
+</li>
+<li><p>apply 、 call 、bind 三者都可以利用后续参数传参。</p>
+</li>
+<li><p>bind 是返回对应函数，便于稍后调用；apply 、call 则是立即调用。</p>
+</li>
+</ol>
+<p>代码演示如下：</p>
+<pre><code>var obj = {
+    x: 81,
+};
+var foo = {
+    getX: function() {
+        return this.x;
+    }
+}
+console.log(foo.getX.bind(obj)());  //81
+console.log(foo.getX.call(obj));    //81
+console.log(foo.getX.apply(obj));   //81
+
+/*
+    区别在于, 使用apply()/call(), 改变上下文环境之后,
+    会立即执行函数; 而使用bind(), 并非立即执行, 而是回调执行
+*/ 
+</code></pre><p><code>Function.prototype.toString</code>: 返回一个表示当前函数源代码的字符串。</p>
 
       
     </div>
