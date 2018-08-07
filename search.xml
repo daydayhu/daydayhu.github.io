@@ -4,6 +4,34 @@
   
     
     <entry>
+      <title><![CDATA[块格式化上下文（Block Formatting Context，BFC）]]></title>
+      <url>http://www.skyshu.com/2018/08/07/BFC/</url>
+      <content type="html"><![CDATA[<p><strong>块格式化上下文</strong>：是Web页面的可视化CSS渲染的一部分，是布局过程中生成块级盒子的区域，也是浮动元素与其他元素的交互限定区域。</p>
+<p><strong>块格式化上下文生成条件</strong></p>
+<ul>
+<li><p>根元素或包含根元素的元素</p>
+</li>
+<li><p>浮动元素（元素的 float 不是 none）</p>
+</li>
+<li>绝对定位元素（元素的 position 为 absolute 或 fixed）</li>
+<li>行内块元素（元素的 display 为 inline-block）</li>
+<li>表格单元格（元素的 display为 table-cell，HTML表格单元格默认为该值）</li>
+<li>表格标题（元素的 display 为 table-caption，HTML表格标题默认为该值）</li>
+<li>匿名表格单元格元素（元素的 display为 table、table-row、 table-row-group、table-header-group、table-footer-group（分别是HTML table、row、tbody、thead、tfoot的默认属性）或 inline-table）</li>
+<li>overflow 值不为 visible 的块元素</li>
+<li>display 值为 flow-root 的元素</li>
+<li>contain 值为 layout、content或 strict 的元素</li>
+<li>弹性元素（display为 flex 或 inline-flex元素的直接子元素）</li>
+<li>网格元素（display为 grid 或 inline-grid 元素的直接子元素）</li>
+<li>多列容器（元素的 column-count 或 column-width 不为 auto，包括 column-count 为 1）</li>
+<li>column-span 为 all 的元素始终会创建一个新的BFC，即使该元素没有包裹在一个多列容器中（标准变更，Chrome bug）。</li>
+</ul>
+<p>创建了块格式化上下文的元素中的所有内容都会被包含到该BFC中。</p>
+<p>块格式化上下文对浮动定位与清除浮动都很重要。浮动定位和清除浮动时只会应用于同一个BFC内的元素。浮动不会影响其它BFC中元素的布局，而清除浮动只能清除同一BFC中在它前面的元素的浮动。外边距折叠（Margin collapsing）也只会发生在属于同一BFC的块级元素之间。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Function.prototype 的常用属性和方法解读]]></title>
       <url>http://www.skyshu.com/2018/08/06/Function_prototype/</url>
       <content type="html"><![CDATA[<p>此处仅对常用的Funtion原型属性/方法进行分析。</p>
