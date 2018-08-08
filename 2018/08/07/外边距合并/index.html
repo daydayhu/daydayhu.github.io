@@ -94,7 +94,7 @@
 <meta property="og:description" content="外边距折叠：块级元素的上外边距和下外边距有时会合并（或折叠）为一个外边距，其大小取其中的最大者，这种行为称为外边距折叠（margin collapsing），有时也翻译为外边距合并。注意浮动元素和绝对定位元素的外边距不会折叠（因为这里触发了 块格式化上下文 Block Formatting Context， BFC）。
 相邻元素之间
 毗邻的两个元素之间的外边距会折叠（除非后一个元素需要清除之前的浮">
-<meta property="og:updated_time" content="2018-08-07T11:53:11.112Z">
+<meta property="og:updated_time" content="2018-08-08T02:25:31.160Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="外边距合并">
 <meta name="twitter:description" content="外边距折叠：块级元素的上外边距和下外边距有时会合并（或折叠）为一个外边距，其大小取其中的最大者，这种行为称为外边距折叠（margin collapsing），有时也翻译为外边距合并。注意浮动元素和绝对定位元素的外边距不会折叠（因为这里触发了 块格式化上下文 Block Formatting Context， BFC）。
@@ -342,8 +342,8 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2018-08-07T19:53:11+08:00">
-              2018-08-07
+            <time title="Post modified" itemprop="dateModified" datetime="2018-08-08T10:25:31+08:00">
+              2018-08-08
             </time>
 
           </span>
@@ -383,7 +383,7 @@
       
         <p><strong>外边距折叠</strong>：块级元素的上外边距和下外边距有时会合并（或折叠）为一个外边距，其大小取其中的最大者，这种行为称为外边距折叠（margin collapsing），有时也翻译为外边距合并。注意浮动元素和绝对定位元素的外边距不会折叠（因为这里触发了 块格式化上下文 Block Formatting Context， BFC）。</p>
 <p><strong>相邻元素之间</strong></p>
-<p>毗邻的两个元素之间的外边距会折叠（除非后一个元素需要清除之前的浮动）。</p>
+<p>毗邻的两个元素之间的外边距会折叠（除非后一个元素需要清除之前的浮动, 这也意味着当前两个元素都是浮动元素）。</p>
 <p><strong>父元素与其第一个或最后一个子元素之间</strong></p>
 <p>如果在父元素与其第一个子元素之间不存在边框、内边距、行内内容，也没有创建块格式化上下文、或者清除浮动将两者的 margin-top 分开；或者在父元素与其最后一个子元素之间不存在边框、内边距、行内内容、height、min-height、max-height将两者的 margin-bottom 分开，那么这两对外边距之间会产生折叠。此时子元素的外边距会“溢出”到父元素的外面。</p>
 <p><strong>空的块级元素</strong></p>
@@ -395,6 +395,15 @@
 <li>如果参与折叠的外边距中包含负值，折叠后的外边距的值为最大的正边距与最小的负边距（即绝对值最大的负边距）的和。</li>
 <li>如果所有参与折叠的外边距都为负，折叠后的外边距的值为最小的负边距的值。这一规则适用于相邻元素和嵌套元素。</li>
 </ul>
+<p><strong>如何解决外边距折叠问题</strong></p>
+<ol>
+<li><p>浮动元素、inline-block 元素、绝对定位元素的 margin 不会和垂直方向上其他元素的 margin 折叠（<strong>注意这里指的是上下相邻的元素</strong>）</p>
+</li>
+<li><p>创建了块级格式化上下文的元素，不和它的子元素发生 margin 折叠（<strong>注意这里指的是创建了BFC的元素和它的子元素不会发生折叠</strong>）</p>
+</li>
+</ol>
+<p>触发<a href=""><strong>BFC因素</strong></a>之前blog已经说明，<strong>很明显可以看出来相邻元素不发生折叠的因素是触发BFC因素的子集，也就是说如果为上下相邻的元素设置了overflow:hidden，虽然触发了BFC，但是上下元素的上下margin还是会发生折叠</strong></p>
+<p>要知道BFC不是全能，创建BFC的初衷只是为了让元素本身（包括它的子元素）能够正确的计算自己的宽高。</p>
 
       
     </div>
