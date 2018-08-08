@@ -4,6 +4,24 @@
   
     
     <entry>
+      <title><![CDATA[css 布局模式（—）]]></title>
+      <url>http://www.skyshu.com/2018/08/08/css%E5%B8%83%E5%B1%80%E6%A8%A1%E5%BC%8F/</url>
+      <content type="html"><![CDATA[<p><strong>css布局模式</strong>：是一种基于盒子与其兄弟和祖辈盒子的交互方式来确定盒子的位置和大小的算法。有以下几种形式：</p>
+<ul>
+<li>块布局：用来布置文件。块布局包含以文档为中心的功能，例如 浮动元素或将其放置在多列上的功能。</li>
+<li>行内布局：用来布置文本。</li>
+<li>表格布局：用来布置表格。</li>
+<li>定位布局：用来对那些与其他元素无交互的定位元素进行布置 。</li>
+<li><strong>弹性盒子布局</strong>：用来布置那些可以顺利调整大小的复杂页面。</li>
+<li><strong>网格布局</strong>：用来布置那些与一个固定网格相关的元素。</li>
+</ul>
+<p>这里主要对<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes" target="_blank" rel="external"><strong>弹性盒子布局</strong></a>局进行分析。</p>
+<p><strong>弹性盒子布局</strong></p>
+<p><strong>CSS3 弹性盒子(Flexible Box 或 Flexbox)</strong>，是一种用于在页面上布置元素的布局模式，使得当页面布局必须适应不同的屏幕尺寸和不同的显示设备时，元素可预测地运行。对于许多应用程序，弹性盒子模型提供了对块模型的改进，因为它不使用浮动，flex容器的边缘也不会与其内容的边缘折叠。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[外边距合并]]></title>
       <url>http://www.skyshu.com/2018/08/07/%E5%A4%96%E8%BE%B9%E8%B7%9D%E5%90%88%E5%B9%B6/</url>
       <content type="html"><![CDATA[<p><strong>外边距折叠</strong>：块级元素的上外边距和下外边距有时会合并（或折叠）为一个外边距，其大小取其中的最大者，这种行为称为外边距折叠（margin collapsing），有时也翻译为外边距合并。注意浮动元素和绝对定位元素的外边距不会折叠（因为这里触发了 块格式化上下文 Block Formatting Context， BFC）。</p>

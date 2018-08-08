@@ -84,31 +84,37 @@
 
 
 
-<meta name="description" content="此处仅对常用的Funtion原型属性/方法进行分析。
-属性
-Function.arguments:以数组形式获取传入函数的所有参数。补充说明：已定义参数、未定义参数(rest)与arguments关系。相关代码如下：
-function foo(a, b, ...rest) {
-  console.log(&amp;apos;a = &amp;apos;+ a);
-  console.log(&amp;apos;b = &amp;">
+<meta name="description" content="css布局模式：是一种基于盒子与其兄弟和祖辈盒子的交互方式来确定盒子的位置和大小的算法。有以下几种形式：
+
+块布局：用来布置文件。块布局包含以文档为中心的功能，例如 浮动元素或将其放置在多列上的功能。
+行内布局：用来布置文本。
+表格布局：用来布置表格。
+定位布局：用来对那些与其他元素无交互的定位元素进行布置 。
+弹性盒子布局：用来布置那些可以顺利调整大小的复杂页面。
+网格布局：用来布置那些与一个固">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Function.prototype 的常用属性和方法解读">
-<meta property="og:url" content="http://www.skyshu.com/2018/08/06/Function_prototype/index.html">
+<meta property="og:title" content="css 布局模式（—）">
+<meta property="og:url" content="http://www.skyshu.com/2018/08/08/css布局模式/index.html">
 <meta property="og:site_name" content="DDB Space">
-<meta property="og:description" content="此处仅对常用的Funtion原型属性/方法进行分析。
-属性
-Function.arguments:以数组形式获取传入函数的所有参数。补充说明：已定义参数、未定义参数(rest)与arguments关系。相关代码如下：
-function foo(a, b, ...rest) {
-  console.log(&amp;apos;a = &amp;apos;+ a);
-  console.log(&amp;apos;b = &amp;">
-<meta property="og:updated_time" content="2018-08-07T08:10:59.965Z">
+<meta property="og:description" content="css布局模式：是一种基于盒子与其兄弟和祖辈盒子的交互方式来确定盒子的位置和大小的算法。有以下几种形式：
+
+块布局：用来布置文件。块布局包含以文档为中心的功能，例如 浮动元素或将其放置在多列上的功能。
+行内布局：用来布置文本。
+表格布局：用来布置表格。
+定位布局：用来对那些与其他元素无交互的定位元素进行布置 。
+弹性盒子布局：用来布置那些可以顺利调整大小的复杂页面。
+网格布局：用来布置那些与一个固">
+<meta property="og:updated_time" content="2018-08-08T02:56:24.264Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Function.prototype 的常用属性和方法解读">
-<meta name="twitter:description" content="此处仅对常用的Funtion原型属性/方法进行分析。
-属性
-Function.arguments:以数组形式获取传入函数的所有参数。补充说明：已定义参数、未定义参数(rest)与arguments关系。相关代码如下：
-function foo(a, b, ...rest) {
-  console.log(&amp;apos;a = &amp;apos;+ a);
-  console.log(&amp;apos;b = &amp;">
+<meta name="twitter:title" content="css 布局模式（—）">
+<meta name="twitter:description" content="css布局模式：是一种基于盒子与其兄弟和祖辈盒子的交互方式来确定盒子的位置和大小的算法。有以下几种形式：
+
+块布局：用来布置文件。块布局包含以文档为中心的功能，例如 浮动元素或将其放置在多列上的功能。
+行内布局：用来布置文本。
+表格布局：用来布置表格。
+定位布局：用来对那些与其他元素无交互的定位元素进行布置 。
+弹性盒子布局：用来布置那些可以顺利调整大小的复杂页面。
+网格布局：用来布置那些与一个固">
 
 
 
@@ -136,13 +142,13 @@ function foo(a, b, ...rest) {
 
 
 
-  <link rel="canonical" href="http://www.skyshu.com/2018/08/06/Function_prototype/"/>
+  <link rel="canonical" href="http://www.skyshu.com/2018/08/08/css布局模式/"/>
 
 
 
 
 
-  <title> Function.prototype 的常用属性和方法解读 | DDB Space </title>
+  <title> css 布局模式（—） | DDB Space </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -306,7 +312,7 @@ function foo(a, b, ...rest) {
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/08/06/Function_prototype/">
+  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/08/08/css布局模式/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="daydaybook">
@@ -330,7 +336,7 @@ function foo(a, b, ...rest) {
             
             
               
-                Function.prototype 的常用属性和方法解读
+                css 布局模式（—）
               
             
           </h1>
@@ -342,8 +348,8 @@ function foo(a, b, ...rest) {
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-06T16:44:14+08:00">
-              2018-08-06
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-08T10:47:59+08:00">
+              2018-08-08
             </time>
 
             &nbsp;|&nbsp;
@@ -351,8 +357,8 @@ function foo(a, b, ...rest) {
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2018-08-07T16:10:59+08:00">
-              2018-08-07
+            <time title="Post modified" itemprop="dateModified" datetime="2018-08-08T10:56:24+08:00">
+              2018-08-08
             </time>
 
           </span>
@@ -363,8 +369,8 @@ function foo(a, b, ...rest) {
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2018/08/06/Function_prototype/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/06/Function_prototype/" itemprop="commentCount"></span>
+                <a href="/2018/08/08/css布局模式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/08/css布局模式/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -390,132 +396,18 @@ function foo(a, b, ...rest) {
       
 
       
-        <p>此处仅对常用的Funtion原型属性/方法进行分析。</p>
-<p><strong>属性</strong></p>
-<p><code>Function.arguments</code>:以数组形式获取传入函数的所有参数。<br>补充说明：已定义参数、未定义参数(rest)与arguments关系。相关代码如下：</p>
-<pre><code>function foo(a, b, ...rest) {
-  console.log(&apos;a = &apos;+ a);
-  console.log(&apos;b = &apos;+ a);
-  console.log(rest);
-  console.log(arguments);
-}
-foo(1,2,3,4,5);
-
-// result
-// a = 1
-// b = 2
-// Array [3,4,5]
-// Array [1,2,3,4,5] 省略内置方法
-</code></pre><p><code>Function.prototype.constructor</code>：指定创建对象原型的函数。基于此，亦可用来判断数据类型。</p>
-<p><strong>方法</strong></p>
-<p><code>Function.prototype.apply()</code>: 在一个对象的上下文中应用另一个对象的方法；参数能够以数组形式传入(参数指调用当前方法，可传入的实参)。</p>
-<p><code>Function.prototype.call()</code>: 在一个对象的上下文中应用另一个对象的方法；参数能够以列表形式传入(参数指调用当前方法，可传入的实参)。</p>
-<p><strong><a href="https://segmentfault.com/a/1190000009257663" target="_blank" rel="external">call()与apply()的实现原理</a></strong></p>
-<p>二者简而言之的目的，都是为了使用其他对象的方法。</p>
-<p>可分为3个步骤</p>
-<ol>
-<li>将函数设为对象的属性</li>
-<li>执行该函数</li>
-<li>删除该函数</li>
-</ol>
-<p>以call()为例，实现代码如下：</p>
-<pre><code>Function.prototype.call2 = function (context) {
-    var context = context || window;
-    context.fn = this;
-
-    var args = [];
-    for(var i = 1, len = arguments.length; i &lt; len; i++) {
-        args.push(&apos;arguments[&apos; + i + &apos;]&apos;);
-    }
-
-    var result = eval(&apos;context.fn(&apos; + args +&apos;)&apos;);
-
-    delete context.fn
-    return result;
-}
-
-// 测试一下
-var value = 2;
-var obj = {
-    value: 1
-}
-
-function bar(name, age) {
-    console.log(this.value);
-    return {
-        value: this.value,
-        name: name,
-        age: age
-    }
-}
-
-bar.call(null); // 2
-
-console.log(bar.call2(obj, &apos;kevin&apos;, 18));
-// 1
-// Object {
-//    value: 1,
-//    name: &apos;kevin&apos;,
-//    age: 18
-// }
-</code></pre><p>更改方法/函数内部this指向，本质上来说，是给需要使用该方法的对象，临时新增了该方法，并没有改变该方法的原始所属对象。</p>
-<p><code>Function.prototype.bind</code>: bind()方法会创建一个新函数,称为绑定函数.当调用这个绑定函数时,绑定函数会以创建它时传入 bind()方法的第一个参数作为 this,传入 bind()方法的第二个以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数。</p>
-<p><a href="https://github.com/mqyqingfeng/Blog/issues/12" target="_blank" rel="external"><strong>bind()的实现原理</strong></a></p>
-<p>bind()函数的两个特点:</p>
-<ol>
-<li>返回一个函数</li>
-<li>可以传入参数</li>
-</ol>
-<p>实现代码如下：</p>
-<pre><code>Function.prototype.bind2 = function (context) {
-
-if (typeof this !== &quot;function&quot;) {
-  throw new Error(&quot;Function.prototype.bind - what is trying to be bound is not callable&quot;);
-}
-
-var self = this;
-var args = Array.prototype.slice.call(arguments, 1);
-
-var fNOP = function () {};
-
-var fBound = function () {
-    var bindArgs = Array.prototype.slice.call(arguments);
-    return self.apply(this instanceof fNOP ? this : context, args.concat(bindArgs));
-}
-
-fNOP.prototype = this.prototype;
-fBound.prototype = new fNOP();
-return fBound;
-}
-</code></pre><p>apply call bind三者比较：</p>
-<ol>
-<li><p>apply 、 call 、bind 三者都是用来改变函数的this对象的指向的。</p>
-</li>
-<li><p>apply 、 call 、bind 三者第一个参数都是this要指向的对象，也就是想指定的上下文。</p>
-</li>
-<li><p>apply 、 call 、bind 三者都可以利用后续参数传参。</p>
-</li>
-<li><p>bind 是返回对应函数，便于稍后调用；apply 、call 则是立即调用。</p>
-</li>
-</ol>
-<p>代码演示如下：</p>
-<pre><code>var obj = {
-    x: 81,
-};
-var foo = {
-    getX: function() {
-        return this.x;
-    }
-}
-console.log(foo.getX.bind(obj)());  //81
-console.log(foo.getX.call(obj));    //81
-console.log(foo.getX.apply(obj));   //81
-
-/*
-    区别在于, 使用apply()/call(), 改变上下文环境之后,
-    会立即执行函数; 而使用bind(), 并非立即执行, 而是回调执行
-*/ 
-</code></pre><p><code>Function.prototype.toString</code>: 返回一个表示当前函数源代码的字符串。</p>
+        <p><strong>css布局模式</strong>：是一种基于盒子与其兄弟和祖辈盒子的交互方式来确定盒子的位置和大小的算法。有以下几种形式：</p>
+<ul>
+<li>块布局：用来布置文件。块布局包含以文档为中心的功能，例如 浮动元素或将其放置在多列上的功能。</li>
+<li>行内布局：用来布置文本。</li>
+<li>表格布局：用来布置表格。</li>
+<li>定位布局：用来对那些与其他元素无交互的定位元素进行布置 。</li>
+<li><strong>弹性盒子布局</strong>：用来布置那些可以顺利调整大小的复杂页面。</li>
+<li><strong>网格布局</strong>：用来布置那些与一个固定网格相关的元素。</li>
+</ul>
+<p>这里主要对<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes" target="_blank" rel="external"><strong>弹性盒子布局</strong></a>局进行分析。</p>
+<p><strong>弹性盒子布局</strong></p>
+<p><strong>CSS3 弹性盒子(Flexible Box 或 Flexbox)</strong>，是一种用于在页面上布置元素的布局模式，使得当页面布局必须适应不同的屏幕尺寸和不同的显示设备时，元素可预测地运行。对于许多应用程序，弹性盒子模型提供了对块模型的改进，因为它不使用浮动，flex容器的边缘也不会与其内容的边缘折叠。</p>
 
       
     </div>
@@ -569,8 +461,8 @@ console.log(foo.getX.apply(obj));   //81
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/03/深拷贝与浅拷贝/" rel="next" title="js之深拷贝与浅拷贝">
-                <i class="fa fa-chevron-left"></i> js之深拷贝与浅拷贝
+              <a href="/2018/08/07/外边距合并/" rel="next" title="外边距合并">
+                <i class="fa fa-chevron-left"></i> 外边距合并
               </a>
             
           </div>
@@ -578,10 +470,6 @@ console.log(foo.getX.apply(obj));   //81
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/07/BFC/" rel="prev" title="块格式化上下文（Block Formatting Context，BFC）">
-                块格式化上下文（Block Formatting Context，BFC） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -596,10 +484,10 @@ console.log(foo.getX.apply(obj));   //81
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2018/08/06/Function_prototype/"
-     data-title="Function.prototype 的常用属性和方法解读"
+        <div class="ds-share flat" data-thread-key="2018/08/08/css布局模式/"
+     data-title="css 布局模式（—）"
      data-content=""
-     data-url="http://www.skyshu.com/2018/08/06/Function_prototype/">
+     data-url="http://www.skyshu.com/2018/08/08/css布局模式/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -626,8 +514,8 @@ console.log(foo.getX.apply(obj));   //81
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2018/08/06/Function_prototype/"
-           data-title="Function.prototype 的常用属性和方法解读" data-url="http://www.skyshu.com/2018/08/06/Function_prototype/">
+      <div class="ds-thread" data-thread-key="2018/08/08/css布局模式/"
+           data-title="css 布局模式（—）" data-url="http://www.skyshu.com/2018/08/08/css布局模式/">
       </div>
     
   </div>
