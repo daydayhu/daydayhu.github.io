@@ -84,40 +84,19 @@
 
 
 
-<meta name="description" content="Object.defineProperty()
-作用 该方法会直接在一个对象上定义一个新属性, 或者修改一个对象的现有属性, 并返回这个对象。
-语法 Object.defineProperty(obj, prop, descriptor)
-参数  
-obj: 要在其上定义属性的对象。
-prop: 要定义或修改的属性的名称。
-descriptor: 将被定义或修改的属性描述符。
-属性描述符 
- 对象">
+<meta name="description" content="1.各种类型的缓存:
+缓存是一种保存资源副本并在下次请求时直接使用该副本的技术。当 web 缓存发现请求的资源已经被存储，它会拦截请求，返回该资源的拷贝，而不会去源服务器重新下载。这样带来的好处有：缓解服务器端压力，提升性能(获取资源的耗时更短了)。对于网站来说，缓存是达到高性能的重要组成部分。缓存需要合理配置，因为并不是所有资源都是永久不变的：重要的是对一个资源的缓存应截止到其下一次发生改变（即">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Object.defineProperty">
-<meta property="og:url" content="http://www.skyshu.com/2018/08/02/defineProperty/index.html">
+<meta property="og:title" content="HTTP缓存">
+<meta property="og:url" content="http://www.skyshu.com/2018/08/17/浏览器缓存/index.html">
 <meta property="og:site_name" content="DDB Space">
-<meta property="og:description" content="Object.defineProperty()
-作用 该方法会直接在一个对象上定义一个新属性, 或者修改一个对象的现有属性, 并返回这个对象。
-语法 Object.defineProperty(obj, prop, descriptor)
-参数  
-obj: 要在其上定义属性的对象。
-prop: 要定义或修改的属性的名称。
-descriptor: 将被定义或修改的属性描述符。
-属性描述符 
- 对象">
-<meta property="og:updated_time" content="2018-08-03T01:50:09.738Z">
+<meta property="og:description" content="1.各种类型的缓存:
+缓存是一种保存资源副本并在下次请求时直接使用该副本的技术。当 web 缓存发现请求的资源已经被存储，它会拦截请求，返回该资源的拷贝，而不会去源服务器重新下载。这样带来的好处有：缓解服务器端压力，提升性能(获取资源的耗时更短了)。对于网站来说，缓存是达到高性能的重要组成部分。缓存需要合理配置，因为并不是所有资源都是永久不变的：重要的是对一个资源的缓存应截止到其下一次发生改变（即">
+<meta property="og:updated_time" content="2018-08-17T09:46:04.868Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Object.defineProperty">
-<meta name="twitter:description" content="Object.defineProperty()
-作用 该方法会直接在一个对象上定义一个新属性, 或者修改一个对象的现有属性, 并返回这个对象。
-语法 Object.defineProperty(obj, prop, descriptor)
-参数  
-obj: 要在其上定义属性的对象。
-prop: 要定义或修改的属性的名称。
-descriptor: 将被定义或修改的属性描述符。
-属性描述符 
- 对象">
+<meta name="twitter:title" content="HTTP缓存">
+<meta name="twitter:description" content="1.各种类型的缓存:
+缓存是一种保存资源副本并在下次请求时直接使用该副本的技术。当 web 缓存发现请求的资源已经被存储，它会拦截请求，返回该资源的拷贝，而不会去源服务器重新下载。这样带来的好处有：缓解服务器端压力，提升性能(获取资源的耗时更短了)。对于网站来说，缓存是达到高性能的重要组成部分。缓存需要合理配置，因为并不是所有资源都是永久不变的：重要的是对一个资源的缓存应截止到其下一次发生改变（即">
 
 
 
@@ -145,13 +124,13 @@ descriptor: 将被定义或修改的属性描述符。
 
 
 
-  <link rel="canonical" href="http://www.skyshu.com/2018/08/02/defineProperty/"/>
+  <link rel="canonical" href="http://www.skyshu.com/2018/08/17/浏览器缓存/"/>
 
 
 
 
 
-  <title> Object.defineProperty | DDB Space </title>
+  <title> HTTP缓存 | DDB Space </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -315,7 +294,7 @@ descriptor: 将被定义或修改的属性描述符。
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/08/02/defineProperty/">
+  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/08/17/浏览器缓存/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="daydaybook">
@@ -339,7 +318,7 @@ descriptor: 将被定义或修改的属性描述符。
             
             
               
-                Object.defineProperty
+                HTTP缓存
               
             
           </h1>
@@ -351,8 +330,8 @@ descriptor: 将被定义或修改的属性描述符。
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-02T17:20:50+08:00">
-              2018-08-02
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-17T17:08:21+08:00">
+              2018-08-17
             </time>
 
             &nbsp;|&nbsp;
@@ -360,8 +339,8 @@ descriptor: 将被定义或修改的属性描述符。
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2018-08-03T09:50:09+08:00">
-              2018-08-03
+            <time title="Post modified" itemprop="dateModified" datetime="2018-08-17T17:46:04+08:00">
+              2018-08-17
             </time>
 
           </span>
@@ -372,8 +351,8 @@ descriptor: 将被定义或修改的属性描述符。
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2018/08/02/defineProperty/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/02/defineProperty/" itemprop="commentCount"></span>
+                <a href="/2018/08/17/浏览器缓存/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/17/浏览器缓存/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -399,24 +378,34 @@ descriptor: 将被定义或修改的属性描述符。
       
 
       
-        <h1 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty()"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="external">Object.defineProperty()</a></h1><hr>
-<p><strong>作用</strong> 该方法会直接在一个对象上定义一个新属性, 或者修改一个对象的现有属性, 并返回这个对象。</p>
-<p><strong>语法</strong> <code>Object.defineProperty(obj, prop, descriptor)</code></p>
-<p><strong>参数</strong>  </p>
-<p><code>obj</code>: 要在其上定义属性的对象。</p>
-<p><code>prop</code>: 要定义或修改的属性的名称。</p>
-<p><code>descriptor</code>: 将被定义或修改的属性描述符。</p>
-<p><strong>属性描述符</strong> </p>
-<p> 对象里目前存在的属性描述符有两种主要形式<strong>数据描述符</strong>和<strong>存取描述符</strong>。<strong>数据描述符</strong>是一个具有值的属性，该值可能是可写的，也可能不是可写的。<strong>存取描述符</strong>是由getter-setter函数对描述的属性。描述符必须是这两种形式之一；不能同时是两者。</p>
-<p><strong>数据描述符和存取描述符均具</strong>有以下可选键值：</p>
-<p><code>configurable</code><br>当且仅当该属性的 configurable 为 true 时，该属性描述符才能够被改变，同时该属性也能从对应的对象上被删除。默认为 false。</p>
-<p><code>enumerable</code> 当且仅当该属性的enumerable为true时，该属性才能够出现在对象的枚举属性中。默认为 false。</p>
-<p><strong>数据描述符同时具有以下可选键值</strong>:</p>
-<p><code>value</code>  该属性对应的值。可以是任何有效的 JavaScript 值（数值，对象，函数等）。默认为 undefined。</p>
-<p><code>writable</code> 当且仅当该属性的writable为true时，value才能被赋值运算符改变。默认为 false。</p>
-<p><strong>存取描述符同时具有以下可选键值</strong></p>
-<p><code>get</code>  一个给属性提供 getter 的方法，如果没有 getter 则为 undefined。当访问该属性时，该方法会被执行，方法执行时没有参数传入，但是会传入this对象（由于继承关系，这里的this并不一定是定义该属性的对象）。默认为 undefined。</p>
-<p><code>set</code>  一个给属性提供 setter 的方法，如果没有 setter 则为 undefined。当属性值修改时，触发执行该方法。该方法将接受唯一参数，即该属性新的参数值。默认为 undefined。</p>
+        <p><strong>1.各种类型的缓存:</strong></p>
+<p><strong>缓存是一种保存资源副本并在下次请求时直接使用该副本的技术。</strong>当 web 缓存发现请求的资源已经被存储，它会拦截请求，返回该资源的拷贝，而不会去源服务器重新下载。这样带来的好处有：缓解服务器端压力，提升性能(获取资源的耗时更短了)。对于网站来说，缓存是达到高性能的重要组成部分。缓存需要合理配置，因为并不是所有资源都是永久不变的：重要的是对一个资源的缓存应截止到其下一次发生改变（即不能缓存过期的资源）。</p>
+<p>缓存的种类有很多,其大致可归为两类：<strong>私有(浏览器)与共享(代理)缓存</strong>。共享缓存存储的响应能够被多个用户使用。私有缓存只能用于单独用户。本文将主要介绍浏览器与代理缓存，除此之外还有网关缓存、CDN、反向代理缓存和负载均衡器等部署在服务器上，为站点和 web 应用提供更好的稳定性、性能和扩展性。</p>
+<p><code>(私有)浏览器缓存</code>: 私有缓存只能用于单独用户。你可能已经见过浏览器设置中的“缓存”选项。浏览器缓存拥有用户通过 HTTP 下载的所有文档。这些缓存为浏览过的文档提供向后/向前导航，保存网页，查看源码等功能，可以避免再次向服务器发起多余的请求。它同样可以提供缓存内容的离线浏览。</p>
+<p><code>(共享)代理缓存</code>: 共享缓存可以被多个用户使用。例如，ISP 或你所在的公司可能会架设一个 web 代理来作为本地网络基础的一部分提供给用户。这样热门的资源就会被重复使用，减少网络拥堵与延迟。</p>
+<p><strong>2.缓存操作的目标:</strong></p>
+<p>常见的 HTTP 缓存只能存储 <strong>GET</strong> 响应，对于其他类型的响应则无能为力。缓存的关键主要包括<strong>request method和目标URI（一般只有GET请求才会被缓存）</strong>。</p>
+<p><strong>3.缓存控制:</strong></p>
+<p><code>Cache-control头</code>： TTP/1.1定义的 Cache-Control 头用来区分对缓存机制的支持情况， 请求头和响应头都支持这个属性。通过它提供的不同的值来定义缓存策略。</p>
+<h6 id="禁止进行缓存"><a href="#禁止进行缓存" class="headerlink" title="禁止进行缓存"></a>禁止进行缓存</h6><p>缓存中不得存储任何关于客户端请求和服务端响应的内容。每次由客户端发起的请求都会下载完整的响应内容。</p>
+<blockquote>
+<p>Cache-Control: no-store</p>
+<p>Cache-Control: no-cache, no-store, must-revalidate</p>
+</blockquote>
+<h6 id="强制确认缓存"><a href="#强制确认缓存" class="headerlink" title="强制确认缓存"></a>强制确认缓存</h6><p>如下头部定义，此方式下，每次有请求发出时，缓存会将此请求发到服务器（译者注：该请求应该会带有与本地缓存相关的验证字段），服务器端会验证请求中所描述的缓存是否过期，若未过期（注：<strong>实际就是返回304</strong>），则缓存才使用本地缓存副本。</p>
+<h6 id="私有缓存和公有缓存"><a href="#私有缓存和公有缓存" class="headerlink" title="私有缓存和公有缓存"></a>私有缓存和公有缓存</h6><p>“public” 指令表示该响应可以被任何中间人（译者注：比如中间代理、CDN等）缓存。若指定了”public”，则一些通常不被中间人缓存的页面（译者注：因为默认是private）（比如 带有HTTP验证信息（帐号密码）的页面 或 某些特定影响状态码的页面），将会被其缓存。</p>
+<p>而 “private” 则表示该响应是专用于某单个用户的，中间人不能缓存此响应，该响应只能应用于浏览器私有缓存中。</p>
+<blockquote>
+<p>Cache-Control: private</p>
+<p>Cache-Control: public</p>
+</blockquote>
+<p>过期机制中，最重要的指令是 “max-age=<seconds>“，表示资源能够被缓存（保持新鲜）的最大时间。相对Expires而言，max-age是距离请求发起的时间的秒数。针对应用中那些不会改变的文件，通常可以手动设置一定的时长以保证缓存有效，例如图片、css、js等静态资源。</seconds></p>
+<h6 id="缓存验证确认"><a href="#缓存验证确认" class="headerlink" title="缓存验证确认"></a>缓存验证确认</h6><p>当使用了 “must-revalidate” 指令，那就意味着缓存在考虑使用一个陈旧的资源时，必须先验证它的状态，已过期的缓存将不被使用。详情看下文关于缓存校验的内容。</p>
+<blockquote>
+<p>Cache-Control: must-revalidate</p>
+</blockquote>
+<p><code>Pragma头</code></p>
+<p>Pragma 是HTTP/1.0标准中定义的一个header属性，<strong>请求</strong>中包含Pragma的效果跟在头信息中定义Cache-Control: no-cache相同，但是HTTP的<strong>响应头</strong>不支持这个属性，所以它不能拿来完全替代HTTP/1.1中定义的Cache-control头。通常定义Pragma以向后兼容基于HTTP/1.0的客户端。</p>
 
       
     </div>
@@ -470,15 +459,15 @@ descriptor: 将被定义或修改的属性描述符。
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/08/14/设备像素关系/" rel="next" title="设备像素/设备独立像素/css像素之间关系">
+                <i class="fa fa-chevron-left"></i> 设备像素/设备独立像素/css像素之间关系
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/03/brower/" rel="prev" title="浏览器探讨(—)">
-                浏览器探讨(—) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -493,10 +482,10 @@ descriptor: 将被定义或修改的属性描述符。
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2018/08/02/defineProperty/"
-     data-title="Object.defineProperty"
+        <div class="ds-share flat" data-thread-key="2018/08/17/浏览器缓存/"
+     data-title="HTTP缓存"
      data-content=""
-     data-url="http://www.skyshu.com/2018/08/02/defineProperty/">
+     data-url="http://www.skyshu.com/2018/08/17/浏览器缓存/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -523,8 +512,8 @@ descriptor: 将被定义或修改的属性描述符。
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2018/08/02/defineProperty/"
-           data-title="Object.defineProperty" data-url="http://www.skyshu.com/2018/08/02/defineProperty/">
+      <div class="ds-thread" data-thread-key="2018/08/17/浏览器缓存/"
+           data-title="HTTP缓存" data-url="http://www.skyshu.com/2018/08/17/浏览器缓存/">
       </div>
     
   </div>
@@ -654,7 +643,7 @@ descriptor: 将被定义或修改的属性描述符。
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-defineProperty"><span class="nav-number">1.</span> <span class="nav-text">Object.defineProperty()</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#禁止进行缓存"><span class="nav-number">1.</span> <span class="nav-text">禁止进行缓存</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#强制确认缓存"><span class="nav-number">2.</span> <span class="nav-text">强制确认缓存</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#私有缓存和公有缓存"><span class="nav-number">3.</span> <span class="nav-text">私有缓存和公有缓存</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#缓存验证确认"><span class="nav-number">4.</span> <span class="nav-text">缓存验证确认</span></a></li></ol></div>
             
 
           </div>
