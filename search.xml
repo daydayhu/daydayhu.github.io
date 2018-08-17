@@ -4,6 +4,26 @@
   
     
     <entry>
+      <title><![CDATA[设备像素/设备独立像素/css像素之间关系]]></title>
+      <url>http://www.skyshu.com/2018/08/14/%E8%AE%BE%E5%A4%87%E5%83%8F%E7%B4%A0%E5%85%B3%E7%B3%BB/</url>
+      <content type="html"><![CDATA[<p><strong>分辨率</strong></p>
+<p>分辨率可以从显示分辨率与图像分辨率两个方向来分类。</p>
+<p>显示分辨率（屏幕分辨率）是屏幕图像的精密度，是指显示器所能显示的像素有多少。</p>
+<p>图像分辨率则是单位英寸中所包含的像素点数，其定义更趋近于分辨率本身的定义。</p>
+<p>描述<strong>分辨率的单位</strong>有：（dpi点每英寸）、lpi（线每英寸）和ppi（像素每英寸）。但只有lpi是描述光学分辨率的尺度的。虽然dpi和ppi也属于分辨率范畴内的单位，但是他们的含义与lpi不同。而且lpi与dpi无法换算，只能凭经验估算。ppi也是设备像素的单位。</p>
+<p><strong>设备像素dp(device pixels)</strong>: 设备像素又称物理像素（physical pixel），设备能控制显示的最小单位。ppi是设备像素dp(device pixels)的单位。</p>
+<p>ppi(pixels per inch)表示每英寸所拥有的像素(pixel)数目，数值越高，代表屏幕能以更高的密度显示图像。<br>计算公式：ppi=像素数量/物理尺寸（英寸数）</p>
+<p><strong>设备独立像素dips(device-independent pixels)</strong></p>
+<p>(也叫密度无关像素)，可以认为是计算机坐标系统中得一个点，这个点代表一个可以由程序使用并控制的虚拟像素(比如：CSS 像素,只是在android机中CSS 像素就不叫”CSS 像素”了而是叫”设备独立像素”)，然后由相关系统转换为物理像素。如：常说的屏幕设备宽高(iphone6:375*667)，可以理解为设备独立像素(或css像素)。比如css的像素单位px,就是基于设备独立像素的。同样100px的大小,在不同设备上展示的大小也是不同的。</p>
+<p><strong>CSS像素</strong></p>
+<p>CSS像素是Web编程的概念，指的是CSS样式代码中使用的逻辑像素。<br>在CSS规范中，长度单位可以分为两类，绝对(absolute)单位以及相对(relative)单位。<strong>px是一个相对单位，相对的是设备像素(device pixel)。</strong></p>
+<p><strong>设备像素比(dpr)</strong>: 设备像素比，设备像素/设备独立像素，代表设备独立像素到设备像素的转换关系，在JS中可以通过 window.devicePixelRatio获取。</p>
+<p>我们要在非标准屏幕上以同样大小显示同一张图片时，就需要缩放图片大小，计算公式为：<br><strong>图片缩放大小 = 图片css大小 * dpr;</strong></p>
+<p><strong>viewport的作用</strong></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[css 布局模式（—）]]></title>
       <url>http://www.skyshu.com/2018/08/08/css%E5%B8%83%E5%B1%80%E6%A8%A1%E5%BC%8F/</url>
       <content type="html"><![CDATA[<p><strong>css布局模式</strong>：是一种基于盒子与其兄弟和祖辈盒子的交互方式来确定盒子的位置和大小的算法。有以下几种形式：</p>

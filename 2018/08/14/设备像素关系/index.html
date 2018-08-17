@@ -84,31 +84,28 @@
 
 
 
-<meta name="description" content="此处仅对常用的Funtion原型属性/方法进行分析。
-属性
-Function.arguments:以数组形式获取传入函数的所有参数。补充说明：已定义参数、未定义参数(rest)与arguments关系。相关代码如下：
-function foo(a, b, ...rest) {
-  console.log(&amp;apos;a = &amp;apos;+ a);
-  console.log(&amp;apos;b = &amp;">
+<meta name="description" content="分辨率
+分辨率可以从显示分辨率与图像分辨率两个方向来分类。
+显示分辨率（屏幕分辨率）是屏幕图像的精密度，是指显示器所能显示的像素有多少。
+图像分辨率则是单位英寸中所包含的像素点数，其定义更趋近于分辨率本身的定义。
+描述分辨率的单位有：（dpi点每英寸）、lpi（线每英寸）和ppi（像素每英寸）。但只有lpi是描述光学分辨率的尺度的。虽然dpi和ppi也属于分辨率范畴内的单位，但是他们的含义与lpi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Function.prototype 的常用属性和方法解读">
-<meta property="og:url" content="http://www.skyshu.com/2018/08/06/Function_prototype/index.html">
+<meta property="og:title" content="设备像素/设备独立像素/css像素之间关系">
+<meta property="og:url" content="http://www.skyshu.com/2018/08/14/设备像素关系/index.html">
 <meta property="og:site_name" content="DDB Space">
-<meta property="og:description" content="此处仅对常用的Funtion原型属性/方法进行分析。
-属性
-Function.arguments:以数组形式获取传入函数的所有参数。补充说明：已定义参数、未定义参数(rest)与arguments关系。相关代码如下：
-function foo(a, b, ...rest) {
-  console.log(&amp;apos;a = &amp;apos;+ a);
-  console.log(&amp;apos;b = &amp;">
-<meta property="og:updated_time" content="2018-08-07T08:10:59.965Z">
+<meta property="og:description" content="分辨率
+分辨率可以从显示分辨率与图像分辨率两个方向来分类。
+显示分辨率（屏幕分辨率）是屏幕图像的精密度，是指显示器所能显示的像素有多少。
+图像分辨率则是单位英寸中所包含的像素点数，其定义更趋近于分辨率本身的定义。
+描述分辨率的单位有：（dpi点每英寸）、lpi（线每英寸）和ppi（像素每英寸）。但只有lpi是描述光学分辨率的尺度的。虽然dpi和ppi也属于分辨率范畴内的单位，但是他们的含义与lpi">
+<meta property="og:updated_time" content="2018-08-17T06:09:30.829Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Function.prototype 的常用属性和方法解读">
-<meta name="twitter:description" content="此处仅对常用的Funtion原型属性/方法进行分析。
-属性
-Function.arguments:以数组形式获取传入函数的所有参数。补充说明：已定义参数、未定义参数(rest)与arguments关系。相关代码如下：
-function foo(a, b, ...rest) {
-  console.log(&amp;apos;a = &amp;apos;+ a);
-  console.log(&amp;apos;b = &amp;">
+<meta name="twitter:title" content="设备像素/设备独立像素/css像素之间关系">
+<meta name="twitter:description" content="分辨率
+分辨率可以从显示分辨率与图像分辨率两个方向来分类。
+显示分辨率（屏幕分辨率）是屏幕图像的精密度，是指显示器所能显示的像素有多少。
+图像分辨率则是单位英寸中所包含的像素点数，其定义更趋近于分辨率本身的定义。
+描述分辨率的单位有：（dpi点每英寸）、lpi（线每英寸）和ppi（像素每英寸）。但只有lpi是描述光学分辨率的尺度的。虽然dpi和ppi也属于分辨率范畴内的单位，但是他们的含义与lpi">
 
 
 
@@ -136,13 +133,13 @@ function foo(a, b, ...rest) {
 
 
 
-  <link rel="canonical" href="http://www.skyshu.com/2018/08/06/Function_prototype/"/>
+  <link rel="canonical" href="http://www.skyshu.com/2018/08/14/设备像素关系/"/>
 
 
 
 
 
-  <title> Function.prototype 的常用属性和方法解读 | DDB Space </title>
+  <title> 设备像素/设备独立像素/css像素之间关系 | DDB Space </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -306,7 +303,7 @@ function foo(a, b, ...rest) {
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/08/06/Function_prototype/">
+  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/08/14/设备像素关系/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="daydaybook">
@@ -330,7 +327,7 @@ function foo(a, b, ...rest) {
             
             
               
-                Function.prototype 的常用属性和方法解读
+                设备像素/设备独立像素/css像素之间关系
               
             
           </h1>
@@ -342,8 +339,8 @@ function foo(a, b, ...rest) {
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-06T16:44:14+08:00">
-              2018-08-06
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-14T13:04:44+08:00">
+              2018-08-14
             </time>
 
             &nbsp;|&nbsp;
@@ -351,8 +348,8 @@ function foo(a, b, ...rest) {
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2018-08-07T16:10:59+08:00">
-              2018-08-07
+            <time title="Post modified" itemprop="dateModified" datetime="2018-08-17T14:09:30+08:00">
+              2018-08-17
             </time>
 
           </span>
@@ -363,8 +360,8 @@ function foo(a, b, ...rest) {
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2018/08/06/Function_prototype/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/06/Function_prototype/" itemprop="commentCount"></span>
+                <a href="/2018/08/14/设备像素关系/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/14/设备像素关系/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -390,132 +387,20 @@ function foo(a, b, ...rest) {
       
 
       
-        <p>此处仅对常用的Funtion原型属性/方法进行分析。</p>
-<p><strong>属性</strong></p>
-<p><code>Function.arguments</code>:以数组形式获取传入函数的所有参数。<br>补充说明：已定义参数、未定义参数(rest)与arguments关系。相关代码如下：</p>
-<pre><code>function foo(a, b, ...rest) {
-  console.log(&apos;a = &apos;+ a);
-  console.log(&apos;b = &apos;+ a);
-  console.log(rest);
-  console.log(arguments);
-}
-foo(1,2,3,4,5);
-
-// result
-// a = 1
-// b = 2
-// Array [3,4,5]
-// Array [1,2,3,4,5] 省略内置方法
-</code></pre><p><code>Function.prototype.constructor</code>：指定创建对象原型的函数。基于此，亦可用来判断数据类型。</p>
-<p><strong>方法</strong></p>
-<p><code>Function.prototype.apply()</code>: 在一个对象的上下文中应用另一个对象的方法；参数能够以数组形式传入(参数指调用当前方法，可传入的实参)。</p>
-<p><code>Function.prototype.call()</code>: 在一个对象的上下文中应用另一个对象的方法；参数能够以列表形式传入(参数指调用当前方法，可传入的实参)。</p>
-<p><strong><a href="https://segmentfault.com/a/1190000009257663" target="_blank" rel="external">call()与apply()的实现原理</a></strong></p>
-<p>二者简而言之的目的，都是为了使用其他对象的方法。</p>
-<p>可分为3个步骤</p>
-<ol>
-<li>将函数设为对象的属性</li>
-<li>执行该函数</li>
-<li>删除该函数</li>
-</ol>
-<p>以call()为例，实现代码如下：</p>
-<pre><code>Function.prototype.call2 = function (context) {
-    var context = context || window;
-    context.fn = this;
-
-    var args = [];
-    for(var i = 1, len = arguments.length; i &lt; len; i++) {
-        args.push(&apos;arguments[&apos; + i + &apos;]&apos;);
-    }
-
-    var result = eval(&apos;context.fn(&apos; + args +&apos;)&apos;);
-
-    delete context.fn
-    return result;
-}
-
-// 测试一下
-var value = 2;
-var obj = {
-    value: 1
-}
-
-function bar(name, age) {
-    console.log(this.value);
-    return {
-        value: this.value,
-        name: name,
-        age: age
-    }
-}
-
-bar.call(null); // 2
-
-console.log(bar.call2(obj, &apos;kevin&apos;, 18));
-// 1
-// Object {
-//    value: 1,
-//    name: &apos;kevin&apos;,
-//    age: 18
-// }
-</code></pre><p>更改方法/函数内部this指向，本质上来说，是给需要使用该方法的对象，临时新增了该方法，并没有改变该方法的原始所属对象。</p>
-<p><code>Function.prototype.bind</code>: bind()方法会创建一个新函数,称为绑定函数.当调用这个绑定函数时,绑定函数会以创建它时传入 bind()方法的第一个参数作为 this,传入 bind()方法的第二个以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数。</p>
-<p><a href="https://github.com/mqyqingfeng/Blog/issues/12" target="_blank" rel="external"><strong>bind()的实现原理</strong></a></p>
-<p>bind()函数的两个特点:</p>
-<ol>
-<li>返回一个函数</li>
-<li>可以传入参数</li>
-</ol>
-<p>实现代码如下：</p>
-<pre><code>Function.prototype.bind2 = function (context) {
-
-if (typeof this !== &quot;function&quot;) {
-  throw new Error(&quot;Function.prototype.bind - what is trying to be bound is not callable&quot;);
-}
-
-var self = this;
-var args = Array.prototype.slice.call(arguments, 1);
-
-var fNOP = function () {};
-
-var fBound = function () {
-    var bindArgs = Array.prototype.slice.call(arguments);
-    return self.apply(this instanceof fNOP ? this : context, args.concat(bindArgs));
-}
-
-fNOP.prototype = this.prototype;
-fBound.prototype = new fNOP();
-return fBound;
-}
-</code></pre><p>apply call bind三者比较：</p>
-<ol>
-<li><p>apply 、 call 、bind 三者都是用来改变函数的this对象的指向的。</p>
-</li>
-<li><p>apply 、 call 、bind 三者第一个参数都是this要指向的对象，也就是想指定的上下文。</p>
-</li>
-<li><p>apply 、 call 、bind 三者都可以利用后续参数传参。</p>
-</li>
-<li><p>bind 是返回对应函数，便于稍后调用；apply 、call 则是立即调用。</p>
-</li>
-</ol>
-<p>代码演示如下：</p>
-<pre><code>var obj = {
-    x: 81,
-};
-var foo = {
-    getX: function() {
-        return this.x;
-    }
-}
-console.log(foo.getX.bind(obj)());  //81
-console.log(foo.getX.call(obj));    //81
-console.log(foo.getX.apply(obj));   //81
-
-/*
-    区别在于, 使用apply()/call(), 改变上下文环境之后,
-    会立即执行函数; 而使用bind(), 并非立即执行, 而是回调执行
-*/ 
-</code></pre><p><code>Function.prototype.toString</code>: 返回一个表示当前函数源代码的字符串。</p>
+        <p><strong>分辨率</strong></p>
+<p>分辨率可以从显示分辨率与图像分辨率两个方向来分类。</p>
+<p>显示分辨率（屏幕分辨率）是屏幕图像的精密度，是指显示器所能显示的像素有多少。</p>
+<p>图像分辨率则是单位英寸中所包含的像素点数，其定义更趋近于分辨率本身的定义。</p>
+<p>描述<strong>分辨率的单位</strong>有：（dpi点每英寸）、lpi（线每英寸）和ppi（像素每英寸）。但只有lpi是描述光学分辨率的尺度的。虽然dpi和ppi也属于分辨率范畴内的单位，但是他们的含义与lpi不同。而且lpi与dpi无法换算，只能凭经验估算。ppi也是设备像素的单位。</p>
+<p><strong>设备像素dp(device pixels)</strong>: 设备像素又称物理像素（physical pixel），设备能控制显示的最小单位。ppi是设备像素dp(device pixels)的单位。</p>
+<p>ppi(pixels per inch)表示每英寸所拥有的像素(pixel)数目，数值越高，代表屏幕能以更高的密度显示图像。<br>计算公式：ppi=像素数量/物理尺寸（英寸数）</p>
+<p><strong>设备独立像素dips(device-independent pixels)</strong></p>
+<p>(也叫密度无关像素)，可以认为是计算机坐标系统中得一个点，这个点代表一个可以由程序使用并控制的虚拟像素(比如：CSS 像素,只是在android机中CSS 像素就不叫”CSS 像素”了而是叫”设备独立像素”)，然后由相关系统转换为物理像素。如：常说的屏幕设备宽高(iphone6:375*667)，可以理解为设备独立像素(或css像素)。比如css的像素单位px,就是基于设备独立像素的。同样100px的大小,在不同设备上展示的大小也是不同的。</p>
+<p><strong>CSS像素</strong></p>
+<p>CSS像素是Web编程的概念，指的是CSS样式代码中使用的逻辑像素。<br>在CSS规范中，长度单位可以分为两类，绝对(absolute)单位以及相对(relative)单位。<strong>px是一个相对单位，相对的是设备像素(device pixel)。</strong></p>
+<p><strong>设备像素比(dpr)</strong>: 设备像素比，设备像素/设备独立像素，代表设备独立像素到设备像素的转换关系，在JS中可以通过 window.devicePixelRatio获取。</p>
+<p>我们要在非标准屏幕上以同样大小显示同一张图片时，就需要缩放图片大小，计算公式为：<br><strong>图片缩放大小 = 图片css大小 * dpr;</strong></p>
+<p><strong>viewport的作用</strong></p>
 
       
     </div>
@@ -569,8 +454,8 @@ console.log(foo.getX.apply(obj));   //81
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/03/深拷贝与浅拷贝/" rel="next" title="js之深拷贝与浅拷贝">
-                <i class="fa fa-chevron-left"></i> js之深拷贝与浅拷贝
+              <a href="/2018/08/08/css布局模式/" rel="next" title="css 布局模式（—）">
+                <i class="fa fa-chevron-left"></i> css 布局模式（—）
               </a>
             
           </div>
@@ -578,10 +463,6 @@ console.log(foo.getX.apply(obj));   //81
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/07/BFC/" rel="prev" title="块格式化上下文（Block Formatting Context，BFC）">
-                块格式化上下文（Block Formatting Context，BFC） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -596,10 +477,10 @@ console.log(foo.getX.apply(obj));   //81
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2018/08/06/Function_prototype/"
-     data-title="Function.prototype 的常用属性和方法解读"
+        <div class="ds-share flat" data-thread-key="2018/08/14/设备像素关系/"
+     data-title="设备像素/设备独立像素/css像素之间关系"
      data-content=""
-     data-url="http://www.skyshu.com/2018/08/06/Function_prototype/">
+     data-url="http://www.skyshu.com/2018/08/14/设备像素关系/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -626,8 +507,8 @@ console.log(foo.getX.apply(obj));   //81
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2018/08/06/Function_prototype/"
-           data-title="Function.prototype 的常用属性和方法解读" data-url="http://www.skyshu.com/2018/08/06/Function_prototype/">
+      <div class="ds-thread" data-thread-key="2018/08/14/设备像素关系/"
+           data-title="设备像素/设备独立像素/css像素之间关系" data-url="http://www.skyshu.com/2018/08/14/设备像素关系/">
       </div>
     
   </div>
