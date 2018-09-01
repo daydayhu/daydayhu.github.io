@@ -4,10 +4,9 @@
   
     
     <entry>
-      <title></title>
+      <title><![CDATA[加密分析]]></title>
       <url>http://www.skyshu.com/2018/08/21/%E5%85%AC%E9%92%A5%E7%A7%81%E9%92%A5/</url>
-      <content type="html"><![CDATA[<hr>
-<h2 id="title：加密分析"><a href="#title：加密分析" class="headerlink" title="title：加密分析"></a>title：加密分析</h2><p><strong>1.密钥概念</strong>：</p>
+      <content type="html"><![CDATA[<p><strong>1.密钥概念</strong>：</p>
 <p>密钥是一种参数，它是在明文转换为密文或将密文转换为明文的算法中输入的参数。密钥分为对称密钥与非对称密钥。</p>
 <p><strong>2.加密方式</strong>: </p>
 <p>加密方式分为<strong>对称加密</strong>和<strong>非对称加密</strong>两种。</p>
