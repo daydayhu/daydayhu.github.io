@@ -84,28 +84,34 @@
 
 
 
-<meta name="description" content="基本概念
-从指针的角度出发，浅拷贝只是增加了一个指针，指向已经存在的内存，而深拷贝就是增加一个指针并且申请一个新的内存。
-浅拷贝与深拷贝解读
-js包括基本数据类型与引用数据类型。基本数据类型即 number、string、boolean、null、undefined五类。引用数据类型即 Object、Array、function。
-从堆栈关系来说，二者的主要区别在于数据存储的位置不同，基础数据类型">
+<meta name="description" content="window.history:
+DOM window 对象通过 history 对象提供了对浏览器历史的访问。它暴露了很多有用的方法和属性，允许你在用户浏览历史中向前和向后跳转，同时——从HTML5开始——提供了对history栈中内容的操作。
+属性
+
+length：当前窗口的历史记录条数。
+
+scrollRestoration：允许Web应用程序在历史导航上显式地设置默认滚动恢复行为。此属性可以">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js之深拷贝与浅拷贝">
-<meta property="og:url" content="http://www.skyshu.com/2018/08/03/深拷贝与浅拷贝/index.html">
+<meta property="og:title" content="浏览器历史">
+<meta property="og:url" content="http://www.skyshu.com/2018/09/18/history/index.html">
 <meta property="og:site_name" content="DDB Space">
-<meta property="og:description" content="基本概念
-从指针的角度出发，浅拷贝只是增加了一个指针，指向已经存在的内存，而深拷贝就是增加一个指针并且申请一个新的内存。
-浅拷贝与深拷贝解读
-js包括基本数据类型与引用数据类型。基本数据类型即 number、string、boolean、null、undefined五类。引用数据类型即 Object、Array、function。
-从堆栈关系来说，二者的主要区别在于数据存储的位置不同，基础数据类型">
-<meta property="og:updated_time" content="2018-08-06T08:16:11.478Z">
+<meta property="og:description" content="window.history:
+DOM window 对象通过 history 对象提供了对浏览器历史的访问。它暴露了很多有用的方法和属性，允许你在用户浏览历史中向前和向后跳转，同时——从HTML5开始——提供了对history栈中内容的操作。
+属性
+
+length：当前窗口的历史记录条数。
+
+scrollRestoration：允许Web应用程序在历史导航上显式地设置默认滚动恢复行为。此属性可以">
+<meta property="og:updated_time" content="2018-09-19T07:34:00.061Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js之深拷贝与浅拷贝">
-<meta name="twitter:description" content="基本概念
-从指针的角度出发，浅拷贝只是增加了一个指针，指向已经存在的内存，而深拷贝就是增加一个指针并且申请一个新的内存。
-浅拷贝与深拷贝解读
-js包括基本数据类型与引用数据类型。基本数据类型即 number、string、boolean、null、undefined五类。引用数据类型即 Object、Array、function。
-从堆栈关系来说，二者的主要区别在于数据存储的位置不同，基础数据类型">
+<meta name="twitter:title" content="浏览器历史">
+<meta name="twitter:description" content="window.history:
+DOM window 对象通过 history 对象提供了对浏览器历史的访问。它暴露了很多有用的方法和属性，允许你在用户浏览历史中向前和向后跳转，同时——从HTML5开始——提供了对history栈中内容的操作。
+属性
+
+length：当前窗口的历史记录条数。
+
+scrollRestoration：允许Web应用程序在历史导航上显式地设置默认滚动恢复行为。此属性可以">
 
 
 
@@ -133,13 +139,13 @@ js包括基本数据类型与引用数据类型。基本数据类型即 number�
 
 
 
-  <link rel="canonical" href="http://www.skyshu.com/2018/08/03/深拷贝与浅拷贝/"/>
+  <link rel="canonical" href="http://www.skyshu.com/2018/09/18/history/"/>
 
 
 
 
 
-  <title> js之深拷贝与浅拷贝 | DDB Space </title>
+  <title> 浏览器历史 | DDB Space </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -303,7 +309,7 @@ js包括基本数据类型与引用数据类型。基本数据类型即 number�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/08/03/深拷贝与浅拷贝/">
+  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/09/18/history/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="daydaybook">
@@ -327,7 +333,7 @@ js包括基本数据类型与引用数据类型。基本数据类型即 number�
             
             
               
-                js之深拷贝与浅拷贝
+                浏览器历史
               
             
           </h1>
@@ -339,8 +345,8 @@ js包括基本数据类型与引用数据类型。基本数据类型即 number�
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-03T18:32:55+08:00">
-              2018-08-03
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-18T18:26:49+08:00">
+              2018-09-18
             </time>
 
             &nbsp;|&nbsp;
@@ -348,8 +354,8 @@ js包括基本数据类型与引用数据类型。基本数据类型即 number�
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2018-08-06T16:16:11+08:00">
-              2018-08-06
+            <time title="Post modified" itemprop="dateModified" datetime="2018-09-19T15:34:00+08:00">
+              2018-09-19
             </time>
 
           </span>
@@ -360,8 +366,8 @@ js包括基本数据类型与引用数据类型。基本数据类型即 number�
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2018/08/03/深拷贝与浅拷贝/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/03/深拷贝与浅拷贝/" itemprop="commentCount"></span>
+                <a href="/2018/09/18/history/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/09/18/history/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -387,88 +393,47 @@ js包括基本数据类型与引用数据类型。基本数据类型即 number�
       
 
       
-        <p><strong>基本概念</strong></p>
-<p>从指针的角度出发，浅拷贝只是增加了一个指针，指向已经存在的内存，而深拷贝就是增加一个指针并且申请一个新的内存。</p>
-<p><strong>浅拷贝与深拷贝解读</strong></p>
-<p>js包括<strong>基本数据类型</strong>与<strong>引用数据类型</strong>。基本数据类型即 number、string、boolean、null、undefined五类。引用数据类型即 Object、Array、function。</p>
-<p>从堆栈关系来说，二者的主要区别在于数据存储的位置不同，基础数据类型值存储在栈区，而引用数据类型值存储在堆区，其地址存储在栈区。</p>
-<p>基础数据类型赋值时，会在栈区开辟一块新的内存，将值存储在栈区，以确保赋值与被赋值变量二者的独立性。</p>
-<p>引用数据类型赋值时，也会在栈区开辟一块新的内存，不过存储的是值所在的地址(指针)，而值所在的堆区保持不变。赋值与被赋值变量二者存储的地址指向的是同一块堆区内存。通过这种赋值方式，由于使用同一块堆区内存，只要一方的数据发生变化，另一方数据也会随之变化，也将这种赋值称作浅拷贝。若不想产生这种相互干扰，得让双方不共用同一块堆区内存，开辟一块新的堆区内存，以实现深拷贝。由此可以看出浅拷贝与深拷贝是针对引用数据类型进行的。</p>
-<p><strong>如何实现深拷贝</strong></p>
-<p><strong>1.递归</strong></p>
-<p>通过层层递归，可将引用数据类型的赋值，转成基础数据类型的赋值，代码实现如下：</p>
-<pre><code>var obj1 = {name:&apos;DDB&apos;,age:18,arr:[1,2,3,4]};
-var obj2 = {};
-function deepCloneByRecurve(primaryObj,copyObj) {
-   var _copyObj = copyObj || {};
-   for (var key in primaryObj){
-     if(typeof primaryObj[key] === &apos;object&apos;){
-       _copyObj[key] = (primaryObj[key].constructor === Array) ? []:{};
-       deepCloneByRecurve(primaryObj[key],_copyObj[key]);
-     }else {
-       _copyObj[key] = primaryObj[key];
-     }
-   }
-   return _copyObj;
-}
-obj2 = deepCloneByRecurve(obj1,obj2);
-obj2.arr.push(5);
-console.log(obj1.arr); // [1,2,3,4]
-console.log(obj2.arr); // [1,2,3,4,5]
-</code></pre><p><strong>2.json</strong></p>
-<p>可利用JSON进行深拷贝，代码实现如下：  </p>
-<pre><code>var obj1 = {name:&apos;DDB&apos;,age:18,arr:[1,2,3,4]};
-var obj3 = {};
-function deepCloneByJOSN(primaryObj) {
-  return JSON.parse(JSON.stringify(primaryObj));
-}
-var obj3 = deepCloneByJOSN(obj1);
-obj3.arr.push(6);
-console.log(obj1.arr); // [1,2,3,4]
-console.log(obj3.arr); // [1,2,3,4,6]
-</code></pre><p>对于一般的需求是可以满足的，但是它有缺点。下例中，可以看到JSON复制会忽略掉值为undefined以及函数表达式。</p>
-<pre><code>var obj = {
-  a: 1,
-  b: 2,
-  c: undefined,
-  sum: function() { return a + b; }
-};
-var obj2 = deepCloneByJOSN(obj);
-console.log(obj2);  //Object {a: 1, b: 2}
-</code></pre><p><strong>3.针对数组深拷贝的其他实现</strong></p>
-<p>3.1 <strong>slice</strong>方法</p>
-<p>slice() 返回一个新的数组，包含从 start 到 end （不包括该元素）的 arrayObject 中的元素。</p>
-<p>实现代码如下：</p>
-<pre><code>var arr = [1,2,3,4,5];
-var arr2 = arr.slice(0);
-arr2[2] = 5;
-console.log(arr); // [1,2,3,4,5]
-console.log(arr2); // [1,2,5,4,5]
-</code></pre><p>3.2 <strong>concat</strong>方法</p>
-<p>concat() 不会改变现有的数组，而仅仅会返回被连接数组的一个副本（新数组）。</p>
-<p>实现代码如下：</p>
-<pre><code>var arr = [1,2,3,4,5];
-var arr2 = arr.concat();
-arr2[2] = 5;
-console.log(arr); // [1,2,3,4,5]
-console.log(arr2); // [1,2,5,4,5]
-</code></pre><p>3.3 ES6的扩展方法 <strong>Array.from / …</strong></p>
-<p>1)  <strong>Array.from()</strong> 方法从一个类似数组或可迭代对象中创建一个新的数组实例。</p>
-<p>代码实现如下：</p>
-<pre><code>var arr1=[1,2,3];
-var arr2=Array.from(arr1);
-arr2.push(4);
-console.log(arr1); // [1,2,3]
-console.log(arr2); // [1,2,3,4]
-</code></pre><p>2)  <strong>扩展运算符(…)</strong></p>
-<p>扩展运算符(spread) 是3个点 (…)。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。</p>
-<p>代码实现如下：</p>
-<pre><code>var arr1=[1,2,3];
-var arr2=[...arr1];
-arr2.push(4);
-console.log(arr1); // [1,2,3]
-console.log(arr2); // [1,2,3,4]
-</code></pre>
+        <p><strong>window.history:</strong></p>
+<p>DOM window 对象通过 history 对象提供了对浏览器历史的访问。它暴露了很多有用的方法和属性，允许你在用户浏览历史中向前和向后跳转，同时——从HTML5开始——提供了对history栈中内容的操作。</p>
+<p><strong>属性</strong></p>
+<ul>
+<li><p>length：当前窗口的历史记录条数。</p>
+</li>
+<li><p>scrollRestoration：允许Web应用程序在历史导航上显式地设置默认滚动恢复行为。此属性可以是自动的（auto）或者手动的（manual）。</p>
+</li>
+<li><p>state：返回一个表示历史堆栈顶部的状态的值。这是一种可以不必等待popstate 事件而查看状态而的方式。</p>
+</li>
+</ul>
+<p><strong>方法</strong></p>
+<p>1.在history中跳转</p>
+<ul>
+<li>back()：回到上一条历史记录，与点击浏览器回退按钮的效果相同。</li>
+<li>forward()：前往下一条历史记录，与点击浏览器前进按钮的效果相同。</li>
+<li>go(num)：前进或回退指定num条历史记录，当num为负数的时候，表示回退num条历史记录，当num为大于0的数时，表示前进num条历史记录。</li>
+</ul>
+<p>2.添加和修改历史记录中的条目</p>
+<p>HTML5引入了 history.pushState() 和 history.replaceState() 方法，它们分别可以添加和修改历史记录条目。这些方法通常与window.onpopstate配合使用。</p>
+<p>使用 history.pushState() 可以改变<strong>referrer</strong>，它在用户发送 XMLHttpRequest 请求时在HTTP头部使用，改变state后创建的 XMLHttpRequest 对象的referrer都会被改变。因为referrer是标识创建  XMLHttpRequest 对象时 this 所代表的window对象中document的URL。</p>
+<ul>
+<li><p>pushstate(state,title,url)：向历史记录中添加一条记录。<br>  pushState() 需要三个参数: 一个状态对象, 一个标题 (目前被忽略), 和 (可选的) 一个URL.</p>
+<ul>
+<li>状态对象 — 状态对象state是一个JavaScript对象，通过pushState () 创建新的历史记录条目。无论什么时候用户导航到新的状态，<strong>popstate</strong>事件就会被触发，且该事件的state属性包含该历史记录条目状态对象的副本(进入该条历史可读state)。状态对象可以是能被序列化的任何东西。原因在于Firefox将状态对象保存在用户的磁盘上，以便在用户重启浏览器时使用，我们规定了状态对象在序列化表示后有640k的大小限制。如果你给 pushState() 方法传了一个序列化后大于640k的状态对象，该方法会抛出异常。如果你需要更大的空间，建议使用 sessionStorage 以及 localStorage。</li>
+<li>Firefox 目前忽略这个参数，但未来可能会用到。传递一个空字符串在这里是安全的，而在将来这是不安全的。二选一的话，你可以为跳转的state传递一个短标题。</li>
+<li>该参数定义了新的历史URL记录。注意，调用 pushState() 后浏览器并不会立即加载这个URL，但可能会在稍后某些情况下加载这个URL，比如在用户重新打开浏览器时。新URL不必须为绝对路径。如果新URL是相对路径，那么它将被作为相对于当前URL处理。新URL必须与当前URL同源，否则 pushState() 会抛出一个异常。该参数是可选的，缺省为当前URL。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>replaceState(state,title,url)：替换当前历史记录的值，参数与pushstate方法一致。</li>
+</ul>
+<p><strong>事件:</strong></p>
+<p>window.onpopstate是popstate事件在window对象上的事件处理程序。</p>
+<p>每当处于激活状态的历史记录条目发生变化时,popstate事件就会在对应window对象上触发. 如果当前处于激活状态(进入)的历史记录条目是由history.pushState()方法创建,或者由history.replaceState()方法修改过的, 则popstate事件对象的state属性包含了这个历史记录条目的state对象的一个拷贝.</p>
+<p>调用history.pushState()或者history.replaceState()不会触发popstate事件. popstate事件只会在浏览器某些行为下触发, 比如点击后退、前进按钮(或者在JavaScript中调用history.back()、history.forward()、history.go()方法).</p>
+<p>当网页加载时,各浏览器对popstate事件是否触发有不同的表现,Chrome 和 Safari会触发popstate事件, 而Firefox不会.
+　　　　　　　　</p>
+<p>　　　</p>
+
       
     </div>
 
@@ -521,8 +486,8 @@ console.log(arr2); // [1,2,3,4]
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/03/brower/" rel="next" title="浏览器探讨(—)">
-                <i class="fa fa-chevron-left"></i> 浏览器探讨(—)
+              <a href="/2018/08/21/公钥私钥/" rel="next" title="加密分析">
+                <i class="fa fa-chevron-left"></i> 加密分析
               </a>
             
           </div>
@@ -530,10 +495,6 @@ console.log(arr2); // [1,2,3,4]
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/06/Function_prototype/" rel="prev" title="Function.prototype 的常用属性和方法解读">
-                Function.prototype 的常用属性和方法解读 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -548,10 +509,10 @@ console.log(arr2); // [1,2,3,4]
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2018/08/03/深拷贝与浅拷贝/"
-     data-title="js之深拷贝与浅拷贝"
+        <div class="ds-share flat" data-thread-key="2018/09/18/history/"
+     data-title="浏览器历史"
      data-content=""
-     data-url="http://www.skyshu.com/2018/08/03/深拷贝与浅拷贝/">
+     data-url="http://www.skyshu.com/2018/09/18/history/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -578,8 +539,8 @@ console.log(arr2); // [1,2,3,4]
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2018/08/03/深拷贝与浅拷贝/"
-           data-title="js之深拷贝与浅拷贝" data-url="http://www.skyshu.com/2018/08/03/深拷贝与浅拷贝/">
+      <div class="ds-thread" data-thread-key="2018/09/18/history/"
+           data-title="浏览器历史" data-url="http://www.skyshu.com/2018/09/18/history/">
       </div>
     
   </div>
