@@ -4,6 +4,61 @@
   
     
     <entry>
+      <title><![CDATA[变量的解构赋值]]></title>
+      <url>http://www.skyshu.com/2018/10/22/%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/</url>
+      <content type="html"><![CDATA[<p><strong>1.解构概念</strong></p>
+<p>ES6 允许按照一定模式，<strong>从数组和对象中提取值，对变量进行赋值</strong>，这被称为解构（Destructuring）。</p>
+<p><strong>2.数组的解构赋值</strong></p>
+<p>2.1 基本用法</p>
+<p>以前，为变量赋值，只能直接指定值。</p>
+<pre><code>let a = 1;
+let b = 2;
+let c = 3;
+</code></pre><p>ES6 允许写成下面这样。</p>
+<pre><code>let [a, b, c] = [1, 2, 3];
+</code></pre><p><strong>本质上，这种写法属于“模式匹配”，只要等号两边的模式相同，左边的变量就会被赋予对应的值。</strong> 下面是一些使用嵌套数组进行解构的例子。</p>
+<pre><code>let [foo, [[bar], baz]] = [1, [[2], 3]];
+foo // 1
+bar // 2
+baz // 3
+
+let [ , , third] = [&quot;foo&quot;, &quot;bar&quot;, &quot;baz&quot;];
+third // &quot;baz&quot;
+
+let [x, , y] = [1, 2, 3];
+x // 1
+y // 3
+
+let [head, ...tail] = [1, 2, 3, 4];
+head // 1
+tail // [2, 3, 4]
+
+let [x, y, ...z] = [&apos;a&apos;];
+x // &quot;a&quot;
+y // undefined
+z // []
+</code></pre><p>另一种情况是不完全解构，即等号左边的模式，只匹配一部分的等号右边的数组。这种情况下，解构依然可以成功。</p>
+<pre><code>let [x, y] = [1, 2, 3];
+x // 1
+y // 2
+
+let [a, [b], d] = [1, [2, 3], 4];
+a // 1
+b // 2
+d // 4
+</code></pre><p>2.2 默认值</p>
+<p>解构赋值允许指定默认值。</p>
+<pre><code>let [foo = true] = [];
+foo // true
+
+let [x, y = &apos;b&apos;] = [&apos;a&apos;]; // x=&apos;a&apos;, y=&apos;b&apos;
+let [x, y = &apos;b&apos;] = [&apos;a&apos;, undefined]; // x=&apos;a&apos;, y=&apos;b&apos;
+</code></pre><p><strong>3.对象解构</strong></p>
+<p>解构不仅可以用于数组，还可以用于对象。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[ES6下Proxy]]></title>
       <url>http://www.skyshu.com/2018/10/22/Proxy/</url>
       <content type="html"><![CDATA[<p><strong>1.概述</strong></p>
