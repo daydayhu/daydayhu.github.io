@@ -92,54 +92,6 @@ setTimeout(this.tickFunc, 16);
     </entry>
     
     <entry>
-      <title><![CDATA[定位简析]]></title>
-      <url>http://www.skyshu.com/2018/09/29/%E7%BD%91%E7%BB%9C%E5%AE%9A%E4%BD%8D/</url>
-      <content type="html"><![CDATA[<p><strong>定位方式</strong>:<br>定位分为<strong>GPS定位</strong>和<strong>网络定位</strong>2种。</p>
-<p>GPS定位: 精度较高，可达到10米，但室内不可用，且超级费电。</p>
-<p>网络定位: 分为wifi定位和基站定位，都是通过获取wifi或者基站信息，然后查询对应的wifi或者基站位置数据库，得到的定位地点。定位数据库可以不断完善不断补充，所以，越定位越准确。(常见的浏览器定位，IP定位也是网络定位)。</p>
-<p><strong>HTML5地理定位</strong></p>
-<p>目前前端采用的主流定位方式是基于H5所提供API进行定位。</p>
-<p>H5 Geolocation API定位原理:<br>Geolocation API 是基于新增加的全局对象 navigator：<strong>navigator.geolocation</strong>。JavaScript 对象<br>navigator 包含了很有用的有关访问者的浏览器和系统的信息。<strong>Geolocation 可以使用 IP 地址、基于 Web 的数据库、无线网络连接和三角测量或 GPS 技术来确定经度和纬度。</strong></p>
-<p>navigator.geolocation对象说明:</p>
-<p><code>方法</code></p>
-<ul>
-<li><p>getCurrentPosition()</p>
-<p>  navigator.geolocation.getCurrentPosition(geolocationSuccess,geolocationError,geolocationOptions);<br>  [geolocationSuccess]– 成功后的回调函数<br>  [geolocationError] – 失败后的回调函数<br>  [geolocationOptions] – 相关配置参数：</p>
-<pre><code>enableHighAccuracy – 确保应用会给出最佳结果。
-这有可能会让浏览器的反应时间变慢。如果是移动装置，还有可能因
-为使用GPS而消耗更多电量。接受参数类型为boolean，默认为false。
-
-timeout – 接受一个数字作为参数，默认为0微秒。设置浏览器的超时时间。 
-
-maximumAge – 表示程序能接受的被缓存位置的最大过期时间。
-接受一个数字作为参数，默认为0微秒。这就意味这默认每次获取位置都必需重新获取一个新位置。
-</code></pre></li>
-</ul>
-<ul>
-<li><p>watchPosition()<br> watchPosition()方法实现同getCurrentPosition()，区别在于getCurrentPosition() 方法能够获取用户的当前位置，但是只能获取一次。<br> watchPosition() 方法会定期查询用户的位置，观察用户位置是否发生了变化。所以基本上它一直在更新用户的位置。当你在移动的时候，这个功能会非常有利于追踪用户的位置。这个函数还会返回一个watchID值被clearWatch使用来停止监控。</p>
-</li>
-<li><p>clearWatch()</p>
-<p> 这个方法接受一个参数，需要清理的观察进程的id：watchID（这个参数由watchPosition方法返回）。</p>
-<pre><code>navigator.geolocation.clearWatch(watchID)
-</code></pre></li>
-</ul>
-<p><code>属性</code></p>
-<p>地理位置对象 Position</p>
-<p>Geolocation API 的成功函数回调会返回一个地理位置对象 Position。这个对象具有两个属性：timestamp 和 coords。<strong>timestamp</strong> 属性表示地理数据创建的时间。而 <strong>coords</strong> 属性包含了 7 个属性：</p>
-<ul>
-<li>coords.latitude. 估算的纬度 </li>
-<li>coords.longitude. 估算的经度</li>
-<li>coords.altitude. 估算的高度 (以米为单位的海拔值) </li>
-<li>coords.accuracy. 所得经度和纬度的估算精度，以米为单位 </li>
-<li>coords.altitudeAccuracy. 所得高度的估算精度，以米为单位 </li>
-<li>coords.heading. 宿主设备的当前移动方向，以度为单位，相对于正北方向顺时针方向计算</li>
-<li>coords.speed. 设备的当前对地速度，以米/秒为单位</li>
-</ul>
-<p>这里只有 3 个属性是必需的：coords.latitude、coords.longitude 和 coords.accuracy。其他属性返回 null，取决于设备及其交互的后端定位服务器的功能。heading 和 speed 属性是基于用户的前一个位置计算的（如果有）。</p>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[ES6中promise的使用]]></title>
       <url>http://www.skyshu.com/2018/09/29/promise/</url>
       <content type="html"><![CDATA[<p><strong>1.Promise 概念</strong></p>
