@@ -4,6 +4,94 @@
   
     
     <entry>
+      <title><![CDATA[js的垃圾回收机制]]></title>
+      <url>http://www.skyshu.com/2018/10/19/js%E7%9A%84%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/</url>
+      <content type="html"><![CDATA[<p><strong>1.垃圾回收机制由来</strong></p>
+<p>由于字符串、对象和数组没有固定大小，所有当他们的大小已知时，才能对他们进行动态的存储分配。JavaScript程序每次创建字符串、数组或对象时，解释器都必须分配内存来存储那个实体。只要像这样动态地分配了内存，最终都要释放这些内存以便他们能够被再用，否则，JavaScript的解释器将会消耗完系统中所有可用的内存，造成系统崩溃。为此系统提供相应的垃圾回收机制。</p>
+<p><strong>2.方式</strong></p>
+<p>现在各大浏览器通常用采用的垃圾回收有两种方法：<strong>标记清除</strong>、<strong>引用计数</strong>。</p>
+<ul>
+<li><p><strong>标记清除</strong></p>
+<p>  这是JavaScript最常见的垃圾回收方式，当变量进入执行环境的时候，比如函数中声明一个变量，垃圾回收器将其标记为“进入环境”，当变量离开环境的时候（函数执行结束）将其标记为“离开环境”。</p>
+<p>  垃圾回收器会在运行的时候给存储在内存中的所有变量加上标记，然后去掉环境中的变量以及被环境中变量所引用的变量（闭包），在这些完成之后仍存在标记的就是要删除的变量了，原因是环境中的变量已经无法访问到这些变量了。最后。垃圾收集器完成内存清除工作，销毁那些带标记的值，并回收他们所占用的内存空间。</p>
+<p>  大部分浏览器都是使用这种方式进行垃圾回收，区别在于如何标记及垃圾回收间隔而已，而低版本IE采用的则是<strong>引用计数方式</strong>进行垃圾回收。</p>
+</li>
+<li><p><strong>引用计数</strong></p>
+<p>  引用计数是一种不太常见的垃圾回收方式。</p>
+<p>  引用计数的含义是跟踪记录每个值被引用的次数。当声明了一个变量并将一个引用类型赋值给该变量时，则这个值的引用次数就是1。相反，如果包含对这个值引用的变量又取得了另外一个值，则这个值的引用次数就减1。当这个引用次数变成0时，则说明没有办法再访问这个值了，因而就可以将其所占的内存空间给收回来。这样，垃圾收集器下次再运行时，它就会释放那些引用次数为0的值所占的内存。</p>
+<p>  但这种方式很容易由于循环引用造成内存泄漏。比如对象A有一个属性指向对象B，而对象B也有有一个属性指向对象A，这样相互引用</p>
+<pre><code>function test(){
+    var objA={};
+    var objB={};
+    a.prop=b;
+    b.prop=a;
+}
+</code></pre></li>
+</ul>
+<pre><code>这个例子中，objA和objB通过各自的属性相互引用，也就是说这两个对象的引用次数都是2。在采用引用计数的策略中，由于函数执行之后，这两个对象都离开了作用域，函数执行完成之后，objA和objB还将会继续存在，因为他们的引用次数永远不会是0。这样的相互引用如果说很大量的存在就会导致大量的内存泄露。      
+</code></pre><p>   而在标记清除的策略下是没有问题的，离开环境的就被清除。</p>
+<pre><code>我们知道，IE中有一部分对象并不是原生JavaScript对象。例如，其BOM和DOM中的对象就是使用C++以COM（Component Object 
+</code></pre><p>Model，组件对象）对象的形式实现的，而COM对象的垃圾回收器就是采用的引用计数的策略。因此，即使IE的Javascript引擎使用标记清除的策略来实现的，但JavaScript访问的COM对象依然是基于引用计数的策略的。说白了，只要IE中涉及COM对象，就会存在循环引用的问题。看看下面的这个简单的例子：</p>
+<pre><code>window.onload=function outerFunction(){
+    var obj = document.getElementById(&quot;element&quot;);
+    obj.onclick=function innerFunction(){};
+};
+</code></pre><p>上述例子obj引用了document.getElementById(“element”)，而document.getElementById(“element”)的onclick方法会引用外部环境中德变量，自然也包括obj。由于循环引用，也将会造成内存无法回收。</p>
+<p>最简单的方式就是自己手工解除循环引用，如下</p>
+<pre><code>window.onload=function outerFunction(){
+    var obj = document.getElementById(&quot;element&quot;);
+    obj.onclick=function innerFunction(){};
+   obj=null;
+};
+</code></pre><p><strong>3.减少JavaScript中的垃圾回收</strong></p>
+<p>首先，最明显的，new关键字就意味着一次内存分配，例如 new Foo()。最好的处理方法是：在初始化的时候新建对象，然后在后续过程中尽量多的重用这些创建好的对象。</p>
+<p>另外还有以下三种内存分配表达式（可能不像new关键字那么明显了）：</p>
+<ul>
+<li><p>{} （创建一个新对象）</p>
+</li>
+<li><p>[] （创建一个新数组）</p>
+</li>
+<li><p>function() {…} (创建一个有一种方式能够保证对象（确保对象prototype上没有属性）的重复利用，那就是遍历此对象的所有属性，并逐个删除，最终将对象清理为一个空对象。新的方法，注意：新建方法也会导致垃圾收集！)</p>
+</li>
+</ul>
+<p><strong>3.1 对象object优化</strong></p>
+<p>为了最大限度的实现对象的重用，应该像避使用new语句一样避免使用{}来新建对象。</p>
+<p>有一种方式能够保证对象（确保对象prototype上没有属性）的重复利用，那就是遍历此对象的所有属性，并逐个删除，最终将对象清理为一个空对象。</p>
+<p>cr.wipe(obj)方法就是为此功能而生，代码如下：</p>
+<pre><code>// 删除obj对象的所有属性，高效的将obj转化为一个崭新的对象！
+cr.wipe = function (obj) {
+    for (var p in obj) {
+         if (obj.hasOwnProperty(p))
+            delete obj[p];
+    }
+};        
+</code></pre><p>有些时候，你可以使用cr.wipe(obj)方法清理对象，再为obj添加新的属性，就可以达到重复利用对象的目的。虽然通过清空一个对象来获取“新对象”的做法，比简单的通过{}来创建对象要耗时一些，但是在实时性要求很高的代码中，这一点短暂的时间消耗，将会有效的减少垃圾堆积，并且最终避免垃圾回收暂停，这是非常值得的！</p>
+<p><strong>3.2 数组array优化</strong></p>
+<p>将[]赋值给一个数组对象，是清空数组的捷径（例如： arr = [];），但是需要注意的是，这种方式又创建了一个新的空对象，并且将原来的数组对象变成了一小片内存垃圾！实际上，将数组长度赋值为0（arr.length = 0）也能达到清空数组的目的，并且同时能实现数组重用，减少内存垃圾的产生。</p>
+<p><strong>3.3 方法function优化</strong></p>
+<p> 方法一般都是在初始化的时候创建，并且此后很少在运行时进行动态内存分配，这就使得导致内存垃圾产生的方法，找起来就不是那么容易了。但是从另一角度来说，这更便于我们寻找了，因为只要是动态创建方法的地方，就有可能产生内存垃圾。例如：将方法作为返回值，就是一个动态创建方法的实例。</p>
+<p>在游戏的主循环中，setTimeout或requestAnimationFrame来调用一个成员方法是很常见的，例如：</p>
+<pre><code>setTimeout(
+    (function(self) {                    
+      return function () { self.tick();}
+    })(this), 16)
+</code></pre><p>每过16毫秒调用一次this.tick()，嗯，乍一看似乎没什么问题，但是仔细一琢磨，每一次调用都返回了一个新的方法对象，这就导致了大量的方法对象垃圾！为了解决这个问题，可以将作为返回值的方法保存起来，例如:</p>
+<pre><code>// at startup
+this.tickFunc = (
+    function(self) {
+      return function() {
+                self.tick();
+      };
+    }
+)(this);
+
+// in the tick() function
+setTimeout(this.tickFunc, 16);
+</code></pre><p>相比于每次都新建一个方法对象，这种方式在每一帧当中重用了相同的方法对象。这种方式的优势是显而易见的，而这种思想也可以应用在任何以方法为返回值或者在运行时创建方法的情况当中。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[定位简析]]></title>
       <url>http://www.skyshu.com/2018/09/29/%E7%BD%91%E7%BB%9C%E5%AE%9A%E4%BD%8D/</url>
       <content type="html"><![CDATA[<p><strong>定位方式</strong>:<br>定位分为<strong>GPS定位</strong>和<strong>网络定位</strong>2种。</p>
@@ -54,9 +142,9 @@ maximumAge – 表示程序能接受的被缓存位置的最大过期时间。
     <entry>
       <title><![CDATA[ES6中promise的使用]]></title>
       <url>http://www.skyshu.com/2018/09/29/promise/</url>
-      <content type="html"><![CDATA[<p><strong>Promise 概念</strong></p>
+      <content type="html"><![CDATA[<p><strong>1.Promise 概念</strong></p>
 <p>Promise 是异步编程的一种解决方案，比传统的解决方案——回调函数和事件——更合理和更强大。它由社区最早提出和实现，ES6 将其写进了语言标准，统一了用法，原生提供了Promise对象。</p>
-<p><strong>基本用法</strong></p>
+<p><strong>2.基本用法</strong></p>
 <p>ES6 规定，Promise对象是一个构造函数，用来生成Promise实例。</p>
 <pre><code>const promise = new Promise(function(resolve, reject) {
       // ... some code
@@ -69,7 +157,138 @@ maximumAge – 表示程序能接受的被缓存位置的最大过期时间。
 });
 </code></pre><p>Promise构造函数接受一个函数作为参数，该函数的两个参数分别是resolve和reject。它们是两个函数，由 JavaScript 引擎提供，不用自己部署。</p>
 <p>resolve函数的作用是，将Promise对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；reject函数的作用是，将Promise对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。</p>
-]]></content>
+<p>Promise实例生成以后，可以用then方法分别指定resolved状态和rejected状态的回调函数。</p>
+<pre><code>promise.then(function(value) {
+      // success
+}, function(error) {
+      // failure
+});
+</code></pre><p>then方法可以接受两个回调函数作为参数。第一个回调函数是Promise对象的状态变为resolved时调用，第二个回调函数是Promise对象的状态变为rejected时调用。其中，第二个函数是可选的，不一定要提供。这两个函数都接受Promise对象传出的值作为参数。</p>
+<p>举例用Promise对象实现的 Ajax 操作的例子。</p>
+<pre><code>const getJSON = function(url) {
+  const promise = new Promise(function(resolve, reject){
+    const handler = function() {
+      if (this.readyState !== 4) {
+        return;
+      }
+      if (this.status === 200) {
+        resolve(this.response);
+      } else {
+        reject(new Error(this.statusText));
+      }
+    };
+    const client = new XMLHttpRequest();
+    client.open(&quot;GET&quot;, url);
+    client.onreadystatechange = handler;
+    client.responseType = &quot;json&quot;;
+    client.setRequestHeader(&quot;Accept&quot;, &quot;application/json&quot;);
+    client.send();
+  });
+  return promise;
+};
+
+getJSON(&quot;/posts.json&quot;).then(function(json) {
+  console.log(&apos;Contents: &apos; + json);
+}, function(error) {
+  console.error(&apos;出错了&apos;, error);
+});
+</code></pre><p>上面代码中，getJSON是对 XMLHttpRequest 对象的封装，用于发出一个针对 JSON 数据的 HTTP 请求，并且返回一个Promise对象。需要注意的是，在getJSON内部，resolve函数和reject函数调用时，都带有参数。</p>
+<p><strong>3.原型方法</strong></p>
+<p><strong>3.1 Promise.prototype.then()</strong></p>
+<p>Promise 实例具有then方法，也就是说，then方法是定义在原型对象Promise.prototype上的。它的作用是为 Promise 实例添加状态改变时的回调函数。前面说过，then方法的第一个参数是resolved状态的回调函数，第二个参数（可选）是rejected状态的回调函数。</p>
+<p><strong>then方法返回的是一个新的Promise实例</strong>（注意，不是原来那个Promise实例）。因此可以采用链式写法，即then方法后面再调用另一个then方法。</p>
+<pre><code>getJSON(&quot;/posts.json&quot;).then(function(json) {
+  return json.post;
+}).then(function(post) {
+  // ...
+});
+</code></pre><p>上面的代码使用then方法，依次指定了两个回调函数。第一个回调函数完成以后，会将返回结果作为参数，传入第二个回调函数。</p>
+<p>采用链式的then，可以指定一组按照次序调用的回调函数。这时，前一个回调函数，有可能返回的还是一个Promise对象（即有异步操作），这时后一个回调函数，就会等待该Promise对象的状态发生变化，才会被调用。</p>
+<pre><code>getJSON(&quot;/post/1.json&quot;).then(function(post) {
+  return getJSON(post.commentURL);
+}).then(function funcA(comments) {
+  console.log(&quot;resolved: &quot;, comments);
+}, function funcB(err){
+  console.log(&quot;rejected: &quot;, err);
+});
+</code></pre><p>上面代码中，第一个then方法指定的回调函数，返回的是另一个Promise对象。这时，第二个then方法指定的回调函数，就会等待这个新的Promise对象状态发生变化。如果变为resolved，就调用funcA，如果状态变为rejected，就调用funcB。</p>
+<p>如果采用箭头函数，上面的代码可以写得更简洁。</p>
+<pre><code>getJSON(&quot;/post/1.json&quot;).then(
+  post =&gt; getJSON(post.commentURL)
+).then(
+  comments =&gt; console.log(&quot;resolved: &quot;, comments),
+  err =&gt; console.log(&quot;rejected: &quot;, err)
+);
+</code></pre><p><strong>3.2 Promise.prototype.catch()</strong></p>
+<p>Promise.prototype.catch方法是.then(null, rejection)的别名，用于指定发生错误时的回调函数。</p>
+<pre><code>getJSON(&apos;/posts.json&apos;).then(function(posts) {
+  // ...
+}).catch(function(error) {
+  // 处理 getJSON 和 前一个回调函数运行时发生的错误
+  console.log(&apos;发生错误！&apos;, error);
+});
+</code></pre><p>上面代码中，getJSON方法返回一个 Promise 对象，如果该对象状态变为resolved，则会调用then方法指定的回调函数；如果异步操作抛出错误，状态就会变为rejected，就会调用catch方法指定的回调函数，处理这个错误。另外，then方法指定的回调函数，如果运行中抛出错误，也会被catch方法捕获。</p>
+<pre><code>p.then((val) =&gt; console.log(&apos;fulfilled:&apos;, val))
+  .catch((err) =&gt; console.log(&apos;rejected&apos;, err));
+
+// 等同于
+p.then((val) =&gt; console.log(&apos;fulfilled:&apos;, val))
+  .then(null, (err) =&gt; console.log(&quot;rejected:&quot;, err));
+</code></pre><p><strong>3.3 Promise.prototype.finally()</strong></p>
+<p>finally方法用于指定不管 Promise 对象最后状态如何，都会执行的操作。该方法是 ES2018 引入标准的</p>
+<pre><code>promise
+.then(result =&gt; {···})
+.catch(error =&gt; {···})
+.finally(() =&gt; {···});
+</code></pre><p>上面代码中，不管promise最后的状态，在执行完then或catch指定的回调函数以后，都会执行finally方法指定的回调函数。</p>
+<p>下面是一个例子，服务器使用 Promise 处理请求，然后使用finally方法关掉服务器。</p>
+<pre><code>server.listen(port)
+  .then(function () {
+    // ...
+  })
+  .finally(server.stop);
+</code></pre><p>finally方法的回调函数不接受任何参数，这意味着没有办法知道，前面的 Promise 状态到底是fulfilled还是rejected。这表明，finally方法里面的操作，应该是与状态无关的，不依赖于 Promise 的执行结果。</p>
+<p>finally本质上是then方法的特例。</p>
+<pre><code>promise
+.finally(() =&gt; {
+  // 语句
+});
+
+// 等同于
+promise
+.then(
+  result =&gt; {
+    // 语句
+    return result;
+  },
+  error =&gt; {
+    // 语句
+    throw error;
+  }
+);
+</code></pre><p>上面代码中，如果不使用finally方法，同样的语句需要为成功和失败两种情况各写一次。有了finally方法，则只需要写一次。</p>
+<p>它的实现也很简单。</p>
+<pre><code>Promise.prototype.finally = function (callback) {
+  let P = this.constructor;
+  return this.then(
+    value  =&gt; P.resolve(callback()).then(() =&gt; value),
+    reason =&gt; P.resolve(callback()).then(() =&gt; { throw reason })
+  );
+};
+</code></pre><p>上面代码中，不管前面的 Promise 是fulfilled还是rejected，都会执行回调函数callback。</p>
+<p>从上面的实现还可以看到，finally方法总是会返回原来的值。</p>
+<pre><code>// resolve 的值是 undefined
+Promise.resolve(2).then(() =&gt; {}, () =&gt; {})
+
+// resolve 的值是 2
+Promise.resolve(2).finally(() =&gt; {})
+
+// reject 的值是 undefined
+Promise.reject(3).then(() =&gt; {}, () =&gt; {})
+
+// reject 的值是 3
+Promise.reject(3).finally(() =&gt; {})
+</code></pre>]]></content>
     </entry>
     
     <entry>
