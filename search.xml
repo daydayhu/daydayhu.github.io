@@ -92,7 +92,7 @@ setTimeout(this.tickFunc, 16);
     </entry>
     
     <entry>
-      <title><![CDATA[定位简析]]></title>
+      <title><![CDATA[定位简析66]]></title>
       <url>http://www.skyshu.com/2018/09/29/%E7%BD%91%E7%BB%9C%E5%AE%9A%E4%BD%8D/</url>
       <content type="html"><![CDATA[<p><strong>定位方式</strong>:<br>定位分为<strong>GPS定位</strong>和<strong>网络定位</strong>2种。</p>
 <p>GPS定位: 精度较高，可达到10米，但室内不可用，且超级费电。</p>
