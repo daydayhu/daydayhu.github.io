@@ -84,31 +84,34 @@
 
 
 
-<meta name="description" content="此处仅对常用的Funtion原型属性/方法进行分析。
-属性
-Function.arguments:以数组形式获取传入函数的所有参数。补充说明：已定义参数、未定义参数(rest)与arguments关系。相关代码如下：
-function foo(a, b, ...rest) {
-  console.log(&amp;apos;a = &amp;apos;+ a);
-  console.log(&amp;apos;b = &amp;">
+<meta name="description" content="1.概述
+Apache Cordova是一个开源的移动开发框架。允许用标准的web技术-HTML5,CSS3和JavaScript做跨平台开发。 应用在每个平台的具体执行被封装了起来，并依靠符合标准的API绑定去访问每个设备的功能，比如说：传感器、数据、网络状态等。
+使用Apache Cordova的人群:
+
+移动应用开发者，想扩展一个应用的使用平台，而不通过每个平台的语言和工具集重新实现。
+
+w">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Function.prototype 的常用属性和方法解读">
-<meta property="og:url" content="http://www.skyshu.com/2018/08/06/Function_prototype/index.html">
+<meta property="og:title" content="Cordova之创建APP">
+<meta property="og:url" content="http://www.skyshu.com/2018/10/24/cordova基础/index.html">
 <meta property="og:site_name" content="DDB Space">
-<meta property="og:description" content="此处仅对常用的Funtion原型属性/方法进行分析。
-属性
-Function.arguments:以数组形式获取传入函数的所有参数。补充说明：已定义参数、未定义参数(rest)与arguments关系。相关代码如下：
-function foo(a, b, ...rest) {
-  console.log(&amp;apos;a = &amp;apos;+ a);
-  console.log(&amp;apos;b = &amp;">
-<meta property="og:updated_time" content="2018-08-07T08:10:59.965Z">
+<meta property="og:description" content="1.概述
+Apache Cordova是一个开源的移动开发框架。允许用标准的web技术-HTML5,CSS3和JavaScript做跨平台开发。 应用在每个平台的具体执行被封装了起来，并依靠符合标准的API绑定去访问每个设备的功能，比如说：传感器、数据、网络状态等。
+使用Apache Cordova的人群:
+
+移动应用开发者，想扩展一个应用的使用平台，而不通过每个平台的语言和工具集重新实现。
+
+w">
+<meta property="og:updated_time" content="2018-10-24T07:35:46.630Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Function.prototype 的常用属性和方法解读">
-<meta name="twitter:description" content="此处仅对常用的Funtion原型属性/方法进行分析。
-属性
-Function.arguments:以数组形式获取传入函数的所有参数。补充说明：已定义参数、未定义参数(rest)与arguments关系。相关代码如下：
-function foo(a, b, ...rest) {
-  console.log(&amp;apos;a = &amp;apos;+ a);
-  console.log(&amp;apos;b = &amp;">
+<meta name="twitter:title" content="Cordova之创建APP">
+<meta name="twitter:description" content="1.概述
+Apache Cordova是一个开源的移动开发框架。允许用标准的web技术-HTML5,CSS3和JavaScript做跨平台开发。 应用在每个平台的具体执行被封装了起来，并依靠符合标准的API绑定去访问每个设备的功能，比如说：传感器、数据、网络状态等。
+使用Apache Cordova的人群:
+
+移动应用开发者，想扩展一个应用的使用平台，而不通过每个平台的语言和工具集重新实现。
+
+w">
 
 
 
@@ -136,13 +139,13 @@ function foo(a, b, ...rest) {
 
 
 
-  <link rel="canonical" href="http://www.skyshu.com/2018/08/06/Function_prototype/"/>
+  <link rel="canonical" href="http://www.skyshu.com/2018/10/24/cordova基础/"/>
 
 
 
 
 
-  <title> Function.prototype 的常用属性和方法解读 | DDB Space </title>
+  <title> Cordova之创建APP | DDB Space </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -306,7 +309,7 @@ function foo(a, b, ...rest) {
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/08/06/Function_prototype/">
+  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/10/24/cordova基础/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="daydaybook">
@@ -330,7 +333,7 @@ function foo(a, b, ...rest) {
             
             
               
-                Function.prototype 的常用属性和方法解读
+                Cordova之创建APP
               
             
           </h1>
@@ -342,8 +345,8 @@ function foo(a, b, ...rest) {
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-06T16:44:14+08:00">
-              2018-08-06
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-24T14:51:26+08:00">
+              2018-10-24
             </time>
 
             &nbsp;|&nbsp;
@@ -351,8 +354,8 @@ function foo(a, b, ...rest) {
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2018-08-07T16:10:59+08:00">
-              2018-08-07
+            <time title="Post modified" itemprop="dateModified" datetime="2018-10-24T15:35:46+08:00">
+              2018-10-24
             </time>
 
           </span>
@@ -363,8 +366,8 @@ function foo(a, b, ...rest) {
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2018/08/06/Function_prototype/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/06/Function_prototype/" itemprop="commentCount"></span>
+                <a href="/2018/10/24/cordova基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/10/24/cordova基础/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -390,132 +393,188 @@ function foo(a, b, ...rest) {
       
 
       
-        <p>此处仅对常用的Funtion原型属性/方法进行分析。</p>
-<p><strong>属性</strong></p>
-<p><code>Function.arguments</code>:以数组形式获取传入函数的所有参数。<br>补充说明：已定义参数、未定义参数(rest)与arguments关系。相关代码如下：</p>
-<pre><code>function foo(a, b, ...rest) {
-  console.log(&apos;a = &apos;+ a);
-  console.log(&apos;b = &apos;+ a);
-  console.log(rest);
-  console.log(arguments);
-}
-foo(1,2,3,4,5);
-
-// result
-// a = 1
-// b = 2
-// Array [3,4,5]
-// Array [1,2,3,4,5] 省略内置方法
-</code></pre><p><code>Function.prototype.constructor</code>：指定创建对象原型的函数。基于此，亦可用来判断数据类型。</p>
-<p><strong>方法</strong></p>
-<p><code>Function.prototype.apply()</code>: 在一个对象的上下文中应用另一个对象的方法；参数能够以数组形式传入(参数指调用当前方法，可传入的实参)。</p>
-<p><code>Function.prototype.call()</code>: 在一个对象的上下文中应用另一个对象的方法；参数能够以列表形式传入(参数指调用当前方法，可传入的实参)。</p>
-<p><strong><a href="https://segmentfault.com/a/1190000009257663" target="_blank" rel="external">call()与apply()的实现原理</a></strong></p>
-<p>二者简而言之的目的，都是为了使用其他对象的方法。</p>
-<p>可分为3个步骤</p>
-<ol>
-<li>将函数设为对象的属性</li>
-<li>执行该函数</li>
-<li>删除该函数</li>
-</ol>
-<p>以call()为例，实现代码如下：</p>
-<pre><code>Function.prototype.call2 = function (context) {
-    var context = context || window;
-    context.fn = this;
-
-    var args = [];
-    for(var i = 1, len = arguments.length; i &lt; len; i++) {
-        args.push(&apos;arguments[&apos; + i + &apos;]&apos;);
-    }
-
-    var result = eval(&apos;context.fn(&apos; + args +&apos;)&apos;);
-
-    delete context.fn
-    return result;
-}
-
-// 测试一下
-var value = 2;
-var obj = {
-    value: 1
-}
-
-function bar(name, age) {
-    console.log(this.value);
-    return {
-        value: this.value,
-        name: name,
-        age: age
-    }
-}
-
-bar.call(null); // 2
-
-console.log(bar.call2(obj, &apos;kevin&apos;, 18));
-// 1
-// Object {
-//    value: 1,
-//    name: &apos;kevin&apos;,
-//    age: 18
-// }
-</code></pre><p>更改方法/函数内部this指向，本质上来说，是给需要使用该方法的对象，临时新增了该方法，并没有改变该方法的原始所属对象。</p>
-<p><code>Function.prototype.bind</code>: bind()方法会创建一个新函数,称为绑定函数.当调用这个绑定函数时,绑定函数会以创建它时传入 bind()方法的第一个参数作为 this,传入 bind()方法的第二个以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数。</p>
-<p><a href="https://github.com/mqyqingfeng/Blog/issues/12" target="_blank" rel="external"><strong>bind()的实现原理</strong></a></p>
-<p>bind()函数的两个特点:</p>
-<ol>
-<li>返回一个函数</li>
-<li>可以传入参数</li>
-</ol>
-<p>实现代码如下：</p>
-<pre><code>Function.prototype.bind2 = function (context) {
-
-if (typeof this !== &quot;function&quot;) {
-  throw new Error(&quot;Function.prototype.bind - what is trying to be bound is not callable&quot;);
-}
-
-var self = this;
-var args = Array.prototype.slice.call(arguments, 1);
-
-var fNOP = function () {};
-
-var fBound = function () {
-    var bindArgs = Array.prototype.slice.call(arguments);
-    return self.apply(this instanceof fNOP ? this : context, args.concat(bindArgs));
-}
-
-fNOP.prototype = this.prototype;
-fBound.prototype = new fNOP();
-return fBound;
-}
-</code></pre><p>apply call bind三者比较：</p>
-<ol>
-<li><p>apply 、 call 、bind 三者都是用来改变函数的this对象的指向的。</p>
+        <p><strong>1.概述</strong></p>
+<p>Apache Cordova是一个开源的移动开发框架。允许用标准的web技术-HTML5,CSS3和JavaScript做跨平台开发。 应用在每个平台的具体执行被封装了起来，并依靠符合标准的API绑定去访问每个设备的功能，比如说：传感器、数据、网络状态等。</p>
+<p>使用Apache Cordova的人群:</p>
+<ul>
+<li><p>移动应用开发者，想扩展一个应用的使用平台，而不通过每个平台的语言和工具集重新实现。</p>
 </li>
-<li><p>apply 、 call 、bind 三者第一个参数都是this要指向的对象，也就是想指定的上下文。</p>
+<li><p>web开发者，想包装部署自己的web App将其分发到各个应用商店门户。</p>
 </li>
-<li><p>apply 、 call 、bind 三者都可以利用后续参数传参。</p>
+<li><p>移动应用开发者，有兴趣混合原生应用组建和一个WebView(一个特别的浏览器窗口) 可以接触设备A级PI，或者你想开发一个原生和WebView组件之间的插件接口。</p>
 </li>
-<li><p>bind 是返回对应函数，便于稍后调用；apply 、call 则是立即调用。</p>
+</ul>
+<p><strong>2.安装</strong></p>
+<p>安装cordova命令行工具，通过下面这些步骤:</p>
+<ol>
+<li><p>下载和安装Node.js。安装完成后你可以在命令行中使用node 和 npm 。</p>
+</li>
+<li><p>(可选)下载和安装git client, 如果你没有。安装成功后，你可以在命令行中使用git。 这个命令行使用下载git仓库中的资源。</p>
+</li>
+<li><p>安装cordova 模块使用Nodejs的npm工具。cordova模块会被npm工具自动下载。</p>
 </li>
 </ol>
-<p>代码演示如下：</p>
-<pre><code>var obj = {
-    x: 81,
-};
-var foo = {
-    getX: function() {
-        return this.x;
-    }
+<ul>
+<li><p>在OS X和Linux上:</p>
+<pre><code>$ sudo npm install -g cordova
+</code></pre><p>  在OS X和Linux上, npm命令加上前缀sudo因为cordova可能需要安装在其他的受限制目录比如 /usr/local/share。如果你使用可选工具nvm/nave或者具有安装目录的写权限，那么你可以省略sudo前缀。这里有更多提示 可用在使用 npm 没有 sudo前缀时，如果你想那么做。</p>
+</li>
+</ul>
+<ul>
+<li><p>在Windows上:</p>
+<pre><code>C:\&gt;npm install -g cordova
+</code></pre><p>  -g标志是告诉 npm 我们全局安装 cordova。否则我们将会安装在当前工作目录的 node_modules子目录。安装完成后，你应该能够在命令行中运行cordova命令，在没有任何参数的时候会打印一些帮助信息。</p>
+</li>
+</ul>
+<p><strong>3.创建App</strong></p>
+<p>跳转到你维护源代码的目录中，并创建你的cordova项目：</p>
+<pre><code>$ cordova create hello com.example.hello HelloWorld
+</code></pre><p>这将会为你的cordova应用创造必须的目录。默认情况下，cordova create命令生成基于web的应用程序的骨骼，项目的主页是 www/index.html 文件。<br>cordova create 到底做了些什么？根据官方描述该命令支持四个参数：</p>
+<ol>
+<li><strong>path</strong>：也就是项目的目录名称</li>
+<li><strong>ID</strong>：项目的ID，用于写入config.xml的widget中，通常格式为 com.example.hello</li>
+<li><strong>name</strong>：应用程序的显示名称</li>
+<li><strong>options</strong>：项目的可选配置项<ul>
+<li>–template：可执行项目的模版文件</li>
+<li>–copy-from 指定src</li>
+<li>–link-to 可将一个前端资源目录链接到项目的www目录下而不是一个副本</li>
+</ul>
+</li>
+</ol>
+<p><strong>通过部分 Cordova cli 源码我们可以大致知道Cordova是如何帮我们创建一个初始化工程的</strong></p>
+<pre><code>var paths = {};
+//从 cordova-app-hello-world npm包中获取config.xml文件
+paths.configXml = path.join(require(&apos;cordova-app-hello-world&apos;).dirname, &apos;config.xml&apos;);
+//从 cordova-app-hello-world npm包中获取 www 目录
+paths.www = path.join(require(&apos;cordova-app-hello-world&apos;).dirname, &apos;www&apos;);
+//从 cordova-app-hello-world npm包中获取 hooks 目录
+paths.hooks = path.join(require(&apos;cordova-app-hello-world&apos;).dirname, &apos;hooks&apos;);
+// 从 cordova-app-hello-world npm包中获取 package.json 文件
+var dirAlreadyExisted = fs.existsSync(dir);//dir为 cordova create 的第一个参数 ptah
+//判断当前path是否存在不存在直接创建
+if (!dirAlreadyExisted) {
+    fs.mkdirSync(dir);
 }
-console.log(foo.getX.bind(obj)());  //81
-console.log(foo.getX.call(obj));    //81
-console.log(foo.getX.apply(obj));   //81
+try {
+    //如果指定了 --template 则从模版复制项目到新项目下 
+    if (cfg.lib.www.template) { copyTemplateFiles(import_from_path, dir, isSubDir); }
+    //如果指定了 --link 则创建链接到项目
+    if (cfg.lib.www.link) { linkFromTemplate(import_from_path, dir); }
+    //如果没有没有指定 --template 或者 --link 则直接用 cordova-app-hello-world npm包
+    copyIfNotExists(paths.www, path.join(dir, &apos;www&apos;));
+    copyIfNotExists(paths.hooks, path.join(dir, &apos;hooks&apos;));
+    var configXmlExists = projectConfig(dir); // moves config to root if in www
+    if (paths.configXml &amp;&amp; !configXmlExists) {
+        shell.cp(paths.configXml, path.join(dir, &apos;config.xml&apos;));
+    }
+} catch (e) {
+    if (!dirAlreadyExisted) {
+        shell.rm(&apos;-rf&apos;, dir);
+    }
+    if (process.platform.slice(0, 3) === &apos;win&apos; &amp;&amp; e.code === &apos;EPERM&apos;) {
+        throw new CordovaError(&apos;Symlinks on Windows require Administrator privileges&apos;);
+    }
+    throw e;
+}
+//获取 package.json 文件
+var pkgjsonPath = path.join(dir, &apos;package.json&apos;);
+// Update package.json name and version fields
+if (fs.existsSync(pkgjsonPath)) {
+    delete require.cache[require.resolve(pkgjsonPath)];
+    var pkgjson = require(pkgjsonPath);
 
-/*
-    区别在于, 使用apply()/call(), 改变上下文环境之后,
-    会立即执行函数; 而使用bind(), 并非立即执行, 而是回调执行
-*/ 
-</code></pre><p><code>Function.prototype.toString</code>: 返回一个表示当前函数源代码的字符串。</p>
+    //指定项目名称，也就是我们 cordova create 命令的第三个参数
+    if (cfg.name) {
+        pkgjson.displayName = cfg.name;
+    }
+    //指定项目ID，也就是我们 cordova create 命令的第二个参数
+    if (cfg.id) {
+        pkgjson.name = cfg.id.toLowerCase();
+    } else if (!cfg.id) {
+        //设置默认ID为 helloworld
+        pkgjson.name = &apos;helloworld&apos;;
+    }
+    pkgjson.version = &apos;1.0.0&apos;;
+    fs.writeFileSync(pkgjsonPath, JSON.stringify(pkgjson, null, 4), &apos;utf8&apos;);
+}
+//创建 platforms(后期添加的Android和iOS平台都放在此文件夹) 和 plugins(插件)文件夹 
+if (!fs.existsSync(path.join(dir, &apos;platforms&apos;))) { shell.mkdir(path.join(dir, &apos;platforms&apos;)); }
+if (!fs.existsSync(path.join(dir, &apos;plugins&apos;))) { shell.mkdir(path.join(dir, &apos;plugins&apos;)); }
+var configPath = path.join(dir, &apos;config.xml&apos;);
+// only update config.xml if not a symlink
+if (!fs.lstatSync(configPath).isSymbolicLink()) {
+    // Write out id and name to config.xml; set version to 1.0.0 (to match package.json default version)
+    var conf = new ConfigParser(configPath);
+    if (cfg.id) conf.setPackageName(cfg.id);
+    if (cfg.name) conf.setName(cfg.name);
+    conf.setVersion(&apos;1.0.0&apos;);
+    conf.write();
+}
+</code></pre><p>项目创建成功之后我们将得到如下目录结构</p>
+<pre><code>hello/
+|-- config.xml      #项目配置文件
+|-- hooks/          #存放Cordova 的钩子
+|-- node_modules/
+|-- res/            #存放一些各平台的icon或者首屏图等资源
+|-- www/            #静态网页资源
+|-- platforms/      #各平台存放目录
+|-- plugins/        #插件目录
+|-- package.json
+</code></pre><p><strong>4.添加平台</strong></p>
+<p>所有后续命令都需要在项目目录或者项目目录的任何子目录运行:</p>
+<pre><code>$ cd hello
+</code></pre><p>为App添加目标平台。此处添加’android’平台，并确保其保存在了config.xml中:</p>
+<pre><code>$ cordova platform add android --save
+</code></pre><p>检查你当前平台设置状况:</p>
+<pre><code>$ cordova platform ls
+</code></pre><p>若成功添加Android平台，当前项目显示如下</p>
+<pre><code>Installed platforms:
+  android 7.0.0
+Available platforms: 
+  browser ~5.0.1
+  ios ~4.5.4
+  osx ~4.0.1
+  windows ~5.0.0
+  www ^3.12.0
+</code></pre><p><strong>注意添加平台先决条件，需要为当前平台配置环境，安装平台所需的SDK。</strong> 除添加browser平台，它不需要任何平台SDK。<br>检测你是否满足构建平台的要求:</p>
+<pre><code>$ cordova requirements
+</code></pre><p>以Android为例，若平台环境安装好，显示如下：</p>
+<pre><code>Requirements check results for android:
+Java JDK: installed .
+Android SDK: installed
+Android target: installed android-19,android-21,android-22,android-23,Google Inc.:Google APIs:19,Google Inc.:Google APIs (x86 System Image):19,Google Inc.:Google APIs:23
+Gradle: installed
+</code></pre><p>以iOS为例，如平台环境未安装好，显示如下：</p>
+<pre><code>Requirements check results for ios:
+Apple OS X: not installed
+Cordova tooling for iOS requires Apple OS X
+Error: Some of requirements check failed
+</code></pre><hr>
+<p><strong>详细参见如下：</strong></p>
+<ul>
+<li><a href="http://cordova.axuer.com/docs/zh-cn/latest/guide/platforms/android/index.html#requirements-and-support" target="_blank" rel="external">Android平台的要求</a></li>
+<li><a href="http://cordova.axuer.com/docs/zh-cn/latest/guide/platforms/ios/index.html#requirements-and-support" target="_blank" rel="external">iOS平台的要求</a></li>
+<li><a href="http://cordova.axuer.com/docs/zh-cn/latest/guide/platforms/win8/index.html#requirements-and-support" target="_blank" rel="external">Windows平台的要求</a></li>
+</ul>
+<p><strong>5.构建App</strong></p>
+<p>默认情况下, cordova create生产基于web应用程序的骨架，项目开始页面位于www/index.html 文件。任何初始化任务应该在www/js/index.js文件中的deviceready事件的事件处理函数中。</p>
+<p>运行下面命令为所有添加的平台构建:</p>
+<pre><code>$ cordova build
+</code></pre><p>你可以在每次构建中选择限制平台范围 - 这个例子中是’android’:</p>
+<pre><code>$ cordova build android
+</code></pre><p><strong>6.测试App</strong></p>
+<p>移动平台的SDK通常会绑定模拟器，它是一个可执行的设备镜像，这样你就可以在主屏幕启动你的App，看看它在多个平台是如何交互的。 在命令行运行下面的命令，会重新构建App并可以在特定平台的模拟器上查看:</p>
+<pre><code>$ cordova emulate android
+</code></pre><p>或者，你可以将你的手机插入电脑，在手机上直接测试App:</p>
+<pre><code>$ cordova run android
+</code></pre><p>在运行命令之前，你需要设置用于测试的设备，以下是每个平台的流程。</p>
+<hr>
+<p><strong>详细参见如下：</strong></p>
+<ul>
+<li><a href="http://cordova.axuer.com/docs/zh-cn/latest/guide/platforms/android/index.html#setting-up-an-emulator" target="_blank" rel="external">设置Android模拟器</a></li>
+<li><a href="http://cordova.axuer.com/docs/zh-cn/latest/reference/cordova-cli/index.html#cordova-run-command" target="_blank" rel="external">Cordova run 命令参考文档</a></li>
+<li><a href="http://cordova.axuer.com/docs/zh-cn/latest/reference/cordova-cli/index.html#cordova-emulate-command" target="_blank" rel="external">Cordova emulate 命令参考文档</a></li>
+</ul>
 
       
     </div>
@@ -569,8 +628,8 @@ console.log(foo.getX.apply(obj));   //81
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/08/03/深拷贝与浅拷贝/" rel="next" title="js之深拷贝与浅拷贝">
-                <i class="fa fa-chevron-left"></i> js之深拷贝与浅拷贝
+              <a href="/2018/10/23/原型链/" rel="next" title="原型链(—)">
+                <i class="fa fa-chevron-left"></i> 原型链(—)
               </a>
             
           </div>
@@ -578,10 +637,6 @@ console.log(foo.getX.apply(obj));   //81
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/07/BFC/" rel="prev" title="块格式化上下文（Block Formatting Context，BFC）">
-                块格式化上下文（Block Formatting Context，BFC） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -596,10 +651,10 @@ console.log(foo.getX.apply(obj));   //81
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2018/08/06/Function_prototype/"
-     data-title="Function.prototype 的常用属性和方法解读"
+        <div class="ds-share flat" data-thread-key="2018/10/24/cordova基础/"
+     data-title="Cordova之创建APP"
      data-content=""
-     data-url="http://www.skyshu.com/2018/08/06/Function_prototype/">
+     data-url="http://www.skyshu.com/2018/10/24/cordova基础/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -626,8 +681,8 @@ console.log(foo.getX.apply(obj));   //81
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2018/08/06/Function_prototype/"
-           data-title="Function.prototype 的常用属性和方法解读" data-url="http://www.skyshu.com/2018/08/06/Function_prototype/">
+      <div class="ds-thread" data-thread-key="2018/10/24/cordova基础/"
+           data-title="Cordova之创建APP" data-url="http://www.skyshu.com/2018/10/24/cordova基础/">
       </div>
     
   </div>

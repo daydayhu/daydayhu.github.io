@@ -84,31 +84,15 @@
 
 
 
-<meta name="description" content="此处仅对常用的Funtion原型属性/方法进行分析。
-属性
-Function.arguments:以数组形式获取传入函数的所有参数。补充说明：已定义参数、未定义参数(rest)与arguments关系。相关代码如下：
-function foo(a, b, ...rest) {
-  console.log(&amp;apos;a = &amp;apos;+ a);
-  console.log(&amp;apos;b = &amp;">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Function.prototype 的常用属性和方法解读">
-<meta property="og:url" content="http://www.skyshu.com/2018/08/06/Function_prototype/index.html">
+<meta name="description" content="在小白的路上越走越远">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DDB Space">
+<meta property="og:url" content="http://www.skyshu.com/page/3/index.html">
 <meta property="og:site_name" content="DDB Space">
-<meta property="og:description" content="此处仅对常用的Funtion原型属性/方法进行分析。
-属性
-Function.arguments:以数组形式获取传入函数的所有参数。补充说明：已定义参数、未定义参数(rest)与arguments关系。相关代码如下：
-function foo(a, b, ...rest) {
-  console.log(&amp;apos;a = &amp;apos;+ a);
-  console.log(&amp;apos;b = &amp;">
-<meta property="og:updated_time" content="2018-08-07T08:10:59.965Z">
+<meta property="og:description" content="在小白的路上越走越远">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Function.prototype 的常用属性和方法解读">
-<meta name="twitter:description" content="此处仅对常用的Funtion原型属性/方法进行分析。
-属性
-Function.arguments:以数组形式获取传入函数的所有参数。补充说明：已定义参数、未定义参数(rest)与arguments关系。相关代码如下：
-function foo(a, b, ...rest) {
-  console.log(&amp;apos;a = &amp;apos;+ a);
-  console.log(&amp;apos;b = &amp;">
+<meta name="twitter:title" content="DDB Space">
+<meta name="twitter:description" content="在小白的路上越走越远">
 
 
 
@@ -136,13 +120,13 @@ function foo(a, b, ...rest) {
 
 
 
-  <link rel="canonical" href="http://www.skyshu.com/2018/08/06/Function_prototype/"/>
+  <link rel="canonical" href="http://www.skyshu.com/page/3/"/>
 
 
 
 
 
-  <title> Function.prototype 的常用属性和方法解读 | DDB Space </title>
+  <title> DDB Space </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -163,7 +147,9 @@ function foo(a, b, ...rest) {
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -295,9 +281,9 @@ function foo(a, b, ...rest) {
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -306,7 +292,7 @@ function foo(a, b, ...rest) {
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/08/06/Function_prototype/">
+  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/08/02/defineProperty/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="daydaybook">
@@ -330,7 +316,10 @@ function foo(a, b, ...rest) {
             
             
               
-                Function.prototype 的常用属性和方法解读
+                
+                <a class="post-title-link" href="/2018/08/02/defineProperty/" itemprop="url">
+                  Object.defineProperty
+                </a>
               
             
           </h1>
@@ -342,8 +331,8 @@ function foo(a, b, ...rest) {
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-06T16:44:14+08:00">
-              2018-08-06
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-02T17:20:50+08:00">
+              2018-08-02
             </time>
 
             &nbsp;|&nbsp;
@@ -351,8 +340,8 @@ function foo(a, b, ...rest) {
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2018-08-07T16:10:59+08:00">
-              2018-08-07
+            <time title="Post modified" itemprop="dateModified" datetime="2018-08-03T09:50:09+08:00">
+              2018-08-03
             </time>
 
           </span>
@@ -363,8 +352,8 @@ function foo(a, b, ...rest) {
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2018/08/06/Function_prototype/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/06/Function_prototype/" itemprop="commentCount"></span>
+                <a href="/2018/08/02/defineProperty/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/02/defineProperty/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -390,175 +379,41 @@ function foo(a, b, ...rest) {
       
 
       
-        <p>此处仅对常用的Funtion原型属性/方法进行分析。</p>
-<p><strong>属性</strong></p>
-<p><code>Function.arguments</code>:以数组形式获取传入函数的所有参数。<br>补充说明：已定义参数、未定义参数(rest)与arguments关系。相关代码如下：</p>
-<pre><code>function foo(a, b, ...rest) {
-  console.log(&apos;a = &apos;+ a);
-  console.log(&apos;b = &apos;+ a);
-  console.log(rest);
-  console.log(arguments);
-}
-foo(1,2,3,4,5);
-
-// result
-// a = 1
-// b = 2
-// Array [3,4,5]
-// Array [1,2,3,4,5] 省略内置方法
-</code></pre><p><code>Function.prototype.constructor</code>：指定创建对象原型的函数。基于此，亦可用来判断数据类型。</p>
-<p><strong>方法</strong></p>
-<p><code>Function.prototype.apply()</code>: 在一个对象的上下文中应用另一个对象的方法；参数能够以数组形式传入(参数指调用当前方法，可传入的实参)。</p>
-<p><code>Function.prototype.call()</code>: 在一个对象的上下文中应用另一个对象的方法；参数能够以列表形式传入(参数指调用当前方法，可传入的实参)。</p>
-<p><strong><a href="https://segmentfault.com/a/1190000009257663" target="_blank" rel="external">call()与apply()的实现原理</a></strong></p>
-<p>二者简而言之的目的，都是为了使用其他对象的方法。</p>
-<p>可分为3个步骤</p>
-<ol>
-<li>将函数设为对象的属性</li>
-<li>执行该函数</li>
-<li>删除该函数</li>
-</ol>
-<p>以call()为例，实现代码如下：</p>
-<pre><code>Function.prototype.call2 = function (context) {
-    var context = context || window;
-    context.fn = this;
-
-    var args = [];
-    for(var i = 1, len = arguments.length; i &lt; len; i++) {
-        args.push(&apos;arguments[&apos; + i + &apos;]&apos;);
-    }
-
-    var result = eval(&apos;context.fn(&apos; + args +&apos;)&apos;);
-
-    delete context.fn
-    return result;
-}
-
-// 测试一下
-var value = 2;
-var obj = {
-    value: 1
-}
-
-function bar(name, age) {
-    console.log(this.value);
-    return {
-        value: this.value,
-        name: name,
-        age: age
-    }
-}
-
-bar.call(null); // 2
-
-console.log(bar.call2(obj, &apos;kevin&apos;, 18));
-// 1
-// Object {
-//    value: 1,
-//    name: &apos;kevin&apos;,
-//    age: 18
-// }
-</code></pre><p>更改方法/函数内部this指向，本质上来说，是给需要使用该方法的对象，临时新增了该方法，并没有改变该方法的原始所属对象。</p>
-<p><code>Function.prototype.bind</code>: bind()方法会创建一个新函数,称为绑定函数.当调用这个绑定函数时,绑定函数会以创建它时传入 bind()方法的第一个参数作为 this,传入 bind()方法的第二个以及以后的参数加上绑定函数运行时本身的参数按照顺序作为原函数的参数来调用原函数。</p>
-<p><a href="https://github.com/mqyqingfeng/Blog/issues/12" target="_blank" rel="external"><strong>bind()的实现原理</strong></a></p>
-<p>bind()函数的两个特点:</p>
-<ol>
-<li>返回一个函数</li>
-<li>可以传入参数</li>
-</ol>
-<p>实现代码如下：</p>
-<pre><code>Function.prototype.bind2 = function (context) {
-
-if (typeof this !== &quot;function&quot;) {
-  throw new Error(&quot;Function.prototype.bind - what is trying to be bound is not callable&quot;);
-}
-
-var self = this;
-var args = Array.prototype.slice.call(arguments, 1);
-
-var fNOP = function () {};
-
-var fBound = function () {
-    var bindArgs = Array.prototype.slice.call(arguments);
-    return self.apply(this instanceof fNOP ? this : context, args.concat(bindArgs));
-}
-
-fNOP.prototype = this.prototype;
-fBound.prototype = new fNOP();
-return fBound;
-}
-</code></pre><p>apply call bind三者比较：</p>
-<ol>
-<li><p>apply 、 call 、bind 三者都是用来改变函数的this对象的指向的。</p>
-</li>
-<li><p>apply 、 call 、bind 三者第一个参数都是this要指向的对象，也就是想指定的上下文。</p>
-</li>
-<li><p>apply 、 call 、bind 三者都可以利用后续参数传参。</p>
-</li>
-<li><p>bind 是返回对应函数，便于稍后调用；apply 、call 则是立即调用。</p>
-</li>
-</ol>
-<p>代码演示如下：</p>
-<pre><code>var obj = {
-    x: 81,
-};
-var foo = {
-    getX: function() {
-        return this.x;
-    }
-}
-console.log(foo.getX.bind(obj)());  //81
-console.log(foo.getX.call(obj));    //81
-console.log(foo.getX.apply(obj));   //81
-
-/*
-    区别在于, 使用apply()/call(), 改变上下文环境之后,
-    会立即执行函数; 而使用bind(), 并非立即执行, 而是回调执行
-*/ 
-</code></pre><p><code>Function.prototype.toString</code>: 返回一个表示当前函数源代码的字符串。</p>
-
-      
-    </div>
-
-    <div>
-      
         
-<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
-    <img id="wechat_subscriber_qcode" src="http://ww1.sinaimg.cn/small/005uY5V3gw1f9peq78ce3j308c08cwfm.jpg" alt="daydaybook wechat" style="width: 200px; max-width: 100%;"/>
-    <div>扫一扫，用手机访问本站</div>
-</div>
+          
+            <h1 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty()"></a><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty" target="_blank" rel="external">Object.defineProperty()</a></h1><hr>
+<p><strong>作用</strong> 该方法会直接在一个对象上定义一个新属性, 或者修改一个对象的现有属性, 并返回这个对象。</p>
+<p><strong>语法</strong> <code>Object.defineProperty(obj, prop, descriptor)</code></p>
+<p><strong>参数</strong>  </p>
+<p><code>obj</code>: 要在其上定义属性的对象。</p>
+<p><code>prop</code>: 要定义或修改的属性的名称。</p>
+<p><code>descriptor</code>: 将被定义或修改的属性描述符。</p>
+<p><strong>属性描述符</strong> </p>
+<p> 对象里目前存在的属性描述符有两种主要形式<strong>数据描述符</strong>和<strong>存取描述符</strong>。<strong>数据描述符</strong>是一个具有值的属性，该值可能是可写的，也可能不是可写的。<strong>存取描述符</strong>是由getter-setter函数对描述的属性。描述符必须是这两种形式之一；不能同时是两者。</p>
+<p><strong>数据描述符和存取描述符均具</strong>有以下可选键值：</p>
+<p><code>configurable</code><br>当且仅当该属性的 configurable 为 true 时，该属性描述符才能够被改变，同时该属性也能从对应的对象上被删除。默认为 false。</p>
+<p><code>enumerable</code> 当且仅当该属性的enumerable为true时，该属性才能够出现在对象的枚举属性中。默认为 false。</p>
+<p><strong>数据描述符同时具有以下可选键值</strong>:</p>
+<p><code>value</code>  该属性对应的值。可以是任何有效的 JavaScript 值（数值，对象，函数等）。默认为 undefined。</p>
+<p><code>writable</code> 当且仅当该属性的writable为true时，value才能被赋值运算符改变。默认为 false。</p>
+<p><strong>存取描述符同时具有以下可选键值</strong></p>
+<p><code>get</code>  一个给属性提供 getter 的方法，如果没有 getter 则为 undefined。当访问该属性时，该方法会被执行，方法执行时没有参数传入，但是会传入this对象（由于继承关系，这里的this并不一定是定义该属性的对象）。默认为 undefined。</p>
+<p><code>set</code>  一个给属性提供 setter 的方法，如果没有 setter 则为 undefined。当属性值修改时，触发执行该方法。该方法将接受唯一参数，即该属性新的参数值。默认为 undefined。</p>
 
-
-      
-    </div>
-
-    <div>
-      
+          
         
-  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-    <div>您的支持将鼓励我继续创作！</div>
-    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-      <span>赏</span>
-    </button>
-    <div id="QR" style="display: none;">
-      
-      
-        <div id="alipay" style="display: inline-block">
-          <img id="alipay_qr" src="http://ww1.sinaimg.cn/small/005uY5V3gw1f9pf72npf0j30gd0gfgot.jpg" alt="daydaybook Alipay"/>
-          <p>支付宝打赏</p>
-        </div>
-      
-    </div>
-  </div>
-
-
       
     </div>
 
     <div>
-    
       
+    </div>
 
+    <div>
+      
+    </div>
+
+    <div>
     
     </div>
 
@@ -566,57 +421,23 @@ console.log(foo.getX.apply(obj));   //81
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/08/03/深拷贝与浅拷贝/" rel="next" title="js之深拷贝与浅拷贝">
-                <i class="fa fa-chevron-left"></i> js之深拷贝与浅拷贝
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/08/07/BFC/" rel="prev" title="块格式化上下文（Block Formatting Context，BFC）">
-                块格式化上下文（Block Formatting Context，BFC） <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
 
       
+      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-        <div class="ds-share flat" data-thread-key="2018/08/06/Function_prototype/"
-     data-title="Function.prototype 的常用属性和方法解读"
-     data-content=""
-     data-url="http://www.skyshu.com/2018/08/06/Function_prototype/">
-  <div class="ds-share-inline">
-    <ul  class="ds-share-icons-16">
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
 
-      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-
-    </ul>
-    <div class="ds-share-icons-more">
-    </div>
-  </div>
-</div>
-      
-    </div>
-  </div>
 
 
           </div>
@@ -624,14 +445,6 @@ console.log(foo.getX.apply(obj));   //81
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2018/08/06/Function_prototype/"
-           data-title="Function.prototype 的常用属性和方法解读" data-url="http://www.skyshu.com/2018/08/06/Function_prototype/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -843,10 +656,6 @@ console.log(foo.getX.apply(obj));   //81
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
 
   
 

@@ -292,6 +292,318 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/10/24/cordova基础/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="daydaybook">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/small/005uY5V3gw1f9p51pmzakj3064064q2s.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="DDB Space">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="DDB Space" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/10/24/cordova基础/" itemprop="url">
+                  Cordova之创建APP
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-24T14:51:26+08:00">
+              2018-10-24
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2018-10-24T15:35:46+08:00">
+              2018-10-24
+            </time>
+
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/10/24/cordova基础/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/10/24/cordova基础/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>1.概述</strong></p>
+<p>Apache Cordova是一个开源的移动开发框架。允许用标准的web技术-HTML5,CSS3和JavaScript做跨平台开发。 应用在每个平台的具体执行被封装了起来，并依靠符合标准的API绑定去访问每个设备的功能，比如说：传感器、数据、网络状态等。</p>
+<p>使用Apache Cordova的人群:</p>
+<ul>
+<li><p>移动应用开发者，想扩展一个应用的使用平台，而不通过每个平台的语言和工具集重新实现。</p>
+</li>
+<li><p>web开发者，想包装部署自己的web App将其分发到各个应用商店门户。</p>
+</li>
+<li><p>移动应用开发者，有兴趣混合原生应用组建和一个WebView(一个特别的浏览器窗口) 可以接触设备A级PI，或者你想开发一个原生和WebView组件之间的插件接口。</p>
+</li>
+</ul>
+<p><strong>2.安装</strong></p>
+<p>安装cordova命令行工具，通过下面这些步骤:</p>
+<ol>
+<li><p>下载和安装Node.js。安装完成后你可以在命令行中使用node 和 npm 。</p>
+</li>
+<li><p>(可选)下载和安装git client, 如果你没有。安装成功后，你可以在命令行中使用git。 这个命令行使用下载git仓库中的资源。</p>
+</li>
+<li><p>安装cordova 模块使用Nodejs的npm工具。cordova模块会被npm工具自动下载。</p>
+</li>
+</ol>
+<ul>
+<li><p>在OS X和Linux上:</p>
+<pre><code>$ sudo npm install -g cordova
+</code></pre><p>  在OS X和Linux上, npm命令加上前缀sudo因为cordova可能需要安装在其他的受限制目录比如 /usr/local/share。如果你使用可选工具nvm/nave或者具有安装目录的写权限，那么你可以省略sudo前缀。这里有更多提示 可用在使用 npm 没有 sudo前缀时，如果你想那么做。</p>
+</li>
+</ul>
+<ul>
+<li><p>在Windows上:</p>
+<pre><code>C:\&gt;npm install -g cordova
+</code></pre><p>  -g标志是告诉 npm 我们全局安装 cordova。否则我们将会安装在当前工作目录的 node_modules子目录。安装完成后，你应该能够在命令行中运行cordova命令，在没有任何参数的时候会打印一些帮助信息。</p>
+</li>
+</ul>
+<p><strong>3.创建App</strong></p>
+<p>跳转到你维护源代码的目录中，并创建你的cordova项目：</p>
+<pre><code>$ cordova create hello com.example.hello HelloWorld
+</code></pre><p>这将会为你的cordova应用创造必须的目录。默认情况下，cordova create命令生成基于web的应用程序的骨骼，项目的主页是 www/index.html 文件。<br>cordova create 到底做了些什么？根据官方描述该命令支持四个参数：</p>
+<ol>
+<li><strong>path</strong>：也就是项目的目录名称</li>
+<li><strong>ID</strong>：项目的ID，用于写入config.xml的widget中，通常格式为 com.example.hello</li>
+<li><strong>name</strong>：应用程序的显示名称</li>
+<li><strong>options</strong>：项目的可选配置项<ul>
+<li>–template：可执行项目的模版文件</li>
+<li>–copy-from 指定src</li>
+<li>–link-to 可将一个前端资源目录链接到项目的www目录下而不是一个副本</li>
+</ul>
+</li>
+</ol>
+<p><strong>通过部分 Cordova cli 源码我们可以大致知道Cordova是如何帮我们创建一个初始化工程的</strong></p>
+<pre><code>var paths = {};
+//从 cordova-app-hello-world npm包中获取config.xml文件
+paths.configXml = path.join(require(&apos;cordova-app-hello-world&apos;).dirname, &apos;config.xml&apos;);
+//从 cordova-app-hello-world npm包中获取 www 目录
+paths.www = path.join(require(&apos;cordova-app-hello-world&apos;).dirname, &apos;www&apos;);
+//从 cordova-app-hello-world npm包中获取 hooks 目录
+paths.hooks = path.join(require(&apos;cordova-app-hello-world&apos;).dirname, &apos;hooks&apos;);
+// 从 cordova-app-hello-world npm包中获取 package.json 文件
+var dirAlreadyExisted = fs.existsSync(dir);//dir为 cordova create 的第一个参数 ptah
+//判断当前path是否存在不存在直接创建
+if (!dirAlreadyExisted) {
+    fs.mkdirSync(dir);
+}
+try {
+    //如果指定了 --template 则从模版复制项目到新项目下 
+    if (cfg.lib.www.template) { copyTemplateFiles(import_from_path, dir, isSubDir); }
+    //如果指定了 --link 则创建链接到项目
+    if (cfg.lib.www.link) { linkFromTemplate(import_from_path, dir); }
+    //如果没有没有指定 --template 或者 --link 则直接用 cordova-app-hello-world npm包
+    copyIfNotExists(paths.www, path.join(dir, &apos;www&apos;));
+    copyIfNotExists(paths.hooks, path.join(dir, &apos;hooks&apos;));
+    var configXmlExists = projectConfig(dir); // moves config to root if in www
+    if (paths.configXml &amp;&amp; !configXmlExists) {
+        shell.cp(paths.configXml, path.join(dir, &apos;config.xml&apos;));
+    }
+} catch (e) {
+    if (!dirAlreadyExisted) {
+        shell.rm(&apos;-rf&apos;, dir);
+    }
+    if (process.platform.slice(0, 3) === &apos;win&apos; &amp;&amp; e.code === &apos;EPERM&apos;) {
+        throw new CordovaError(&apos;Symlinks on Windows require Administrator privileges&apos;);
+    }
+    throw e;
+}
+//获取 package.json 文件
+var pkgjsonPath = path.join(dir, &apos;package.json&apos;);
+// Update package.json name and version fields
+if (fs.existsSync(pkgjsonPath)) {
+    delete require.cache[require.resolve(pkgjsonPath)];
+    var pkgjson = require(pkgjsonPath);
+
+    //指定项目名称，也就是我们 cordova create 命令的第三个参数
+    if (cfg.name) {
+        pkgjson.displayName = cfg.name;
+    }
+    //指定项目ID，也就是我们 cordova create 命令的第二个参数
+    if (cfg.id) {
+        pkgjson.name = cfg.id.toLowerCase();
+    } else if (!cfg.id) {
+        //设置默认ID为 helloworld
+        pkgjson.name = &apos;helloworld&apos;;
+    }
+    pkgjson.version = &apos;1.0.0&apos;;
+    fs.writeFileSync(pkgjsonPath, JSON.stringify(pkgjson, null, 4), &apos;utf8&apos;);
+}
+//创建 platforms(后期添加的Android和iOS平台都放在此文件夹) 和 plugins(插件)文件夹 
+if (!fs.existsSync(path.join(dir, &apos;platforms&apos;))) { shell.mkdir(path.join(dir, &apos;platforms&apos;)); }
+if (!fs.existsSync(path.join(dir, &apos;plugins&apos;))) { shell.mkdir(path.join(dir, &apos;plugins&apos;)); }
+var configPath = path.join(dir, &apos;config.xml&apos;);
+// only update config.xml if not a symlink
+if (!fs.lstatSync(configPath).isSymbolicLink()) {
+    // Write out id and name to config.xml; set version to 1.0.0 (to match package.json default version)
+    var conf = new ConfigParser(configPath);
+    if (cfg.id) conf.setPackageName(cfg.id);
+    if (cfg.name) conf.setName(cfg.name);
+    conf.setVersion(&apos;1.0.0&apos;);
+    conf.write();
+}
+</code></pre><p>项目创建成功之后我们将得到如下目录结构</p>
+<pre><code>hello/
+|-- config.xml      #项目配置文件
+|-- hooks/          #存放Cordova 的钩子
+|-- node_modules/
+|-- res/            #存放一些各平台的icon或者首屏图等资源
+|-- www/            #静态网页资源
+|-- platforms/      #各平台存放目录
+|-- plugins/        #插件目录
+|-- package.json
+</code></pre><p><strong>4.添加平台</strong></p>
+<p>所有后续命令都需要在项目目录或者项目目录的任何子目录运行:</p>
+<pre><code>$ cd hello
+</code></pre><p>为App添加目标平台。此处添加’android’平台，并确保其保存在了config.xml中:</p>
+<pre><code>$ cordova platform add android --save
+</code></pre><p>检查你当前平台设置状况:</p>
+<pre><code>$ cordova platform ls
+</code></pre><p>若成功添加Android平台，当前项目显示如下</p>
+<pre><code>Installed platforms:
+  android 7.0.0
+Available platforms: 
+  browser ~5.0.1
+  ios ~4.5.4
+  osx ~4.0.1
+  windows ~5.0.0
+  www ^3.12.0
+</code></pre><p><strong>注意添加平台先决条件，需要为当前平台配置环境，安装平台所需的SDK。</strong> 除添加browser平台，它不需要任何平台SDK。<br>检测你是否满足构建平台的要求:</p>
+<pre><code>$ cordova requirements
+</code></pre><p>以Android为例，若平台环境安装好，显示如下：</p>
+<pre><code>Requirements check results for android:
+Java JDK: installed .
+Android SDK: installed
+Android target: installed android-19,android-21,android-22,android-23,Google Inc.:Google APIs:19,Google Inc.:Google APIs (x86 System Image):19,Google Inc.:Google APIs:23
+Gradle: installed
+</code></pre><p>以iOS为例，如平台环境未安装好，显示如下：</p>
+<pre><code>Requirements check results for ios:
+Apple OS X: not installed
+Cordova tooling for iOS requires Apple OS X
+Error: Some of requirements check failed
+</code></pre><hr>
+<p><strong>详细参见如下：</strong></p>
+<ul>
+<li><a href="http://cordova.axuer.com/docs/zh-cn/latest/guide/platforms/android/index.html#requirements-and-support" target="_blank" rel="external">Android平台的要求</a></li>
+<li><a href="http://cordova.axuer.com/docs/zh-cn/latest/guide/platforms/ios/index.html#requirements-and-support" target="_blank" rel="external">iOS平台的要求</a></li>
+<li><a href="http://cordova.axuer.com/docs/zh-cn/latest/guide/platforms/win8/index.html#requirements-and-support" target="_blank" rel="external">Windows平台的要求</a></li>
+</ul>
+<p><strong>5.构建App</strong></p>
+<p>默认情况下, cordova create生产基于web应用程序的骨架，项目开始页面位于www/index.html 文件。任何初始化任务应该在www/js/index.js文件中的deviceready事件的事件处理函数中。</p>
+<p>运行下面命令为所有添加的平台构建:</p>
+<pre><code>$ cordova build
+</code></pre><p>你可以在每次构建中选择限制平台范围 - 这个例子中是’android’:</p>
+<pre><code>$ cordova build android
+</code></pre><p><strong>6.测试App</strong></p>
+<p>移动平台的SDK通常会绑定模拟器，它是一个可执行的设备镜像，这样你就可以在主屏幕启动你的App，看看它在多个平台是如何交互的。 在命令行运行下面的命令，会重新构建App并可以在特定平台的模拟器上查看:</p>
+<pre><code>$ cordova emulate android
+</code></pre><p>或者，你可以将你的手机插入电脑，在手机上直接测试App:</p>
+<pre><code>$ cordova run android
+</code></pre><p>在运行命令之前，你需要设置用于测试的设备，以下是每个平台的流程。</p>
+<hr>
+<p><strong>详细参见如下：</strong></p>
+<ul>
+<li><a href="http://cordova.axuer.com/docs/zh-cn/latest/guide/platforms/android/index.html#setting-up-an-emulator" target="_blank" rel="external">设置Android模拟器</a></li>
+<li><a href="http://cordova.axuer.com/docs/zh-cn/latest/reference/cordova-cli/index.html#cordova-run-command" target="_blank" rel="external">Cordova run 命令参考文档</a></li>
+<li><a href="http://cordova.axuer.com/docs/zh-cn/latest/reference/cordova-cli/index.html#cordova-emulate-command" target="_blank" rel="external">Cordova emulate 命令参考文档</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+    
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/10/23/原型链/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2429,160 +2741,11 @@ Promise.reject(3).finally(() =&gt; {})
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/08/21/公钥私钥/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="daydaybook">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww3.sinaimg.cn/small/005uY5V3gw1f9p51pmzakj3064064q2s.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="DDB Space">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="DDB Space" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/08/21/公钥私钥/" itemprop="url">
-                  加密分析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-21T20:46:55+08:00">
-              2018-08-21
-            </time>
-
-            &nbsp;|&nbsp;
-
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-check-o"></i>
-            </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2018-09-01T19:32:32+08:00">
-              2018-09-01
-            </time>
-
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2018/08/21/公钥私钥/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/08/21/公钥私钥/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>1.密钥概念</strong>：</p>
-<p>密钥是一种参数，它是在明文转换为密文或将密文转换为明文的算法中输入的参数。密钥分为对称密钥与非对称密钥。</p>
-<p><strong>2.加密方式</strong>: </p>
-<p>加密方式分为<strong>对称加密</strong>和<strong>非对称加密</strong>两种。</p>
-<p><code>对称加密</code>: 加密使用的密钥和解密使用的密钥是相同的。</p>
-<p><code>非对称加密</code>: 加密使用的密钥和解密使用的密钥是不相同的。如公钥密码体制。</p>
-<p><strong>3.公钥密码体制</strong>：</p>
-<p>以RSA为例，其密码体制是一种公钥密码体制，公钥公开，私钥保密，它的加密算法是公开的。由公钥加密的内容可以并且只有由私钥进行解密，并且由私钥加密的内容可以并且只有由公钥进行解密。简而言之，<strong>一对公钥、私钥都可以用来加密和解密，并且一方加密的内容可以并且只能由对方进行解密</strong>。</p>
-<p><strong>4.数字签名</strong></p>
-<p><a href="如果D和D’相同，那么证明M确实是小明发出的，并且没有被篡改过">数字签名详解</a></p>
-<p>是只有信息的发送者才能产生的别人无法伪造的一段数字串，这段数字串同时也是对信息的发送者发送信息真实性的一个有效证明。<br>签名是用于证明消息的真实性。以RSA为例，具体签名过程如下:</p>
-<pre><code>1. 发送者对外发布公钥，并声明对应的私钥在自己手上
-2. 发送者对消息M计算摘要，得到摘要D
-3. 发送者使用私钥对D进行签名，得到签名S
-4. 将M和S一起发送出去
-</code></pre><p>验证过程如下：</p>
-<pre><code>1. 接收者首先对M使用跟发送者一样的摘要算法计算摘要，得到D
-2. 使用发送者的公钥对S进行解签，得到D’
-3. 如果D和D’相同，那么证明M确实是发送者发出的，并且没有被篡改过
-</code></pre>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-    
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2623,7 +2786,7 @@ Promise.reject(3).finally(() =&gt; {})
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
