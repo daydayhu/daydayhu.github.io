@@ -340,7 +340,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2018-10-24T09:56:18+08:00">
+            <time title="Post modified" itemprop="dateModified" datetime="2018-10-24T10:56:55+08:00">
               2018-10-24
             </time>
 
@@ -406,7 +406,7 @@ var c = {
 b.calculate(30); // 60
 c.calculate(40); // 80
 </code></pre><p>如果在对象b中找不到calculate方法(也就是对象b中没有这个calculate属性), 那么就会沿着原型链开始找。如果这个calculate方法在b的prototype中没有找到，那么就会沿着原型链找到a的prototype，一直遍历完整个原型链。记住，一旦找到，就返回第一个找到的属性或者方法。因此，第一个找到的属性成为继承属性。如果遍历完整个原型链，仍然没有找到，那么就会返回undefined。</p>
-<p>2.prototype、<strong>proto</strong>、Object、Function关系</p>
+<p><strong>2.prototype、<strong>proto</strong>、Object、Function关系</strong></p>
 <p>prototype: 每一个函数对象都有一个显示的prototype属性,它代表了对象的原型。</p>
 <p><strong>proto</strong>:每个对象都有一个名为proto的内部隐藏属性，指向于它所对应的原型对象。</p>
 <p>具体如下：</p>
