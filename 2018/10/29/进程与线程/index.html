@@ -122,7 +122,7 @@ load事件与DOMC">
 <meta property="og:image" content="https://image-static.segmentfault.com/720/857/720857855-5a65972548fa1_articlex">
 <meta property="og:image" content="https://image-static.segmentfault.com/375/898/3758981650-5a659724661e6_articlex">
 <meta property="og:image" content="https://image-static.segmentfault.com/208/433/2084336019-5a65972413011_articlex">
-<meta property="og:updated_time" content="2018-11-14T03:55:04.319Z">
+<meta property="og:updated_time" content="2018-11-14T04:01:24.609Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="从浏览器多进程到JS单线程，JS运行机制梳理(转载)">
 <meta name="twitter:description" content="1.大纲
@@ -383,7 +383,7 @@ load事件与DOMC">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2018-11-14T11:55:04+08:00">
+            <time title="Post modified" itemprop="dateModified" datetime="2018-11-14T12:01:24+08:00">
               2018-11-14
             </time>
 
@@ -498,16 +498,14 @@ load事件与DOMC">
 <p><strong>4.浏览器都包含哪些进程？</strong></p>
 <p>知道了浏览器是多进程后，再来看看它到底包含哪些进程：（为了简化理解，仅列举主要进程）</p>
 <ol>
-<li><p><strong>Browser进程</strong>：<strong>浏览器的主进程</strong>（负责协调、主控），<strong>只有一个</strong>。作用有：</p>
-<ul>
+<li><strong>Browser进程</strong>：<strong>浏览器的主进程</strong>（负责协调、主控），<strong>只有一个</strong>。作用有：<ul>
 <li>负责浏览器界面显示，与用户交互。如前进，后退等</li>
 <li>负责各个页面的管理，创建和销毁其他进程</li>
 <li>将Renderer进程得到的内存中的Bitmap，绘制到用户界面上</li>
 <li>网络资源的管理，下载等</li>
 </ul>
 </li>
-<li><p>第三方插件进程：<strong>每种类型的插件对应一个进程</strong>，仅当使用该插件时才创建(如vue devtools)。</p>
-</li>
+<li>第三方插件进程：<strong>每种类型的插件对应一个进程</strong>，仅当使用该插件时才创建(如vue devtools)。</li>
 <li>GPU进程：最多一个，用于3D绘制等。</li>
 <li><strong>浏览器渲染进程（浏览器内核）</strong>（Renderer进程，内部是多线程的）：<strong>默认每个Tab页面一个进程</strong>，互不影响。主要作用为页面渲染，脚本执行，事件处理等。</li>
 </ol>
@@ -531,40 +529,41 @@ load事件与DOMC">
 <p><strong>请牢记，浏览器的渲染进程是多线程的</strong>（这点如果不理解，请回头看进程和线程的区分）</p>
 <p>终于到了线程这个概念了?，好亲切。那么接下来看看它都包含了哪些线程（列举一些主要常驻线程）：</p>
 <ol>
-<li><p>GUI(图形用户界面)渲染线程</p>
-<ul>
+<li>GUI(图形用户界面)渲染线程<ul>
 <li>负责渲染浏览器界面，解析HTML，CSS，构建DOM树和RenderObject树，布局和绘制等。</li>
 <li>当界面需要重绘（Repaint）或由于某种操作引发回流(reflow)时，该线程就会执行</li>
 <li>注意，<strong>GUI渲染线程与JS引擎线程是互斥的</strong>，当JS引擎执行时GUI线程会被挂起（相当于被冻结了），GUI更新会被保存在一个队列中等到JS引擎空闲时立即被执行。</li>
 </ul>
 </li>
-<li><p>JS引擎线程</p>
-<ul>
-<li>也称为JS内核，负责处理Javascript脚本程序。（例如V8引擎）<ul>
+</ol>
+<ol>
+<li>JS引擎线程<ul>
+<li>也称为JS内核，负责处理Javascript脚本程序。（例如V8引擎）</li>
 <li>JS引擎线程负责解析Javascript脚本，运行代码。</li>
-</ul>
-</li>
 <li>JS引擎一直等待着任务队列中任务的到来，然后加以处理，一个Tab页（renderer进程）中无论什么时候都只有一个JS线程在运行JS程序</li>
 <li>同样注意，<strong>GUI渲染线程与JS引擎线程是互斥的</strong>，所以如果JS执行的时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞。</li>
-<li></li>
 </ul>
 </li>
-<li><p>事件触发线程</p>
-<ul>
+</ol>
+<ol>
+<li>事件触发线程<ul>
 <li>归属于浏览器而不是JS引擎，用来控制事件循环（可以理解，JS引擎自己都忙不过来，需要浏览器另开线程协助）</li>
 <li>当JS引擎执行代码块如setTimeOut时（也可来自浏览器内核的其他线程,如鼠标点击、AJAX异步请求等），会将对应任务添加到事件线程中</li>
 <li>当对应的事件符合触发条件被触发时，该线程会把事件添加到待处理队列的队尾，等待JS引擎的处理</li>
 <li>注意，由于JS的单线程关系，所以这些待处理队列中的事件都得排队等待JS引擎处理（当JS引擎空闲时才会去执行）</li>
 </ul>
 </li>
-<li><p>定时触发器线程</p>
-<ul>
+</ol>
+<ol>
+<li>定时触发器线程<ul>
 <li>传说中的setInterval与setTimeout所在线程</li>
 <li>浏览器定时计数器并不是由JavaScript引擎计数的,（因为JavaScript引擎是单线程的, 如果处于阻塞线程状态就会影响记计时的准确）</li>
 <li>因此通过单独线程来计时并触发定时（计时完毕后，添加到事件队列中，等待JS引擎空闲后执行）</li>
 <li>注意，W3C在HTML标准中规定，规定要求setTimeout中低于4ms的时间间隔算为4ms</li>
 </ul>
 </li>
+</ol>
+<ol>
 <li>异步http请求线程<ul>
 <li>在XMLHttpRequest在连接后是通过浏览器新开一个线程请求</li>
 <li>将检测到状态变更时，如果设置有回调函数，异步线程就产生状态变更事件，将这个回调再放入事件队列中。再由JavaScript引擎执行。</li>
