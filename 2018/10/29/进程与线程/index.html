@@ -84,31 +84,63 @@
 
 
 
-<meta name="description" content="1.概念
-单例是保证一个类只有一个实例，实现的方法一般是先判断实例存在与否，如果存在直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象。(在JavaScript里，单例作为一个命名空间提供者，从全局命名空间里提供一个唯一的访问点来访问该对象。）
-2.实现与使用场景
-2.1 使用对象字面量的方法实现，其字面量里可以包含大量的属性和方法: 
-var mySingleton = {
-p">
+<meta name="description" content="1.大纲
+
+区分进程和线程
+浏览器是多进程的
+浏览器都包含哪些进程？
+浏览器多进程的优势
+重点是浏览器内核（渲染进程）
+Browser进程和浏览器内核（Renderer进程）的通信过程
+梳理浏览器内核中线程之间的关系
+GUI渲染线程与JS引擎线程互斥
+JS阻塞页面加载
+WebWorker，JS的多线程？
+WebWorker与SharedWorker
+简单梳理下浏览器渲染流程
+load事件与DOMC">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单例模式">
-<meta property="og:url" content="http://www.skyshu.com/2018/10/23/单例模式/index.html">
+<meta property="og:title" content="从浏览器多进程到JS单线程，JS运行机制梳理(转载)">
+<meta property="og:url" content="http://www.skyshu.com/2018/10/29/进程与线程/index.html">
 <meta property="og:site_name" content="DDB Space">
-<meta property="og:description" content="1.概念
-单例是保证一个类只有一个实例，实现的方法一般是先判断实例存在与否，如果存在直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象。(在JavaScript里，单例作为一个命名空间提供者，从全局命名空间里提供一个唯一的访问点来访问该对象。）
-2.实现与使用场景
-2.1 使用对象字面量的方法实现，其字面量里可以包含大量的属性和方法: 
-var mySingleton = {
-p">
-<meta property="og:updated_time" content="2018-10-24T02:55:59.404Z">
+<meta property="og:description" content="1.大纲
+
+区分进程和线程
+浏览器是多进程的
+浏览器都包含哪些进程？
+浏览器多进程的优势
+重点是浏览器内核（渲染进程）
+Browser进程和浏览器内核（Renderer进程）的通信过程
+梳理浏览器内核中线程之间的关系
+GUI渲染线程与JS引擎线程互斥
+JS阻塞页面加载
+WebWorker，JS的多线程？
+WebWorker与SharedWorker
+简单梳理下浏览器渲染流程
+load事件与DOMC">
+<meta property="og:image" content="https://image-static.segmentfault.com/108/522/1085221355-5a6597253f28a_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/720/857/720857855-5a65972548fa1_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/375/898/3758981650-5a659724661e6_articlex">
+<meta property="og:image" content="https://image-static.segmentfault.com/208/433/2084336019-5a65972413011_articlex">
+<meta property="og:updated_time" content="2018-11-14T03:55:04.319Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="单例模式">
-<meta name="twitter:description" content="1.概念
-单例是保证一个类只有一个实例，实现的方法一般是先判断实例存在与否，如果存在直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象。(在JavaScript里，单例作为一个命名空间提供者，从全局命名空间里提供一个唯一的访问点来访问该对象。）
-2.实现与使用场景
-2.1 使用对象字面量的方法实现，其字面量里可以包含大量的属性和方法: 
-var mySingleton = {
-p">
+<meta name="twitter:title" content="从浏览器多进程到JS单线程，JS运行机制梳理(转载)">
+<meta name="twitter:description" content="1.大纲
+
+区分进程和线程
+浏览器是多进程的
+浏览器都包含哪些进程？
+浏览器多进程的优势
+重点是浏览器内核（渲染进程）
+Browser进程和浏览器内核（Renderer进程）的通信过程
+梳理浏览器内核中线程之间的关系
+GUI渲染线程与JS引擎线程互斥
+JS阻塞页面加载
+WebWorker，JS的多线程？
+WebWorker与SharedWorker
+简单梳理下浏览器渲染流程
+load事件与DOMC">
+<meta name="twitter:image" content="https://image-static.segmentfault.com/108/522/1085221355-5a6597253f28a_articlex">
 
 
 
@@ -136,13 +168,13 @@ p">
 
 
 
-  <link rel="canonical" href="http://www.skyshu.com/2018/10/23/单例模式/"/>
+  <link rel="canonical" href="http://www.skyshu.com/2018/10/29/进程与线程/"/>
 
 
 
 
 
-  <title> 单例模式 | DDB Space </title>
+  <title> 从浏览器多进程到JS单线程，JS运行机制梳理(转载) | DDB Space </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -306,7 +338,7 @@ p">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/10/23/单例模式/">
+  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/10/29/进程与线程/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="daydaybook">
@@ -330,7 +362,7 @@ p">
             
             
               
-                单例模式
+                从浏览器多进程到JS单线程，JS运行机制梳理(转载)
               
             
           </h1>
@@ -342,8 +374,8 @@ p">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-23T16:03:42+08:00">
-              2018-10-23
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-29T18:45:02+08:00">
+              2018-10-29
             </time>
 
             &nbsp;|&nbsp;
@@ -351,8 +383,8 @@ p">
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2018-10-24T10:55:59+08:00">
-              2018-10-24
+            <time title="Post modified" itemprop="dateModified" datetime="2018-11-14T11:55:04+08:00">
+              2018-11-14
             </time>
 
           </span>
@@ -363,8 +395,8 @@ p">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2018/10/23/单例模式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/10/23/单例模式/" itemprop="commentCount"></span>
+                <a href="/2018/10/29/进程与线程/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/10/29/进程与线程/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -390,227 +422,159 @@ p">
       
 
       
-        <p><strong>1.概念</strong></p>
-<p>单例是保证一个类只有一个实例，实现的方法一般是先判断实例存在与否，如果存在直接返回，如果不存在就创建了再返回，这就确保了一个类只有一个实例对象。(在JavaScript里，单例作为一个命名空间提供者，从全局命名空间里提供一个唯一的访问点来访问该对象。）</p>
-<p><strong>2.实现与使用场景</strong></p>
-<p>2.1 使用对象字面量的方法实现，其字面量里可以包含大量的属性和方法: </p>
-<pre><code>var mySingleton = {
-property1: &quot;something&quot;,
-property2: &quot;something else&quot;,
-method1: function () {
-    console.log(&apos;hello world&apos;);
-}
-};
-</code></pre><p>要扩展该对象，可以添加私有成员和方法，然后使用闭包在其内部封装这些变量和函数声明。只暴露public成员和方法，样例代码如下：</p>
-<pre><code>var mySingleton = function () {
-
-/* 这里声明私有变量和方法 */
-var privateVariable = &apos;something private&apos;;
-function showPrivate() {
-    console.log(privateVariable);
-}
-
-/* 公有变量和方法（可以访问私有变量和方法） */
-return {
-    publicMethod: function () {
-        showPrivate();
-    },
-    publicVar: &apos;the public can see this!&apos;
-};
-};
-
-var single = mySingleton();
-single.publicMethod();  // 输出 &apos;something private&apos;
-console.log(single.publicVar); // 输出 &apos;the public can see this!&apos;
-</code></pre><p>为了节约资源的目的，我们可以另外一个构造函数里来初始化这些代码，如下：</p>
-<pre><code>var Singleton = (function () {
-var instantiated;
-function init() {
-    /*这里定义单例代码*/
-    return {
-        publicMethod: function () {
-            console.log(&apos;hello world&apos;);
-        },
-        publicProperty: &apos;test&apos;
-    };
-}
-
-return {
-    getInstance: function () {
-        if (!instantiated) {
-            instantiated = init();
-        }
-        return instantiated;
-    }
-};
-})();
-
-/*调用公有的方法来获取实例:*/
-Singleton.getInstance().publicMethod();
-</code></pre><p>2.2 场景</p>
-<p>单例一般是用在系统间各种模式的通信协调上，下面的代码是一个单例的最佳实践：</p>
-<pre><code>var SingletonTester = (function () {
-
-//参数：传递给单例的一个参数集合
-function Singleton(args) {
-
-    //设置args变量为接收的参数或者为空（如果没有提供的话）
-    var args = args || {};
-    //设置name参数
-    this.name = &apos;SingletonTester&apos;;
-    //设置pointX的值
-    this.pointX = args.pointX || 6; //从接收的参数里获取，或者设置为默认值
-    //设置pointY的值
-    this.pointY = args.pointY || 10;
-
-}
-
-//实例容器
-var instance;
-
-var _static = {
-    name: &apos;SingletonTester&apos;,
-
-    //获取实例的方法
-    //返回Singleton的实例
-    getInstance: function (args) {
-        if (instance === undefined) {
-            instance = new Singleton(args);
-        }
-        return instance;
-    }
-};
-return _static;
-})();
-
-var singletonTest = SingletonTester.getInstance({ pointX: 5 });
-console.log(singletonTest.pointX); // 输出 5 
-</code></pre><p>其他实现方式：</p>
+        <p><strong>1.大纲</strong></p>
+<blockquote>
+<p>区分进程和线程</p>
+<p>浏览器是多进程的</p>
+<p>浏览器都包含哪些进程？</p>
+<p>浏览器多进程的优势</p>
+<p>重点是浏览器内核（渲染进程）</p>
+<p>Browser进程和浏览器内核（Renderer进程）的通信过程</p>
+<p>梳理浏览器内核中线程之间的关系</p>
+<p>GUI渲染线程与JS引擎线程互斥</p>
+<p>JS阻塞页面加载</p>
+<p>WebWorker，JS的多线程？</p>
+<p>WebWorker与SharedWorker</p>
+<p>简单梳理下浏览器渲染流程</p>
+<p>load事件与DOMContentLoaded事件的先后</p>
+<p>css加载是否会阻塞dom树渲染？</p>
+<p>普通图层和复合图层</p>
+<p>从Event Loop谈JS的运行机制</p>
+<p>事件循环机制进一步补充</p>
+<p>单独说说定时器</p>
+<p>setTimeout而不是setInterval</p>
+<p>事件循环进阶：macrotask与microtask</p>
+<p>写在最后的话</p>
+</blockquote>
+<p><strong>2.区分进程和线程</strong></p>
+<p>线程和进程区分不清，是很多新手都会犯的错误，没有关系。这很正常。先看看下面这个形象的比喻：</p>
 <ul>
-<li><p>方法1</p>
-<pre><code>function Universe() {
-
-// 判断是否存在实例
-if (typeof Universe.instance === &apos;object&apos;) {
-    return Universe.instance;
-}
-
-// 其它内容
-this.start_time = 0;
-this.bang = &quot;Big&quot;;
-
-// 缓存
-Universe.instance = this;
-
-// 隐式返回this
-}
-
-// 测试
-var uni = new Universe();
-var uni2 = new Universe();
-console.log(uni === uni2); // true
-</code></pre></li>
-<li><p>方法2</p>
-<pre><code>function Universe() {
-
-// 缓存的实例
-var instance = this;
-
-// 其它内容
-this.start_time = 0;
-this.bang = &quot;Big&quot;;
-
-// 重写构造函数
-Universe = function () {
-    return instance;
-};
-
-}
-
-// 测试
-var uni = new Universe();
-var uni2 = new Universe();
-uni.bang = &quot;123&quot;;
-console.log(uni === uni2); // true
-console.log(uni2.bang); // 123
-</code></pre></li>
-<li><p>方法3</p>
-<pre><code>function Universe() {
-
-// 缓存实例
-var instance;
-
-// 重新构造函数
-Universe = function Universe() {
-    return instance;
-};
-
-// 后期处理原型属性
-Universe.prototype = this;
-
-// 实例
-instance = new Universe();
-
-// 重设构造函数指针
-instance.constructor = Universe;
-
-// 其它功能
-instance.start_time = 0;
-instance.bang = &quot;Big&quot;;
-
-return instance;
-
-}
-
-    // 测试
-    var uni = new Universe();
-    var uni2 = new Universe();
-    console.log(uni === uni2); // true
-
-    // 添加原型属性
-    Universe.prototype.nothing = true;
-
-    var uni = new Universe();
-
-    Universe.prototype.everything = true;
-
-    var uni2 = new Universe();
-
-    console.log(uni.nothing); // true
-    console.log(uni2.nothing); // true
-    console.log(uni.everything); // true
-    console.log(uni2.everything); // true
-    console.log(uni.constructor === Universe); // true
-</code></pre></li>
-<li><p>方法4</p>
-<pre><code>var Universe;
-
-(function () {
-
-    var instance;
-
-    Universe = function Universe() {
-
-        if (instance) {
-            return instance;
-        }
-
-        instance = this;
-
-        // 其它内容
-        this.start_time = 0;
-        this.bang = &quot;Big&quot;;
-    };
-} ());
-
-//测试代码
-var a = new Universe();
-var b = new Universe();
-console.log(a === b); // true
-a.bang = &quot;123&quot;;
-console.log(b.bang); // 123
-</code></pre></li>
+<li><p>进程是一个工厂，工厂有它的独立资源</p>
+</li>
+<li><p>工厂之间相互独立</p>
+</li>
+<li><p>线程是工厂中的工人，多个工人协作完成任务</p>
+</li>
+<li><p>工厂内有一个或多个工人</p>
+</li>
+<li><p>工人之间共享空间</p>
+</li>
 </ul>
+<p>再完善完善概念：</p>
+<ul>
+<li><p>工厂的资源 -&gt; 系统分配的内存（独立的一块内存）</p>
+</li>
+<li><p>工厂之间的相互独立 -&gt; 进程之间相互独立</p>
+</li>
+<li><p>多个工人协作完成任务 -&gt; 多个线程在进程中协作完成任务</p>
+</li>
+<li><p>工厂内有一个或多个工人 -&gt; 一个进程由一个或多个线程组成</p>
+</li>
+<li><p>工人之间共享空间 -&gt; 同一进程下的各个线程之间共享程序的内存空间（包括代码段、数据集、堆等）</p>
+</li>
+</ul>
+<p>然后再巩固下：</p>
+<p>如果是windows电脑中，可以打开任务管理器，可以看到有一个后台进程列表。对，那里就是查看进程的地方，而且可以看到每个进程的内存资源信息以及cpu占有率。</p>
+<center><br><img width="80%" src="https://image-static.segmentfault.com/108/522/1085221355-5a6597253f28a_articlex"><br></center>
+
+<p>所以，应该更容易理解了：<strong>进程是cpu资源分配的最小单位</strong>（系统会给它分配内存）</p>
+<p>最后，再用较为官方的术语描述一遍：</p>
+<ul>
+<li>进程是cpu资源分配的最小单位（是能拥有资源和独立运行的最小单位）</li>
+<li>线程是cpu调度的最小单位（线程是建立在进程的基础上的一次程序运行单位，一个进程中可以有多个线程) <strong>tips</strong></li>
+</ul>
+<p>不同进程之间也可以通信，不过代价较大<br>现在，一般通用的叫法：<strong>单线程与多线程</strong>，都是指在<strong>一个进程内</strong>的单和多。（所以核心还是得属于一个进程才行）</p>
+<p><strong>3.浏览器是多进程的</strong></p>
+<p>理解了进程与线程了区别后，接下来对浏览器进行一定程度上的认识：（先看下简化理解）</p>
+<ul>
+<li>浏览器是多进程的</li>
+<li>浏览器之所以能够运行，是因为系统给它的进程分配了资源（cpu、内存）</li>
+<li>简单点理解，每打开一个Tab页，就相当于创建了一个独立的浏览器进程。<br>关于以上几点的验证，请再第一张图：</li>
+</ul>
+<center><br><img width="80%" src="https://image-static.segmentfault.com/720/857/720857855-5a65972548fa1_articlex"><br></center>
+
+<p>图中打开了Chrome浏览器的多个标签页，然后可以在Chrome的任务管理器中看到有多个进程（分别是每一个Tab页面有一个独立的进程，以及一个主进程）。<br>感兴趣的可以自行尝试下，如果再多打开一个Tab页，进程正常会+1以上</p>
+<p>注意：在这里浏览器应该也有自己的优化机制，有时候打开多个tab页后，可以在Chrome任务管理器中看到，有些进程被合并了<br>（所以每一个Tab标签对应一个进程并不一定是绝对的）</p>
+<p><strong>4.浏览器都包含哪些进程？</strong></p>
+<p>知道了浏览器是多进程后，再来看看它到底包含哪些进程：（为了简化理解，仅列举主要进程）</p>
+<ol>
+<li><p><strong>Browser进程</strong>：<strong>浏览器的主进程</strong>（负责协调、主控），<strong>只有一个</strong>。作用有：</p>
+<ul>
+<li>负责浏览器界面显示，与用户交互。如前进，后退等</li>
+<li>负责各个页面的管理，创建和销毁其他进程</li>
+<li>将Renderer进程得到的内存中的Bitmap，绘制到用户界面上</li>
+<li>网络资源的管理，下载等</li>
+</ul>
+</li>
+<li><p>第三方插件进程：<strong>每种类型的插件对应一个进程</strong>，仅当使用该插件时才创建(如vue devtools)。</p>
+</li>
+<li>GPU进程：最多一个，用于3D绘制等。</li>
+<li><strong>浏览器渲染进程（浏览器内核）</strong>（Renderer进程，内部是多线程的）：<strong>默认每个Tab页面一个进程</strong>，互不影响。主要作用为页面渲染，脚本执行，事件处理等。</li>
+</ol>
+<p>强化记忆：<strong>在浏览器中打开一个网页相当于新起了一个进程（进程内有自己的多线程）</strong></p>
+<p>当然，浏览器有时会将多个进程合并（譬如打开多个空白标签页后，会发现多个空白标签页被合并成了一个进程），如图</p>
+<p><img src="https://image-static.segmentfault.com/375/898/3758981650-5a659724661e6_articlex" alt=""></p>
+<p>另外，可以通过Chrome的更多工具 -&gt; 任务管理器自行验证</p>
+<p><strong>5.浏览器多进程的优势</strong></p>
+<p>相比于单进程浏览器，多进程有如下优点：</p>
+<ul>
+<li>避免单个page crash影响整个浏览器</li>
+<li>避免第三方插件crash影响整个浏览器</li>
+<li>多进程充分利用多核优势</li>
+<li>方便使用沙盒模型隔离插件等进程，提高浏览器稳定性</li>
+</ul>
+<p>简单点理解：<strong>如果浏览器是单进程，那么某个Tab页崩溃了，就影响了整个浏览器，体验有多差；同理如果是单进程，插件崩溃了也会影响整个浏览器；而且多进程还有其它的诸多优势。。。</strong></p>
+<p>当然，内存等资源消耗也会更大，有点空间换时间的意思。</p>
+<p><strong>6.重点是浏览器内核（渲染进程）</strong></p>
+<p>重点来了，我们可以看到，上面提到了这么多的进程，那么，<strong>对于普通的前端操作来说，最重要的是什么呢</strong>？答案是<strong>渲染进程</strong></p>
+<p>可以这样理解，页面的渲染，JS的执行，事件的循环，都在这个进程内进行。接下来重点分析这个进程</p>
+<p><strong>请牢记，浏览器的渲染进程是多线程的</strong>（这点如果不理解，请回头看进程和线程的区分）</p>
+<p>终于到了线程这个概念了?，好亲切。那么接下来看看它都包含了哪些线程（列举一些主要常驻线程）：</p>
+<ol>
+<li><p>GUI(图形用户界面)渲染线程</p>
+<ul>
+<li>负责渲染浏览器界面，解析HTML，CSS，构建DOM树和RenderObject树，布局和绘制等。</li>
+<li>当界面需要重绘（Repaint）或由于某种操作引发回流(reflow)时，该线程就会执行</li>
+<li>注意，<strong>GUI渲染线程与JS引擎线程是互斥的</strong>，当JS引擎执行时GUI线程会被挂起（相当于被冻结了），GUI更新会被保存在一个队列中等到JS引擎空闲时立即被执行。</li>
+</ul>
+</li>
+<li><p>JS引擎线程</p>
+<ul>
+<li>也称为JS内核，负责处理Javascript脚本程序。（例如V8引擎）<ul>
+<li>JS引擎线程负责解析Javascript脚本，运行代码。</li>
+</ul>
+</li>
+<li>JS引擎一直等待着任务队列中任务的到来，然后加以处理，一个Tab页（renderer进程）中无论什么时候都只有一个JS线程在运行JS程序</li>
+<li>同样注意，<strong>GUI渲染线程与JS引擎线程是互斥的</strong>，所以如果JS执行的时间过长，这样就会造成页面的渲染不连贯，导致页面渲染加载阻塞。</li>
+<li></li>
+</ul>
+</li>
+<li><p>事件触发线程</p>
+<ul>
+<li>归属于浏览器而不是JS引擎，用来控制事件循环（可以理解，JS引擎自己都忙不过来，需要浏览器另开线程协助）</li>
+<li>当JS引擎执行代码块如setTimeOut时（也可来自浏览器内核的其他线程,如鼠标点击、AJAX异步请求等），会将对应任务添加到事件线程中</li>
+<li>当对应的事件符合触发条件被触发时，该线程会把事件添加到待处理队列的队尾，等待JS引擎的处理</li>
+<li>注意，由于JS的单线程关系，所以这些待处理队列中的事件都得排队等待JS引擎处理（当JS引擎空闲时才会去执行）</li>
+</ul>
+</li>
+<li><p>定时触发器线程</p>
+<ul>
+<li>传说中的setInterval与setTimeout所在线程</li>
+<li>浏览器定时计数器并不是由JavaScript引擎计数的,（因为JavaScript引擎是单线程的, 如果处于阻塞线程状态就会影响记计时的准确）</li>
+<li>因此通过单独线程来计时并触发定时（计时完毕后，添加到事件队列中，等待JS引擎空闲后执行）</li>
+<li>注意，W3C在HTML标准中规定，规定要求setTimeout中低于4ms的时间间隔算为4ms</li>
+</ul>
+</li>
+<li>异步http请求线程<ul>
+<li>在XMLHttpRequest在连接后是通过浏览器新开一个线程请求</li>
+<li>将检测到状态变更时，如果设置有回调函数，异步线程就产生状态变更事件，将这个回调再放入事件队列中。再由JavaScript引擎执行。</li>
+</ul>
+</li>
+</ol>
+<p>在XMLHttpRequest在连接后是通过浏览器新开一个线程请求<br>将检测到状态变更时，如果设置有回调函数，异步线程就产生状态变更事件，将这个回调再放入事件队列中。再由JavaScript引擎执行</p>
+<center><br><img src="https://image-static.segmentfault.com/208/433/2084336019-5a65972413011_articlex"><br></center>
+
+
 
       
     </div>
@@ -664,8 +628,8 @@ console.log(b.bang); // 123
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/22/变量的解构赋值/" rel="next" title="变量的解构赋值">
-                <i class="fa fa-chevron-left"></i> 变量的解构赋值
+              <a href="/2018/10/24/cordova基础/" rel="next" title="Cordova之创建APP">
+                <i class="fa fa-chevron-left"></i> Cordova之创建APP
               </a>
             
           </div>
@@ -673,10 +637,6 @@ console.log(b.bang); // 123
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/10/23/原型链/" rel="prev" title="原型链(—)">
-                原型链(—) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -691,10 +651,10 @@ console.log(b.bang); // 123
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2018/10/23/单例模式/"
-     data-title="单例模式"
+        <div class="ds-share flat" data-thread-key="2018/10/29/进程与线程/"
+     data-title="从浏览器多进程到JS单线程，JS运行机制梳理(转载)"
      data-content=""
-     data-url="http://www.skyshu.com/2018/10/23/单例模式/">
+     data-url="http://www.skyshu.com/2018/10/29/进程与线程/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -721,8 +681,8 @@ console.log(b.bang); // 123
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2018/10/23/单例模式/"
-           data-title="单例模式" data-url="http://www.skyshu.com/2018/10/23/单例模式/">
+      <div class="ds-thread" data-thread-key="2018/10/29/进程与线程/"
+           data-title="从浏览器多进程到JS单线程，JS运行机制梳理(转载)" data-url="http://www.skyshu.com/2018/10/29/进程与线程/">
       </div>
     
   </div>
