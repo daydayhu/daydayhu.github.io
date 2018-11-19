@@ -4,6 +4,174 @@
   
     
     <entry>
+      <title><![CDATA[webpack学习（—）]]></title>
+      <url>http://www.skyshu.com/2018/11/19/webpack/</url>
+      <content type="html"><![CDATA[<p><strong>1.概念：</strong><br>Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。本质上，webpack 是一个现代 JavaScript 应用程序的<strong>静态模块打包器</strong>(module bundler)。<strong>当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。</strong></p>
+<p><strong>2.四个核心：</strong></p>
+<ul>
+<li>入口(entry)</li>
+<li>输出(output)</li>
+<li>loader</li>
+<li>插件(plugins)</li>
+</ul>
+<p><strong>入口(entry)</strong></p>
+<p>入口起点(entry point)指示 webpack 应该使用哪个模块，来作为构建其内部依赖图的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的。每个依赖项随即被处理，最后输出到称之为 <strong>bundles</strong> 的文件中。</p>
+<p>可以通过在 webpack 配置中配置 entry 属性，来指定一个入口起点（或多个入口起点）。默认值为 ./src。</p>
+<p>在webpack.config.js文件中配置入口文件：</p>
+<pre><code>module.exports = {
+  entry: &apos;./path/to/my/entry/file.js&apos;
+}
+</code></pre><p><strong>出口(output)</strong></p>
+<p>output 属性告诉 webpack 在哪里输出它所创建的 bundles，以及如何命名这些文件，默认值为 ./dist。基本上，整个应用程序结构，都会被编译到你指定的输出路径的文件夹中。你可以通过在配置中指定一个 output 字段，来配置这些处理过程：</p>
+<p>在webpack.config.js文件中配置出口文件：</p>
+<p>onst path = require(‘path’);</p>
+<pre><code>module.exports = {
+  entry: &apos;./path/to/my/entry/file.js&apos;,
+  output: {
+    path: path.resolve(__dirname, &apos;dist&apos;),
+    filename: &apos;my-first-webpack.bundle.js&apos;
+  }
+};
+</code></pre><p><strong>loader</strong></p>
+<p>loader 让 webpack 能够去处理那些非 JavaScript 文件（webpack 自身只理解 JavaScript）。loader 可以将所有类型的文件转换为 webpack 能够处理的有效模块，然后你就可以利用 webpack 的打包能力，对它们进行处理。</p>
+<p>在更高层面，在 webpack 的配置中 loader 有两个目标：</p>
+<p>test 属性，用于标识出应该被对应的 loader 进行转换的某个或某些文件。（目标文件）<br>use 属性，表示进行转换时，应该使用哪个 loader。（所使用加载器）</p>
+<pre><code>在webpack.config.js文件中配置loader：
+
+const path = require(&apos;path&apos;);
+
+const config = {
+  output: {
+    filename: &apos;my-first-webpack.bundle.js&apos;
+  },
+  module: {
+    rules: [
+      { test: /\.txt$/, use: &apos;raw-loader&apos; }
+    ]
+  }
+};
+
+module.exports = config;
+</code></pre><p>以上配置中，对一个单独的 module 对象定义了 rules 属性，里面包含两个必须属性：test 和 use。这告诉 webpack 编译器(compiler) 如下信息：</p>
+<blockquote>
+<p>“嘿，webpack 编译器，当你碰到「在 require()/import 语句中被解析为 ‘.txt’ 的路径」时，在你对它打包之前，先使用 raw-loader 转换一下。”</p>
+</blockquote>
+<p><strong>插件(plugins)</strong></p>
+<p>loader 被用于转换某些类型的模块，而插件则可以用于执行范围更广的任务。插件的范围包括，从打包优化和压缩，一直到重新定义环境中的变量。插件接口功能极其强大，可以用来处理各种各样的任务。</p>
+<p>想要使用一个插件，你只需要 require() 它，然后把它添加到 plugins 数组中。多数插件可以通过选项(option)自定义。你也可以在一个配置文件中因为不同目的而多次使用同一个插件，这时需要通过使用 new 操作符来创建它的一个实例。</p>
+<p>在webpack.config.js文件中配置plugins：</p>
+<pre><code>const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;); // 通过 npm 安装
+const webpack = require(&apos;webpack&apos;); // 用于访问内置插件
+
+const config = {
+  module: {
+    rules: [
+      { test: /\.txt$/, use: &apos;raw-loader&apos; }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({template: &apos;./src/index.html&apos;})
+  ]
+};
+
+module.exports = config;
+</code></pre><p><strong>3.模式</strong></p>
+<p>项目开发一般基于两种模式，<strong>开发者模式(development</strong>)和<strong>生产模式(production)</strong>，在webpack中可以通过设置mode 参数，启用相应模式下的 webpack 内置的优化。如下：</p>
+<pre><code>module.exports = {
+  mode: &apos;production&apos;
+};
+</code></pre><p><strong>4.demo实例</strong></p>
+<p><a href="https://github.com/ruanyf/webpack-demos#demo01-entry-file-source" target="_blank" rel="external">demo</a> 来自阮一峰github提供，一共15个。</p>
+<p><strong>demo01: 入口文件</strong></p>
+<p>入口文件main.js:</p>
+<pre><code>document.write(&apos;&lt;h1&gt;Hello World&lt;/h1&gt;&apos;);
+</code></pre><p>index.html文件：</p>
+<pre><code>&lt;html&gt;
+  &lt;body&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;bundle.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>webpack.config.js文件配置：</p>
+<pre><code>module.exports = {
+  entry: &apos;./main.js&apos;,
+  output: {
+    filename: &apos;bundle.js&apos;
+  }
+};
+</code></pre><p>最终构建–出口文件bundle.js。运行webpack-dev-server/npm run dev(基于package.json文件)</p>
+<pre><code>&quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;webpack-dev-server --open&quot;,
+    &quot;build&quot;: &quot;webpack -p&quot;
+ },
+</code></pre><p>执行完成，文档输入：Hello World。</p>
+<p><strong>demo02: 多入口文件</strong></p>
+<p>多入口文件是合法的，它通常被应用于<strong>一个多页应用程序</strong></p>
+<p>入口文件1, main1.js:</p>
+<pre><code>document.write(&apos;&lt;h1&gt;Hello World&lt;/h1&gt;&apos;);
+</code></pre><p>入口文件2, main2.js:</p>
+<pre><code>document.write(&apos;&lt;h1&gt;Hello Webpack&lt;/h1&gt;&apos;);
+</code></pre><p>index.html文件：</p>
+<pre><code>&lt;html&gt;
+  &lt;body&gt;
+    &lt;script src=&quot;bundle1.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;bundle2.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>webpack.config.js文件配置：</p>
+<pre><code>module.exports = {
+  entry: {
+    bundle1: &apos;./main1.js&apos;,
+    bundle2: &apos;./main2.js&apos;
+  },
+  output: {
+    filename: &apos;[name].js&apos;
+  }
+};
+</code></pre><p>最终构建–多个出口文件bundle1.js、bundle2.js。<br>执行完成，文档输入：Hello World、Hello Webpack。</p>
+<p><strong>demo03: Babel-loader</strong></p>
+<p>loaders（加载器）是可以转换您的应用程序资源（更多信息）文件的一个预处理器，例如Babel-loader可以将JSX / ES6文件转换为JS文件。官方文档有一个完整的loaders（加载器） ）列表。</p>
+<p>入口文件main.jsx，是一个JSX文件。</p>
+<pre><code>const React = require(&apos;react&apos;);
+const ReactDOM = require(&apos;react-dom&apos;);
+
+ReactDOM.render(
+  &lt;h1&gt;Hello, world!&lt;/h1&gt;,
+  document.querySelector(&apos;#wrapper&apos;)
+);
+</code></pre><p>index.html文件：</p>
+<pre><code>&lt;html&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;wrapper&quot;&gt;&lt;/div&gt;
+    &lt;script src=&quot;bundle.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>webpack.config.js文件配置：</p>
+<pre><code>module.exports = {
+  entry: &apos;./main.jsx&apos;,
+  output: {
+    filename: &apos;bundle.js&apos;
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: &apos;babel-loader&apos;,
+          options: {
+            presets: [&apos;es2015&apos;, &apos;react&apos;]
+          }
+        }
+      }
+    ]
+  }
+};
+</code></pre><p>上面的片段使用babel-loaderBabel的预设插件babel-preset-es2015和babel-preset-react来转换ES6和React。</p>
+<p><strong>demo04： CSS-loader</strong></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[HTML、XML、XHTML区别]]></title>
       <url>http://www.skyshu.com/2018/11/16/html_xml_xhtml%E5%8C%BA%E5%88%AB/</url>
       <content type="html"><![CDATA[<p>再说HTML、XML、XHTML区别之前，先了解一下其历史</p>

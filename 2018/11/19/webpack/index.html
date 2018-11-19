@@ -84,49 +84,16 @@
 
 
 
-<meta name="description" content="Document
-    
-    /* 标签样式初始化 */
-		*{
-      padding: 0;
-      margin: 0;
-    }
-		a:hover{text-decoration:none;}
-      .logo{
-        font-size: 20px;
-        color: #f14e42;
-        float">
-<meta property="og:type" content="website">
-<meta property="og:title" content="DDB Space">
-<meta property="og:url" content="http://www.skyshu.com/about/index.html">
+<meta name="description" content="1.概念：Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack学习（—）">
+<meta property="og:url" content="http://www.skyshu.com/2018/11/19/webpack/index.html">
 <meta property="og:site_name" content="DDB Space">
-<meta property="og:description" content="Document
-    
-    /* 标签样式初始化 */
-		*{
-      padding: 0;
-      margin: 0;
-    }
-		a:hover{text-decoration:none;}
-      .logo{
-        font-size: 20px;
-        color: #f14e42;
-        float">
-<meta property="og:updated_time" content="2018-10-22T10:35:06.861Z">
+<meta property="og:description" content="1.概念：Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有">
+<meta property="og:updated_time" content="2018-11-19T10:34:13.683Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DDB Space">
-<meta name="twitter:description" content="Document
-    
-    /* 标签样式初始化 */
-		*{
-      padding: 0;
-      margin: 0;
-    }
-		a:hover{text-decoration:none;}
-      .logo{
-        font-size: 20px;
-        color: #f14e42;
-        float">
+<meta name="twitter:title" content="webpack学习（—）">
+<meta name="twitter:description" content="1.概念：Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有">
 
 
 
@@ -154,19 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://www.skyshu.com/about/"/>
+  <link rel="canonical" href="http://www.skyshu.com/2018/11/19/webpack/"/>
 
 
 
 
 
-  <title>
-  
-
-  
-     | DDB Space
-  
-</title>
+  <title> webpack学习（—） | DDB Space </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -187,7 +148,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -321,291 +282,357 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h2 class="post-title" itemprop="name headline"></h2>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/11/19/webpack/">
 
-</header>
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="daydaybook">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/small/005uY5V3gw1f9p51pmzakj3064064q2s.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="DDB Space">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="DDB Space" src="">
+    </span>
+  </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                webpack学习（—）
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-19T18:14:52+08:00">
+              2018-11-19
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2018-11-19T18:34:13+08:00">
+              2018-11-19
+            </time>
+
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/11/19/webpack/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/11/19/webpack/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
-      <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Document</title>
-    <style media="screen" text="text/css">
-    /* 标签样式初始化 */
-		*{
-      padding: 0;
-      margin: 0;
-    }
-		a:hover{text-decoration:none;}
-      .logo{
-        font-size: 20px;
-        color: #f14e42;
-        float: left;
-      }
-      .websitelink{
-        font-size: 20px;
-        color: #999999;
-        /*vertical-align:sub;*/
-      }
-      .nav{
-        /*margin-top: -100px;*/
-        font-size: 14px;
-        color: #999999;
-        float: right;
-        margin-left: 40px;
-        transition: all 0.15s linear;
-      }
-      .nav:hover{
-        color: #6bc5b2;
-        /*color: black;*/
-      }
-      .top{
-        max-width: 960px;
-        margin:0 auto;
-        padding-bottom: 30px;
-        margin-top: -50px;
-        /*background-color: cyan;*/
-      }
-      /*====================================*/
-      .banner{
-        background-color: #6bc5d2;
-      }
-      .typographic{
-        font-size: 200px;
-        color: #FFFFFF;
-        letter-spacing: -6px;/*字母间隙*/
-        margin-top: -100px;
-        display: inline-block;
-      }
-      .slogan{
-        margin-top: -50px;
-        text-align: center;
-        font-size: 36px;
-        color: #FFFFFF;
-      }
-      .introduction{
-        text-align: right;
-        color: #177c8a;
-        margin-top: 50px;
 
-      }
-      .call{
-        font-size: 18px;
-        color: white;
-        border: solid 1px #FFFFFF;
-        border-radius: 5px;
-        padding: 10px 30px;
-        display: inline-block;
-        margin-top: 30px;
-      }
-      .call:hover{
-        background: rgba(255, 255, 255, 0.2);
-      }
-      .pometitle{
-        color: #f14e42;
-        /*width: 300px;*/
-        font-size: 24px;
-        margin: 0 auto;
-        margin-bottom: 30px;
 
-      }
-      .pomecontent{
-        color: #6f6f70;
-        line-height: 45px;
-        text-align: left;
-        display: inline-block;
-        font-size: 20px;
-      }
-      .visiontitle{
-        color: #6f6f70;
-        font-size: 24px;
-        margin-bottom: 8px;
-        margin-top: 0px;
-        text-align: left;
-      }
-      /*.visioncontent{
-        color: #6f6f70;
-        line-height: 25px;
-        text-align: left;
-      }*/
-      .container {
-        max-width: 960px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .contentblock{
-        text-align: center;
-        padding-top: 20px;
-        border-bottom: 1px solid #e5e5e5;
-        /*padding-bottom: 60px;*/
-        min-height: 230px;
-        /*margin-bottom: 20px;*/
-      }
-      .photo{
-        width: 240px;
-        height: 300px;
-        float: left;
-        padding-right: 40px;
-      }
-      .contactblock{
-        text-align: center;
-        /*padding-top: 60px;*/
-        padding-bottom: 10px;
-      }
-      .contacttitle{
-        font-size: 24px;
-        color: #6f6f70;
-      }
-      .email{
-        font-size: 18px;
-        background-color: #6bc5d2;
-        padding: 10px 40px;
-        border-radius: 5px;
-        margin-top: 30px;
-        display: inline-block;
-        color: white;
-      }
-      .email:hover{
-        background: #73d4e2;
-      }
-      .footer{
-        background: #f3f3f3;
-        padding: 35px 0;
-        text-align: center;
-        border-top: 1px solid #e3e3e3;
-      }
-      .footercontent{
-        color: #bfbfbf;
-      }
-      ul{
-        font-size: 20px;
-        text-align: left;
-        margin-bottom: 30px;
-        /*background: blue;*/
-      }
-      li{
-        line-height: 45px;
-      }
-      .question{
-        margin-top: 20px;
-        text-indent: 40px;
-        font-size: 20px;
-        text-align: left;
-      }
-      .div_question{
-        padding-top: 30px;
-        border-bottom: solid 1px #e3e3e3;
-        margin-bottom: 50px;
-      }
-      @media(max-width:767px){
-        .typographic{
-          display: none;
-        }
-        .container{
-          text-align: center;
-        }
-        .photo{
-          display: none;
-        }
-        .visiontitle{
-          text-align: center;
-        }
-        .websitelink{
-          display: none;
-        }
-        .logo{
-          float: none;
-          text-align: center;
-          padding-bottom: 20px;
-        }
-        .nav{
-            float: none;
-            margin-left: 20px;
-        }
-        .top{
-          text-align: center;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- 标题栏 -->
-    <div class="top">
-      <h1 class="logo">课后帮</h1>
-      <span class="websitelink">
-        daydaybook
-      </span>
+    <div class="post-body" itemprop="articleBody">
 
-      <a class="nav" href="#">邮件联系</a>
-      <a class="nav" href="#">愿景</a>
-      <a class="nav" href="#">关于自己</a>
+      
+      
+
+      
+        <p><strong>1.概念：</strong><br>Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。本质上，webpack 是一个现代 JavaScript 应用程序的<strong>静态模块打包器</strong>(module bundler)。<strong>当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。</strong></p>
+<p><strong>2.四个核心：</strong></p>
+<ul>
+<li>入口(entry)</li>
+<li>输出(output)</li>
+<li>loader</li>
+<li>插件(plugins)</li>
+</ul>
+<p><strong>入口(entry)</strong></p>
+<p>入口起点(entry point)指示 webpack 应该使用哪个模块，来作为构建其内部依赖图的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的。每个依赖项随即被处理，最后输出到称之为 <strong>bundles</strong> 的文件中。</p>
+<p>可以通过在 webpack 配置中配置 entry 属性，来指定一个入口起点（或多个入口起点）。默认值为 ./src。</p>
+<p>在webpack.config.js文件中配置入口文件：</p>
+<pre><code>module.exports = {
+  entry: &apos;./path/to/my/entry/file.js&apos;
+}
+</code></pre><p><strong>出口(output)</strong></p>
+<p>output 属性告诉 webpack 在哪里输出它所创建的 bundles，以及如何命名这些文件，默认值为 ./dist。基本上，整个应用程序结构，都会被编译到你指定的输出路径的文件夹中。你可以通过在配置中指定一个 output 字段，来配置这些处理过程：</p>
+<p>在webpack.config.js文件中配置出口文件：</p>
+<p>onst path = require(‘path’);</p>
+<pre><code>module.exports = {
+  entry: &apos;./path/to/my/entry/file.js&apos;,
+  output: {
+    path: path.resolve(__dirname, &apos;dist&apos;),
+    filename: &apos;my-first-webpack.bundle.js&apos;
+  }
+};
+</code></pre><p><strong>loader</strong></p>
+<p>loader 让 webpack 能够去处理那些非 JavaScript 文件（webpack 自身只理解 JavaScript）。loader 可以将所有类型的文件转换为 webpack 能够处理的有效模块，然后你就可以利用 webpack 的打包能力，对它们进行处理。</p>
+<p>在更高层面，在 webpack 的配置中 loader 有两个目标：</p>
+<p>test 属性，用于标识出应该被对应的 loader 进行转换的某个或某些文件。（目标文件）<br>use 属性，表示进行转换时，应该使用哪个 loader。（所使用加载器）</p>
+<pre><code>在webpack.config.js文件中配置loader：
+
+const path = require(&apos;path&apos;);
+
+const config = {
+  output: {
+    filename: &apos;my-first-webpack.bundle.js&apos;
+  },
+  module: {
+    rules: [
+      { test: /\.txt$/, use: &apos;raw-loader&apos; }
+    ]
+  }
+};
+
+module.exports = config;
+</code></pre><p>以上配置中，对一个单独的 module 对象定义了 rules 属性，里面包含两个必须属性：test 和 use。这告诉 webpack 编译器(compiler) 如下信息：</p>
+<blockquote>
+<p>“嘿，webpack 编译器，当你碰到「在 require()/import 语句中被解析为 ‘.txt’ 的路径」时，在你对它打包之前，先使用 raw-loader 转换一下。”</p>
+</blockquote>
+<p><strong>插件(plugins)</strong></p>
+<p>loader 被用于转换某些类型的模块，而插件则可以用于执行范围更广的任务。插件的范围包括，从打包优化和压缩，一直到重新定义环境中的变量。插件接口功能极其强大，可以用来处理各种各样的任务。</p>
+<p>想要使用一个插件，你只需要 require() 它，然后把它添加到 plugins 数组中。多数插件可以通过选项(option)自定义。你也可以在一个配置文件中因为不同目的而多次使用同一个插件，这时需要通过使用 new 操作符来创建它的一个实例。</p>
+<p>在webpack.config.js文件中配置plugins：</p>
+<pre><code>const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;); // 通过 npm 安装
+const webpack = require(&apos;webpack&apos;); // 用于访问内置插件
+
+const config = {
+  module: {
+    rules: [
+      { test: /\.txt$/, use: &apos;raw-loader&apos; }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({template: &apos;./src/index.html&apos;})
+  ]
+};
+
+module.exports = config;
+</code></pre><p><strong>3.模式</strong></p>
+<p>项目开发一般基于两种模式，<strong>开发者模式(development</strong>)和<strong>生产模式(production)</strong>，在webpack中可以通过设置mode 参数，启用相应模式下的 webpack 内置的优化。如下：</p>
+<pre><code>module.exports = {
+  mode: &apos;production&apos;
+};
+</code></pre><p><strong>4.demo实例</strong></p>
+<p><a href="https://github.com/ruanyf/webpack-demos#demo01-entry-file-source" target="_blank" rel="external">demo</a> 来自阮一峰github提供，一共15个。</p>
+<p><strong>demo01: 入口文件</strong></p>
+<p>入口文件main.js:</p>
+<pre><code>document.write(&apos;&lt;h1&gt;Hello World&lt;/h1&gt;&apos;);
+</code></pre><p>index.html文件：</p>
+<pre><code>&lt;html&gt;
+  &lt;body&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;bundle.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>webpack.config.js文件配置：</p>
+<pre><code>module.exports = {
+  entry: &apos;./main.js&apos;,
+  output: {
+    filename: &apos;bundle.js&apos;
+  }
+};
+</code></pre><p>最终构建–出口文件bundle.js。运行webpack-dev-server/npm run dev(基于package.json文件)</p>
+<pre><code>&quot;scripts&quot;: {
+    &quot;dev&quot;: &quot;webpack-dev-server --open&quot;,
+    &quot;build&quot;: &quot;webpack -p&quot;
+ },
+</code></pre><p>执行完成，文档输入：Hello World。</p>
+<p><strong>demo02: 多入口文件</strong></p>
+<p>多入口文件是合法的，它通常被应用于<strong>一个多页应用程序</strong></p>
+<p>入口文件1, main1.js:</p>
+<pre><code>document.write(&apos;&lt;h1&gt;Hello World&lt;/h1&gt;&apos;);
+</code></pre><p>入口文件2, main2.js:</p>
+<pre><code>document.write(&apos;&lt;h1&gt;Hello Webpack&lt;/h1&gt;&apos;);
+</code></pre><p>index.html文件：</p>
+<pre><code>&lt;html&gt;
+  &lt;body&gt;
+    &lt;script src=&quot;bundle1.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;bundle2.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>webpack.config.js文件配置：</p>
+<pre><code>module.exports = {
+  entry: {
+    bundle1: &apos;./main1.js&apos;,
+    bundle2: &apos;./main2.js&apos;
+  },
+  output: {
+    filename: &apos;[name].js&apos;
+  }
+};
+</code></pre><p>最终构建–多个出口文件bundle1.js、bundle2.js。<br>执行完成，文档输入：Hello World、Hello Webpack。</p>
+<p><strong>demo03: Babel-loader</strong></p>
+<p>loaders（加载器）是可以转换您的应用程序资源（更多信息）文件的一个预处理器，例如Babel-loader可以将JSX / ES6文件转换为JS文件。官方文档有一个完整的loaders（加载器） ）列表。</p>
+<p>入口文件main.jsx，是一个JSX文件。</p>
+<pre><code>const React = require(&apos;react&apos;);
+const ReactDOM = require(&apos;react-dom&apos;);
+
+ReactDOM.render(
+  &lt;h1&gt;Hello, world!&lt;/h1&gt;,
+  document.querySelector(&apos;#wrapper&apos;)
+);
+</code></pre><p>index.html文件：</p>
+<pre><code>&lt;html&gt;
+  &lt;body&gt;
+    &lt;div id=&quot;wrapper&quot;&gt;&lt;/div&gt;
+    &lt;script src=&quot;bundle.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>webpack.config.js文件配置：</p>
+<pre><code>module.exports = {
+  entry: &apos;./main.jsx&apos;,
+  output: {
+    filename: &apos;bundle.js&apos;
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: &apos;babel-loader&apos;,
+          options: {
+            presets: [&apos;es2015&apos;, &apos;react&apos;]
+          }
+        }
+      }
+    ]
+  }
+};
+</code></pre><p>上面的片段使用babel-loaderBabel的预设插件babel-preset-es2015和babel-preset-react来转换ES6和React。</p>
+<p><strong>demo04： CSS-loader</strong></p>
+
+      
     </div>
-    <!-- 广告栏 -->
-    <div class="banner">
-      <div class="container">
-        <span class="typographic">DDB</span>
-        <h2 class="slogan">个人简介</h2>
-        <p class="introduction">
-          以人为镜,可以明得失！以代码为镜，可以通逻辑！
-        </p>
-      </div>
-    </div>
-    <!-- 这里是诗的开始 -->
-    <div id="crazy" class="container contentblock">
-      <h2 class="pometitle">向生活致敬</h2>
-      <p class="pomecontent">
-        寄蜉蝣于天地，渺沧海之一粟。 <br>
-        哀吾生之须臾，羡长江之无穷。 <br>
-        挟飞仙以遨游，抱明月而长终。 <br>
-        知不可乎骤得，托遗响于悲风。 <br>
-        ...<br>
-        盖将自其变者而观之，则天地曾不能以一瞬； <br>
-        自其不变者而观之，则物与我皆无尽也，而又何羡乎！ <br>
-        且夫天地之间，物各有主，苟非吾之所有，虽一毫而莫取。 <br>
-        唯江上之清风，与山间之明月， <br>
-        耳得之而为声，目遇之而成色， <br>
-        取之无禁，用之不竭，是造物者之无尽藏也，而吾与子之所共适。 <br>
-      </p>
-    </div>
-    <!-- 愿景开始 -->
-     <!--<div class="container contentblock">-->
-        <!--<img class="photo" src="http://ww1.sinaimg.cn/mw690/005uY5V3gw1f9w3j4mq7ij31400zkgxc.jpg" alt="图片" />-->
-        <!--<h2 class="visiontitle">介绍</h2>-->
-        <!--<ul>-->
-          <!--<li>性别:男</li>-->
-          <!--<li>年龄:25</li>-->
-          <!--<li style="display: none">星座:射手</li>-->
-          <!--<li style="display: none">爱好:物理(参考系)、旅行、乒乓、台球、小说、电影...</li>-->
-          <!--<li style="display: none">性格:</li>-->
-        <!--</ul>-->
 
-     <!--</div>-->
-     <!--<div class="container div_question">-->
-       <!--<h1>每日一题</h1>-->
-       <!--<h3>不解决问题 只是问题的搬运工</h3>-->
-       <!--<p class="question">-->
-         <!--老王是卖鞋的，进价30元，亏本卖20元，顾客来买鞋给了张50的，老王没零钱，于是找邻居换了50元，事后邻居发现是假的，于是老王又赔了邻居50元，请问老王一共赔了多少钱？-->
-       <!--</p>-->
-     <!--</div>-->
-     <!-- 邮件开始 -->
-     <div class="container contactblock">
-       <h2 class="contacttitle">如果你对我的博客感兴趣</h2>
-       <a class="email" href="mailto:why1wm@163.com" target="_blank" rel="external">邮件联系</a>
-     </div>
-     <!-- 页尾开始 -->
-     <div class="footer container">
-       <span class="footercontent">个人主页 day day book</span>
-     </div>
-  </body>
-</html>
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://ww1.sinaimg.cn/small/005uY5V3gw1f9peq78ce3j308c08cwfm.jpg" alt="daydaybook wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫，用手机访问本站</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ww1.sinaimg.cn/small/005uY5V3gw1f9pf72npf0j30gd0gfgot.jpg" alt="daydaybook Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+    
+      
 
     
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/16/html_xml_xhtml区别/" rel="next" title="HTML、XML、XHTML区别">
+                <i class="fa fa-chevron-left"></i> HTML、XML、XHTML区别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2018/11/19/webpack/"
+     data-title="webpack学习（—）"
+     data-content=""
+     data-url="http://www.skyshu.com/2018/11/19/webpack/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
   </div>
 
 
@@ -616,8 +643,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="about/index.html"
-           data-title="" data-url="http://www.skyshu.com/about/index.html">
+      <div class="ds-thread" data-thread-key="2018/11/19/webpack/"
+           data-title="webpack学习（—）" data-url="http://www.skyshu.com/2018/11/19/webpack/">
       </div>
     
   </div>
@@ -833,6 +860,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
