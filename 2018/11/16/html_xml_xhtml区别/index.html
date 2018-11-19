@@ -1,0 +1,1001 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="再说HTML、XML、XHTML区别之前，先了解一下其历史
+1.历史
+数据标记的需求起源于电子数据格式化。早期的电子数据格式化主要关注的是数据应该如何被显示而不是数据的文档结构和含义。Troff(UNIX下的文档资料排版、编辑和格式化程序)和TEX(一种电子排版系统)就是两种早期的格式化语言，在格式化打印文档方面取得了很多成果，但是缺少任何关于结构方面的功能。因此这些文档只局限于屏幕显示和硬拷贝打">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML、XML、XHTML区别">
+<meta property="og:url" content="http://www.skyshu.com/2018/11/16/html_xml_xhtml区别/index.html">
+<meta property="og:site_name" content="DDB Space">
+<meta property="og:description" content="再说HTML、XML、XHTML区别之前，先了解一下其历史
+1.历史
+数据标记的需求起源于电子数据格式化。早期的电子数据格式化主要关注的是数据应该如何被显示而不是数据的文档结构和含义。Troff(UNIX下的文档资料排版、编辑和格式化程序)和TEX(一种电子排版系统)就是两种早期的格式化语言，在格式化打印文档方面取得了很多成果，但是缺少任何关于结构方面的功能。因此这些文档只局限于屏幕显示和硬拷贝打">
+<meta property="og:image" content="https://wiki.mbalib.com/w/images/e/e4/SGML%E6%A0%87%E5%87%86%E4%BD%93%E7%B3%BB.jpg">
+<meta property="og:updated_time" content="2018-11-19T03:56:40.772Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML、XML、XHTML区别">
+<meta name="twitter:description" content="再说HTML、XML、XHTML区别之前，先了解一下其历史
+1.历史
+数据标记的需求起源于电子数据格式化。早期的电子数据格式化主要关注的是数据应该如何被显示而不是数据的文档结构和含义。Troff(UNIX下的文档资料排版、编辑和格式化程序)和TEX(一种电子排版系统)就是两种早期的格式化语言，在格式化打印文档方面取得了很多成果，但是缺少任何关于结构方面的功能。因此这些文档只局限于屏幕显示和硬拷贝打">
+<meta name="twitter:image" content="https://wiki.mbalib.com/w/images/e/e4/SGML%E6%A0%87%E5%87%86%E4%BD%93%E7%B3%BB.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.skyshu.com/2018/11/16/html_xml_xhtml区别/"/>
+
+
+
+
+
+  <title> HTML、XML、XHTML区别 | DDB Space </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">DDB Space</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">另外半只脚印</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/11/16/html_xml_xhtml区别/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="daydaybook">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww3.sinaimg.cn/small/005uY5V3gw1f9p51pmzakj3064064q2s.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="DDB Space">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="DDB Space" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                HTML、XML、XHTML区别
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-16T16:36:51+08:00">
+              2018-11-16
+            </time>
+
+            &nbsp;|&nbsp;
+
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-check-o"></i>
+            </span>
+            <time title="Post modified" itemprop="dateModified" datetime="2018-11-19T11:56:40+08:00">
+              2018-11-19
+            </time>
+
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/11/16/html_xml_xhtml区别/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/11/16/html_xml_xhtml区别/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>再说HTML、XML、XHTML区别之前，先了解一下其历史</p>
+<p><strong>1.历史</strong></p>
+<p>数据标记的需求起源于电子数据格式化。<strong>早期的电子数据格式化主要关注的是数据应该如何被显示而不是数据的文档结构和含义</strong>。Troff(UNIX下的文档资料排版、编辑和格式化程序)和TEX(一种电子排版系统)就是两种早期的格式化语言，在格式化打印文档方面取得了很多成果，但是缺少任何关于结构方面的功能。因此这些文档只局限于屏幕显示和硬拷贝打印。人们难以编写一个程序对这些文档中的信息进行查找、提取和前后对照，更不能方便地将一个文档中的数据重复用于不同的应用中。</p>
+<p>　　<strong>通用编码(Generic Coding)使用描述性标签取代格式码</strong>，最终解决上述问题。最早认真研究该问题的是<strong>图形通信协会</strong>(Graphic Communications Association，GCA)。<strong>在20世纪60年代末</strong>，图形通信协会(GCA)的Gen Code委员会<strong>研发出一种使用通用标签(Generic Tag)将不同类型的文档装配成由多个部分组成的复合型文档的方法</strong>。</p>
+<p>　　此后，在该方面取得主要进展的是<strong>IBM公司</strong>的一个研发项目：<strong>广义标记语言(Generalized Markup Language，GML)</strong>。由Charles Goldfarb、Edward Mosher和Raymond Lorie三人主持的GML项目旨在提供一个能够在多重信息子系统中使用的文档编码解决方案。因为采用基于内容的标签，由GML编写的文档能够被编辑、格式化以及能够使用不同的程序进行检索。作为一个巨大的技术手册发布者，IBM已经广泛采用了GML，并以此证明了通用编码的生命力。</p>
+<p>　　基于GML的成功，<strong>美国国家标准协会</strong>(American National Standards Institute，ANSI)在信息处理方向上建立了一个由Charles Goldfarb领导的项目小组，以研发一个基于GML的文本描述语言标准为目的。GCA的Gen Code委员会也为此项目贡献了力量。自20世纪70年代后期到80年代早期，该委员会发布了工作草案并最终提交了一个工业标准的候选方案(GCA 101-1983)，该候选方案被称为<strong>广义标记语言标准(the Standard Generalized MarkupLanguage，SGML)</strong>。该标准很快就被美国国防部(the U．S． Department of Defense)和美国国内税局(the U．S． Internal Revenue Service)采用。</p>
+<p>　　在随后的几年里，SGML得到了世界上更多国家的认可。自1985年以来，世界上的SGML用户群体开始在英国集会。他们协同GCA一起将SGML在欧洲和北美进行推广，将SGML拓展到更广阔的领域。美国出版协会(the Association of American Publishers，AAP)的电子手稿项目(the Electronic Manuscript Project)将SGML标准应用于编制通用文档，如书籍和期刊等。美国国防部为其计算机辅助采集和后勤支持(Computer-Aided Acquisition and Logistic Support，CALS)小组开发基于SGML的应用程序，其中包括一种流行的表格格式文档类型称为CALS表格。<strong>鉴于SGML的成功，国际标准化组织(the International Standards Organization，ISO)采纳了SGML标准(ISO 8879：1986)。</strong></p>
+<p>　　SGML被设计为一种灵活的，且无所不包的编码方案。和XML一样，SGML基本上是一个为开发专用化标记语言的工具箱。<strong>但是SGML比起XML来大得多，它具有更加灵活的语法以及更多的深奥参数。SGML过于灵活了，以至于开发一个能处理SGML的程序过于复杂和昂贵，只有那些能够承担得起软件开发以及SGML环境维护所需开销的大型机构才能获得SGML带来的好处</strong>。</p>
+<p>　　在20世纪90年代早期，由<strong>欧洲粒子物理研究所的雇员Tim Berners-Lee和Anders Berglund发布了超文本标记语言</strong>，将通用编码革命性地引入到了公共大众的视野中。CERN早在1980开始致力于对SGML的研究和推广，当时就由Anders Berglund开发出一种出版系统用来测试SGML。<strong>随后Tim Berners-Lee和Anders Berglund提出一种支持超级文本的SGML文档，这种文档比SGML文档精简和有效。为该超级文本标记语言编写相应软件更为容易，且更容易对文档进行编码。据此，HTMI。得以由实验室应用迅速推广到全世界。HTML的出现极大地推动了世界范围内的互联网的发展，万维网就是一个主要成果。</strong></p>
+<p>　　<strong>然而，HTML在某些方面是一种通用编码的倒退</strong>。第一，HTML为了获得精简编码方式的有效性，而抛弃了通用编码的一些基本原则。例如，通用编码要求一个文档类型能用于任何目的，要求用户编码时应重载标签而不是重新定义特殊目的的标签。第二，HTML中的很多标签是纯粹追求显示效果的，这显然与通用编码的初衷相违背。这种简化的结构很难区分文档的开始部分和结束部分。如今采用HTML编码的文档非常依赖纯格式化以致不能被用作其他目的。虽然HTML有着诸多的问题，但是我们不能抹杀它在标记语言的发展过程中为Web的发展带来飞跃所起到的重要作用。至少，HTML使得全世界的人对电子文档化和资源链接充满了兴趣。</p>
+<p>　　<strong>为了回归到理想的通用编码状态，一些人试着改变SGML以适应Web，或者干脆改变Web以适应SGML，不幸的是，这被证实是非常困难的。</strong>SGML是如此的巨大，不可能被塞进小小的Web浏览器中。<strong>所以采用一种更小的，却又能保持SGML通用性的语言是唯一可行的途径，由此，令人兴奋不已的可扩展标记语言诞生了(xml)。</strong></p>
+<p><strong>2.什么是SGML</strong>(Standard Generalized Markup Language，即<strong>标准通用标记语言</strong>)</p>
+<p>该部分内容非重要内容，了解即可</p>
+<p><a href="https://wiki.mbalib.com/wiki/SGML" target="_blank" rel="external">SGML</a>是国际上定义电子文档和内容描述的标准。它源于1969年IBM公司开发的文档描述语言GML，GML主要用来解决不同系统中文档格式不同的问题。后经过多年发展，1986年经ISO批准为国际标准ISO8897，并被称为SGML。</p>
+<p>制定SGML的基本思想是把文档的内容与样式分开。在SGML中，标记分两种：一种用来描述文档显示的样式，称为<strong>程序标记</strong>；另一种用来描述文档中语句的用途，称为<strong>描述标记</strong>。<strong>一个SGML文件通常分三个层次：结构、内容和样式。</strong>结构为组织文档的元素提供框架，内容是信息本身，样式控制内容的显示。</p>
+<p>SGML的平台无关性、结构化、可扩展等特性，使得它使用范围很广，被许多大型公司用来创建和发布信息。</p>
+<p><strong>SGML的构成</strong></p>
+<p>SGML文件本身包含3个部分：</p>
+<ul>
+<li><p>SGML声明(SGML Declaration)。</p>
+</li>
+<li><p>文档类型定义(Document Type Definition，<strong>DTD</strong>)。</p>
+</li>
+<li><p>文档实例(Document Instance)。</p>
+</li>
+</ul>
+<p>其中，SGML声明是用来告诉SGML分析器(SGML Parser)在分析该份文件时，所使用的字符集和文件特性。</p>
+<p>文件类型定义是用来声明该份文件的结构与语法参数，不同的“文件内容”使用不同的“标记”来描述。在这里所谓“标记”(Tag)是指用一特定符号将信息内容中的某一部分加以注记，而此特定符号就称为“标记”。如“＜”及“＞”都是一种标记。当然标记也可以是任何一小段文字。如“＜NAME＞”与“＜／NAME＞”，而“＜NAME＞Iamstudent＜／NAME＞”则是一段加上标记的字串。</p>
+<p>　在SGML标记语言的术语中，“＜keyword”称为起始标记，相对的，“／keyvord＞”则称为结束标记。起始标记与结束标记是否一定要成对，可自行定义，而在起始标记与结束标记两者之间的文字“keyword”称为“元素”。至于文档实例，就是加上标记处理后的文件。</p>
+<p><strong>SGML的优缺点</strong></p>
+<ol>
+<li><p>SGML的优点</p>
+<ul>
+<li><p>高稳定性<br>　　SGML的ISO 8879是国际标准规范，所以可信度相当高，其规范结构也相当的严谨，此外SGML已使用二十几年了，且自1996以来SGML的规范几乎是未曾变更过，所以SGML是相当成熟的一种通用性标记语言。</p>
+</li>
+<li><p>高可携性<br>　　SGML文件可以跨平台使用，如可以在不同的计算机硬件或操作系统上被使用，甚至可以被不同的应用软件来使用，因为SGML是一种高稳定性的国际标准，加上已使用二十几年，所以支持其格式的应用软件与相关数据转换技术就多，所以SGML文件可以在各应用领域中被广泛采用，当然其可携性相对就可以提高。</p>
+</li>
+<li><p>高完整性<br>　　制定SGML时就考虑须满足广泛的使用者，所以其规范制定得相当完整，可以满足不同应用领域使用者的需求，且与SGML搭配使用的家族如HyTime与DSSSL也都是国际标准，如HyTime符合ISO／IEC 10744的标准，主要功能是描述动态文件的一种语言，而DSSSL(Doeument Style Semantic And Specification Language)符合ISO/IEC 10179的标准，其制定目标有两个，一为制定SGML文件显示时的样本形式，另一个是有转换语言的功能。</p>
+</li>
+</ul>
+</li>
+<li><p>SGML的缺点</p>
+<p> 上面提到SGML有高稳定性与完整性的优点，这可使得SGML可以适用在各类应用领域，但这相对的也是SGML致命的缺点。</p>
+<ul>
+<li><p>高复杂性</p>
+<p>　　由于SGML的高度完整性与稳定性，相对的其复杂性也高，这一点可以说是SGML的主要缺陷，如果使用SGML语法规范来制定DTD中的元素(Element)、属性(Attribute)与内容实体(Entity)，可能需要花上数年的时间才能完全了解其中的标准，可见整个SGML系统是过于完善而变成复杂。</p>
+<p>　　不止SGML本身复杂，连同要开发SGML相关软件也变得复杂，就开发SGML剖析器而言，用来检查SGML文件中的控制标记与格式，使用C++来撰写都得发上几万行以上才行咧!</p>
+</li>
+<li><p>费用昂贵</p>
+<p>　　从SGML的高复杂性，其相对衍生出来的就是高费用，先前也提过SGML通常被大企业应用在大量的数据上，在SGML被应用之前必需先制定其文件格式定义DTD，以供使用者能遵循这个DTD中定义的文件结构，但其应用的文件数据通常是复杂的，所以制定该DTD也需花长时间才能完成，所以开发能适用的DTD的费用足相当昂贵的。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>SGML的标准体系</strong></p>
+<p>　SGML标准的体系可分为三个层次：第一层次是元语言标准——SGML标准；第二层次是基础标准，如：文档样式语义与规范语言标准(DSSSL)等，是该体系的基本标准；第三层次是具体的应用标准，如：<strong>Internet上已广泛应用的HTML等标准</strong>。也就是说，在XML标准出现之前，SGML标准已经形成了完善的体系，并有许多建立于其上的应用系统与应用标准。如图所示。</p>
+<p><img src="https://wiki.mbalib.com/w/images/e/e4/SGML%E6%A0%87%E5%87%86%E4%BD%93%E7%B3%BB.jpg" alt=""></p>
+<p><strong>SGML的现实问题</strong></p>
+<p>SGML在其开发之初，是以作为一种规范性的标准为出发点的，因而重视详尽性，而忽视实用性成了它的致命弱点，可以这样说，SGML从来没有在网络上广泛应用过。具体而言：</p>
+<p>　　第一、SGML是一个严格而完整的系统，方便软件应用并不是它的首要任务，所以SGML非常复杂，其复杂程度对于网络上的日常应用简直不可思议；</p>
+<p>　　第二、SGML十分庞大，既不容易学，又不容易使用，在计算机上实现十分困难；</p>
+<p>　　第三、在SGML中有许多语法语义标准，它们既不方便而且消耗昂贵，这导致开发SGML软件非常昂贵。目前比较便宜的SGML软件之一是Adobe Frame Maker，其标准版本价格为850美元，而Adobe Frame Maker+SGML是以1995美元售出的；</p>
+<p>　　第四，种种不足，导致了几个主要的浏览器厂商都明确拒绝支持SGML，这无疑造成了SGML在网上传播的最大障碍。</p>
+<p>　　鉴于以上因素，SGML已明显不适用于网络社会的需要，“如何使SGML能成功地运用于网络?”，这一问题已自然而然地提上了议程。1996年8月，GCA(图形通信协会)召集SGML开发者们举行了一次会议，与会者明确表示SGML在某些方面已经落伍了，这些种种不足已经成为了它广泛传播的障碍，讨论的结果认为有必要考虑怎样修补SGML。</p>
+<p><strong>2.什么是HTML</strong></p>
+<p><strong>超文本标记语言(HTML)起源于标准通用标记语言(SGML)</strong>，由世界上最大的粒子物理研究实验室欧洲核子研究中心CERN(the European Organization for Nuclear Research)于1991年首先提出，是推动Web迅速发展的原动力。在互联网发展的早期，为了在各种网络环境之间、不同文件格式之间进行交流，在SGML基础上，CERN提出了超文本标记语言(Hyper Text Markup Language，HTML)的概念。<strong>HTML是一种用来制作超文本文档的简单标记语言，它定义了一组标记符号(tag)，对文件的内容进行标注，指出内容的输出格式，如字体大小、颜色、背景颜色、表格形式、各部分之间逻辑上的组织等，从而实现了文件格式的标准化。</strong>简单地说，HTMI。文件包含了文档数据和显示样式两部分，其中文档数据是显示在Web浏览器中的数据内容，显示样式则规定了这些内容在浏览器中以何种格式、样子呈现给用户。通过统一使用支持HTMI。的浏览软件，用户可以在任意异构的网络环境中阅读同一个文件，得到相同的显示结果，并可以对文件进行跳跃式阅读，展现了很强的表现力。</p>
+<p><strong>HTML的主要版本和发布时间</strong></p>
+<p>HTMI主要版本和发布时间如下：</p>
+<ol>
+<li><p>HTML2．0，Internet工程任务组中的HTML工作组开发完成了HTML2．0，于1996年发布。</p>
+</li>
+<li><p>HTML3．2，W3C于1997年1月14El将其列为推荐版本，在HTMI2．0标准中添加了诸如字体、表格、Java程序、浮动、上标、下标等特征。</p>
+</li>
+<li><p>HTML4．0，W3C于1997年12月18Et将其列为推荐版本，第二个稍作修正的HTML4．0版本于1998年12月24Et发布。HTML4．0中最重要的特征是引入了样式表CSS技术。</p>
+</li>
+<li><p>HTML4．01，W3C于1999年12月24日将其列为推荐版本，是HTMI4．0的升级版本，它对原版本做出了部分修正。</p>
+</li>
+</ol>
+<p>补充说明：html 4.01基于SGML，需要声明DTD。html5不基于SGML，所以不需要引用DTD。html是SGML的一个应用，xml是简化了SGML并用来取代SGML的，xhtml就是html从SGML专用xml语法的结果。</p>
+<p><strong>3.什么是XML</strong></p>
+<p><strong><a href="https://wiki.mbalib.com/wiki/XML" target="_blank" rel="external">XML</a>(扩展标记语言)是SGML的子集</strong>，其目标是允许普通的SGML在Web上以目前HTML的方式被服务、接收和处理。XML被设计成易于实现，且可在SGML和HTML之间互相操作。后来逐渐用于网络数据的转换和描述。</p>
+<p>XML是一种专门在World Wide Web(www)上传递信息的语言，就像HTML(超文本标记语言)一样(自从Web出现以来，HTML已经成为了创建Web页的标准语言)。</p>
+<p><strong>4.什么是XHTML</strong></p>
+<p><a href="https://en.wikipedia.org/wiki/XHTML" target="_blank" rel="external">XHTML(可扩展超文本标记语言)</a> 是XML标记语言系列的一部分。它反映或扩展了广泛使用的超文本标记语言（HTML）的版本。是一种基于XML的HTML。它提供与HTML相同的功能，但具有与XML文档相同的规则。这些规则处理标记的结构，也是为了将HTML重新格式化为格式良好的XML。</p>
+<p><strong>XHTML版本</strong></p>
+<ul>
+<li><p>XHTML 1.0 是一种SGML定义的HTML语言形式，它具有一些扩展的需求，以便逐渐兼容XML语法。</p>
+</li>
+<li><p>XHTML 1.1是一种用XML定义的，具备XML形式良好(well-formedness)要求的一种HTML语言。</p>
+</li>
+<li><p>XHTML 5代表“HTML 5的XML序列化”，是一种HTML5的XML语法，可以在将DOM树序列化回HTML5时使用，并且必须遵守更加严格的XML规则和名称空间。设计 XHTML 5的目的是为了让机器的阅读或数据交换更容易，或者便于比较两个HTML 5文档。 它是与HTML 5标准一起指定的。</p>
+</li>
+</ul>
+<p><strong>与HTML的区别</strong></p>
+<ul>
+<li>从广义上讲，XML规则要求所有元素都可以通过单独的结束标记或使用自动关闭语法（例如<code>&lt;br/&gt;</code>）来关闭，而HTML语法允许某些元素未被封闭，因为它们总是空的（例如<code>&lt;input&gt;</code>）或它们的结束可以隐含地确定（例如遗漏<code>&lt;p&gt;</code>）。</li>
+<li>XML对于元素和属性名称区分大小写，而HTML则不区分大小写。</li>
+<li>HTML中省略了HTML中的一些速记特征，例如（1）属性最小化，其中可以省略属性值或它们的引用（例如，<code>&lt;option selected&gt;或者&lt;option selected=selected&gt;</code>，在XML中，这必须)。</li>
+<li>关于命名空间和精确解析空格以及某些字符和元素，还有许多其他技术要求。</li>
+<li>解析错误的行为不同。XML中的致命解析错误（例如错误的标记结构）导致文档处理中止。</li>
+</ul>
+<p><strong>5.总结</strong></p>
+<ol>
+<li>最早期的数据标记源于电子数据格式化，主要目的显示数据</li>
+<li>为了脱离这种只可以对文档显示/拷贝打印的局限，可以更灵活的对文档进行操作，开始使用描述性标签取代格式码，<strong>通用编码</strong>开始出现。</li>
+<li>随后有了广义标记语言(GML) -&gt; 广义标记语言标准(<strong>SGML</strong>) -&gt; <strong>国际标准化组织(ISO)采纳SGML标准</strong>(ISO 8879：1986)</li>
+<li>20世纪90年代，为了在各种网络环境之间、不同文件格式之间进行交流，在SGML基础上，产生了html(超文本标记语言)。（在h5之前的html版本是SGML在应用上的一个具体实例，h5不是）。</li>
+<li>然而，HTML在某些方面是一种通用编码的倒退，也具有局限性(编码格式)，为了克服这种局限性，试图回归到通用编码，w3c协会基于SGML创建了xml(可扩展性标记语言)，xml是SGML的子集，为SGML的简化而创建的。</li>
+<li>开发XHTML是为了使HTML更具可扩展性，将HTML重新格式化为格式良好的xml，提高与其他数据格式的互操作性。作为一种合理的过渡。</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+<div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="http://ww1.sinaimg.cn/small/005uY5V3gw1f9peq78ce3j308c08cwfm.jpg" alt="daydaybook wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫，用手机访问本站</div>
+</div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="http://ww1.sinaimg.cn/small/005uY5V3gw1f9pf72npf0j30gd0gfgot.jpg" alt="daydaybook Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+    
+      
+
+    
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/29/进程与线程/" rel="next" title="从浏览器多进程到JS单线程，JS运行机制梳理(转载)">
+                <i class="fa fa-chevron-left"></i> 从浏览器多进程到JS单线程，JS运行机制梳理(转载)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2018/11/16/html_xml_xhtml区别/"
+     data-title="HTML、XML、XHTML区别"
+     data-content=""
+     data-url="http://www.skyshu.com/2018/11/16/html_xml_xhtml区别/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/11/16/html_xml_xhtml区别/"
+           data-title="HTML、XML、XHTML区别" data-url="http://www.skyshu.com/2018/11/16/html_xml_xhtml区别/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww3.sinaimg.cn/small/005uY5V3gw1f9p51pmzakj3064064q2s.jpg"
+               alt="daydaybook" />
+          <p class="site-author-name" itemprop="name">daydaybook</p>
+          <p class="site-description motion-element" itemprop="description">在小白的路上越走越远</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.yinxiang.com/" title="印象笔记" target="_blank">印象笔记</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.jianshu.com/" title="简书" target="_blank">简书</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">daydaybook</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"daydayhu"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="popoverlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".popoverlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
