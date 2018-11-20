@@ -340,7 +340,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2018-11-20T16:56:09+08:00">
+            <time title="Post modified" itemprop="dateModified" datetime="2018-11-20T17:34:45+08:00">
               2018-11-20
             </time>
 
@@ -626,6 +626,72 @@ document.body.appendChild(img2);
 <p>执行完成，结果如下：</p>
 <pre><code>&lt;img src=&quot;data:image/png;base64,iVBOR...uQmCC&quot;&gt;
 &lt;img src=&quot;4853ca667a2b8b8844eb2693ac1b2578.png&quot;&gt;
+</code></pre><p><strong>demo06: CSS Module</strong></p>
+<p>css-loader?modules（查询参数模块）启用CSS模块，它为您的JS模块的CSS提供<strong>本地范围</strong>的CSS。您可以使用:global(selector)（更多信息）将其关闭（即作用全局）。</p>
+<p>入口文件main.js：</p>
+<pre><code>var React = require(&apos;react&apos;);
+var ReactDOM = require(&apos;react-dom&apos;);
+var style = require(&apos;./app.css&apos;);
+
+ReactDOM.render(
+  &lt;div&gt;
+    &lt;h1 className={style.h1}&gt;Hello World&lt;/h1&gt;
+    &lt;h2 className=&quot;h2&quot;&gt;Hello Webpack&lt;/h2&gt;
+  &lt;/div&gt;,
+  document.getElementById(&apos;example&apos;)
+);
+</code></pre><p>css样式文件：</p>
+<pre><code>.h1 {
+  color:red;
+}
+
+:global(.h2) {
+  color: blue;
+}
+</code></pre><p>index.html文件：</p>
+<pre><code>&lt;html&gt;
+&lt;body&gt;
+  &lt;h1 class=&quot;h1&quot;&gt;Hello World&lt;/h1&gt;
+  &lt;h2 class=&quot;h2&quot;&gt;Hello Webpack&lt;/h2&gt;
+  &lt;div id=&quot;example&quot;&gt;&lt;/div&gt;
+  &lt;script src=&quot;./bundle.js&quot;&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>webpack.config.js文件配置：</p>
+<pre><code>module.exports = {
+  entry: &apos;./main.jsx&apos;,
+  output: {
+    filename: &apos;bundle.js&apos;
+  },
+  module: {
+    rules:[
+      {
+        test: /\.js[x]?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: &apos;babel-loader&apos;,
+          options: {
+            presets: [&apos;es2015&apos;, &apos;react&apos;]
+          }
+        }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: &apos;style-loader&apos;
+          },
+          {
+             loader: &apos;css-loader&apos;,
+             options: {
+               modules: true
+             }
+          }
+        ]
+      }
+    ]
+  }
+};
 </code></pre>
           
         
