@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://www.skyshu.com/2018/11/19/webpack/index.html">
 <meta property="og:site_name" content="DDB Space">
 <meta property="og:description" content="1.概念：Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有">
-<meta property="og:updated_time" content="2018-11-19T10:34:13.683Z">
+<meta property="og:updated_time" content="2018-11-20T08:56:09.140Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack学习（—）">
 <meta name="twitter:description" content="1.概念：Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有">
@@ -336,8 +336,8 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2018-11-19T18:34:13+08:00">
-              2018-11-19
+            <time title="Post modified" itemprop="dateModified" datetime="2018-11-20T16:56:09+08:00">
+              2018-11-20
             </time>
 
           </span>
@@ -537,7 +537,90 @@ ReactDOM.render(
 };
 </code></pre><p>上面的片段使用babel-loaderBabel的预设插件babel-preset-es2015和babel-preset-react来转换ES6和React。</p>
 <p><strong>demo04： CSS-loader</strong></p>
+<p>Webpack允许您将CSS包含在JS文件中，然后使用CSS-loader预处理CSS文件。</p>
+<p>入口文件main.js:</p>
+<pre><code>require(&apos;./app.css&apos;);
+</code></pre><p>css样式文件app.css:</p>
+<pre><code>body {
+  background-color: blue;
+}
+</code></pre><p>index.html文件：</p>
+<pre><code>&lt;html&gt;
+  &lt;head&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;bundle.js&quot;&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello World&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>webpack.config.js文件配置：</p>
+<pre><code>module.exports = {
+  entry: &apos;./main.js&apos;,
+  output: {
+    filename: &apos;bundle.js&apos;
+  },
+  module: {
+    rules:[
+      {
+        test: /\.css$/,
+        use: [ &apos;style-loader&apos;, &apos;css-loader&apos; ]
+      },
+    ]
+  }
+};
+</code></pre><p>这里使用两个加载器来转换CSS文件。首先是CSS-loader读取CSS文件，另一个是Style-loader将<code>&lt;style&gt;</code>标签插入HTML页面。</p>
+<p>执行完成，Webpack会将内部样式表插入其中index.html。</p>
+<pre><code>&lt;head&gt;
+  &lt;script type=&quot;text/javascript&quot; src=&quot;bundle.js&quot;&gt;&lt;/script&gt;
+  &lt;style type=&quot;text/css&quot;&gt;
+    body {
+      background-color: blue;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+</code></pre><p><strong>demo05: Image loader</strong></p>
+<p>Webpack还可以在JS文件中包含图像。</p>
+<p>入口文件main.js： </p>
+<pre><code>var img1 = document.createElement(&quot;img&quot;);
+img1.src = require(&quot;./small.png&quot;);
+document.body.appendChild(img1);
 
+var img2 = document.createElement(&quot;img&quot;);
+img2.src = require(&quot;./big.png&quot;);
+document.body.appendChild(img2);
+</code></pre><p>index.html文件：</p>
+<pre><code>&lt;html&gt;
+  &lt;body&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;bundle.js&quot;&gt;&lt;/script&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>webpack.config.js文件配置：</p>
+<pre><code>module.exports = {
+  entry: &apos;./main.js&apos;,
+  output: {
+    filename: &apos;bundle.js&apos;
+  },
+  module: {
+    rules:[
+      {
+        test: /\.(png|jpg)$/,
+        use: [
+          {
+            loader: &apos;url-loader&apos;,
+            options: {
+              limit: 8192
+            }
+          }
+        ]
+      }
+    ]
+  }
+};
+</code></pre><p>url-loader将图像文件转换为<strong><img></strong>标记。如果图像大小小于8192字节，则将其转换为数据URL(base64); 否则，它将转换为普通的URL。</p>
+<p>执行完成，结果如下：</p>
+<pre><code>&lt;img src=&quot;data:image/png;base64,iVBOR...uQmCC&quot;&gt;
+&lt;img src=&quot;4853ca667a2b8b8844eb2693ac1b2578.png&quot;&gt;
+</code></pre>
       
     </div>
 
