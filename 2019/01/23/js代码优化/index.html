@@ -84,16 +84,43 @@
 
 
 
-<meta name="description" content="1.概念：Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有">
+<meta name="description" content="1.变量
+1.1 变量声明可读性
+Bad:
+var yyyymmdstr = moment().format(&amp;apos;YYYY/MM/DD&amp;apos;)
+Good:
+var yearMonthDay = moment().format(&amp;apos;YYYY/MM/DD&amp;apos;)    
+1.2 函数单一 var/let 原则
+指：把函数内部的所有变量，放到顶部声明。
+Good:
+funct">
 <meta property="og:type" content="article">
-<meta property="og:title" content="webpack学习（—）">
-<meta property="og:url" content="http://www.skyshu.com/2018/11/19/webpack/index.html">
+<meta property="og:title" content="js代码的优雅书写(—)">
+<meta property="og:url" content="http://www.skyshu.com/2019/01/23/js代码优化/index.html">
 <meta property="og:site_name" content="DDB Space">
-<meta property="og:description" content="1.概念：Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有">
-<meta property="og:updated_time" content="2018-11-20T09:34:45.412Z">
+<meta property="og:description" content="1.变量
+1.1 变量声明可读性
+Bad:
+var yyyymmdstr = moment().format(&amp;apos;YYYY/MM/DD&amp;apos;)
+Good:
+var yearMonthDay = moment().format(&amp;apos;YYYY/MM/DD&amp;apos;)    
+1.2 函数单一 var/let 原则
+指：把函数内部的所有变量，放到顶部声明。
+Good:
+funct">
+<meta property="og:updated_time" content="2019-01-23T08:31:04.619Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webpack学习（—）">
-<meta name="twitter:description" content="1.概念：Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。本质上，webpack 是一个现代 JavaScript 应用程序的静态模块打包器(module bundler)。当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有">
+<meta name="twitter:title" content="js代码的优雅书写(—)">
+<meta name="twitter:description" content="1.变量
+1.1 变量声明可读性
+Bad:
+var yyyymmdstr = moment().format(&amp;apos;YYYY/MM/DD&amp;apos;)
+Good:
+var yearMonthDay = moment().format(&amp;apos;YYYY/MM/DD&amp;apos;)    
+1.2 函数单一 var/let 原则
+指：把函数内部的所有变量，放到顶部声明。
+Good:
+funct">
 
 
 
@@ -121,13 +148,13 @@
 
 
 
-  <link rel="canonical" href="http://www.skyshu.com/2018/11/19/webpack/"/>
+  <link rel="canonical" href="http://www.skyshu.com/2019/01/23/js代码优化/"/>
 
 
 
 
 
-  <title> webpack学习（—） | DDB Space </title>
+  <title> js代码的优雅书写(—) | DDB Space </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -291,7 +318,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2018/11/19/webpack/">
+  <link itemprop="mainEntityOfPage" href="http://www.skyshu.com/2019/01/23/js代码优化/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="daydaybook">
@@ -315,7 +342,7 @@
             
             
               
-                webpack学习（—）
+                js代码的优雅书写(—)
               
             
           </h1>
@@ -327,8 +354,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-19T18:14:52+08:00">
-              2018-11-19
+            <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-23T16:31:04+08:00">
+              2019-01-23
             </time>
 
             &nbsp;|&nbsp;
@@ -336,8 +363,8 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2018-11-20T17:34:45+08:00">
-              2018-11-20
+            <time title="Post modified" itemprop="dateModified" datetime="2019-01-23T16:31:04+08:00">
+              2019-01-23
             </time>
 
           </span>
@@ -348,8 +375,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2018/11/19/webpack/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/11/19/webpack/" itemprop="commentCount"></span>
+                <a href="/2019/01/23/js代码优化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2019/01/23/js代码优化/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -375,317 +402,430 @@
       
 
       
-        <p><strong>1.概念：</strong><br>Webpack 是一个前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。本质上，webpack 是一个现代 JavaScript 应用程序的<strong>静态模块打包器</strong>(module bundler)。<strong>当 webpack 处理应用程序时，它会递归地构建一个依赖关系图(dependency graph)，其中包含应用程序需要的每个模块，然后将所有这些模块打包成一个或多个 bundle。</strong></p>
-<p><strong>2.四个核心：</strong></p>
+        <p><strong>1.变量</strong></p>
+<p>1.1 变量声明可读性</p>
+<p>Bad:</p>
+<pre><code>var yyyymmdstr = moment().format(&apos;YYYY/MM/DD&apos;)
+</code></pre><p>Good:</p>
+<pre><code>var yearMonthDay = moment().format(&apos;YYYY/MM/DD&apos;)    
+</code></pre><p>1.2 函数单一 var/let 原则</p>
+<p>指：把函数内部的所有变量，放到顶部声明。</p>
+<p>Good:</p>
+<pre><code>function A(){
+     var a = 1,
+         b = 2,
+         c = a + b ;
+}
+</code></pre><p>优点：</p>
 <ul>
-<li>入口(entry)</li>
-<li>输出(output)</li>
-<li>loader</li>
-<li>插件(plugins)</li>
+<li>便于查找函数内部使用的局部变量</li>
+<li>防止变量未定义时就被使用</li>
+<li>防止<strong>变量声明</strong>提升后引发的误解</li>
 </ul>
-<p><strong>入口(entry)</strong></p>
-<p>入口起点(entry point)指示 webpack 应该使用哪个模块，来作为构建其内部依赖图的开始。进入入口起点后，webpack 会找出有哪些模块和库是入口起点（直接和间接）依赖的。每个依赖项随即被处理，最后输出到称之为 <strong>bundles</strong> 的文件中。</p>
-<p>可以通过在 webpack 配置中配置 entry 属性，来指定一个入口起点（或多个入口起点）。默认值为 ./src。</p>
-<p>在webpack.config.js文件中配置入口文件：</p>
-<pre><code>module.exports = {
-  entry: &apos;./path/to/my/entry/file.js&apos;
+<p>Bad: </p>
+<pre><code>var x = 1;
+function A(){
+console.log(x);// undefined
+var x = 2;
+console.log(x);// 2  
+} 
+</code></pre><p>等价于:</p>
+<pre><code>var x = 1;
+function A(){
+var x;//提升到顶部
+console.log(x);//此时已声明 未赋值
+x = 2;//赋值
+console.log(x);
+} 
+</code></pre><p>1.3 const 定义常量</p>
+<p>反例中使用”var”定义的”常量”是可变的，在声明一个常量时，该常量在整个程序中都应该是不可变的。</p>
+<p>Bad:</p>
+<pre><code>var FIRST_US_PRESIDENT = &quot;George Washington&quot;
+</code></pre><p>Good:</p>
+<pre><code>const FIRST_US_PRESIDENT = &quot;George Washington&quot;
+</code></pre><p>1.4 使用易于检索的名称</p>
+<p>Bad:</p>
+<pre><code>// What the heck is 86400000 for?
+setTimeout(blastOff, 86400000)
+</code></pre><p>Good:</p>
+<pre><code>// Declare them as capitalized `const` globals.
+const MILLISECONDS_IN_A_DAY = 86400000
+setTimeout(blastOff, MILLISECONDS_IN_A_DAY)
+</code></pre><p><strong>2.for循环</strong></p>
+<p>2.1 使用for循环，缓存长度值</p>
+<p>Bad:</p>
+<pre><code>for(var i = 0;i&lt;arr.length;i++){
+// 具体操作
 }
-</code></pre><p><strong>出口(output)</strong></p>
-<p>output 属性告诉 webpack 在哪里输出它所创建的 bundles，以及如何命名这些文件，默认值为 ./dist。基本上，整个应用程序结构，都会被编译到你指定的输出路径的文件夹中。你可以通过在配置中指定一个 output 字段，来配置这些处理过程：</p>
-<p>在webpack.config.js文件中配置出口文件：</p>
-<p>onst path = require(‘path’);</p>
-<pre><code>module.exports = {
-  entry: &apos;./path/to/my/entry/file.js&apos;,
-  output: {
-    path: path.resolve(__dirname, &apos;dist&apos;),
-    filename: &apos;my-first-webpack.bundle.js&apos;
-  }
-};
-</code></pre><p><strong>loader</strong></p>
-<p>loader 让 webpack 能够去处理那些非 JavaScript 文件（webpack 自身只理解 JavaScript）。loader 可以将所有类型的文件转换为 webpack 能够处理的有效模块，然后你就可以利用 webpack 的打包能力，对它们进行处理。</p>
-<p>在更高层面，在 webpack 的配置中 loader 有两个目标：</p>
-<p>test 属性，用于标识出应该被对应的 loader 进行转换的某个或某些文件。（目标文件）<br>use 属性，表示进行转换时，应该使用哪个 loader。（所使用加载器）</p>
-<pre><code>在webpack.config.js文件中配置loader：
-
-const path = require(&apos;path&apos;);
-
-const config = {
-  output: {
-    filename: &apos;my-first-webpack.bundle.js&apos;
-  },
-  module: {
-    rules: [
-      { test: /\.txt$/, use: &apos;raw-loader&apos; }
-    ]
-  }
-};
-
-module.exports = config;
-</code></pre><p>以上配置中，对一个单独的 module 对象定义了 rules 属性，里面包含两个必须属性：test 和 use。这告诉 webpack 编译器(compiler) 如下信息：</p>
-<blockquote>
-<p>“嘿，webpack 编译器，当你碰到「在 require()/import 语句中被解析为 ‘.txt’ 的路径」时，在你对它打包之前，先使用 raw-loader 转换一下。”</p>
-</blockquote>
-<p><strong>插件(plugins)</strong></p>
-<p>loader 被用于转换某些类型的模块，而插件则可以用于执行范围更广的任务。插件的范围包括，从打包优化和压缩，一直到重新定义环境中的变量。插件接口功能极其强大，可以用来处理各种各样的任务。</p>
-<p>想要使用一个插件，你只需要 require() 它，然后把它添加到 plugins 数组中。多数插件可以通过选项(option)自定义。你也可以在一个配置文件中因为不同目的而多次使用同一个插件，这时需要通过使用 new 操作符来创建它的一个实例。</p>
-<p>在webpack.config.js文件中配置plugins：</p>
-<pre><code>const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;); // 通过 npm 安装
-const webpack = require(&apos;webpack&apos;); // 用于访问内置插件
-
-const config = {
-  module: {
-    rules: [
-      { test: /\.txt$/, use: &apos;raw-loader&apos; }
-    ]
-  },
-  plugins: [
-    new HtmlWebpackPlugin({template: &apos;./src/index.html&apos;})
-  ]
-};
-
-module.exports = config;
-</code></pre><p><strong>3.模式</strong></p>
-<p>项目开发一般基于两种模式，<strong>开发者模式(development</strong>)和<strong>生产模式(production)</strong>，在webpack中可以通过设置mode 参数，启用相应模式下的 webpack 内置的优化。如下：</p>
-<pre><code>module.exports = {
-  mode: &apos;production&apos;
-};
-</code></pre><p><strong>4.demo实例</strong></p>
-<p><a href="https://github.com/ruanyf/webpack-demos#demo01-entry-file-source" target="_blank" rel="external">demo</a> 来自阮一峰github提供，一共15个。</p>
-<p><strong>demo01: 入口文件</strong></p>
-<p>入口文件main.js:</p>
-<pre><code>document.write(&apos;&lt;h1&gt;Hello World&lt;/h1&gt;&apos;);
-</code></pre><p>index.html文件：</p>
-<pre><code>&lt;html&gt;
-  &lt;body&gt;
-    &lt;script type=&quot;text/javascript&quot; src=&quot;bundle.js&quot;&gt;&lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>webpack.config.js文件配置：</p>
-<pre><code>module.exports = {
-  entry: &apos;./main.js&apos;,
-  output: {
-    filename: &apos;bundle.js&apos;
-  }
-};
-</code></pre><p>最终构建–出口文件bundle.js。运行webpack-dev-server/npm run dev(基于package.json文件)</p>
-<pre><code>&quot;scripts&quot;: {
-    &quot;dev&quot;: &quot;webpack-dev-server --open&quot;,
-    &quot;build&quot;: &quot;webpack -p&quot;
- },
-</code></pre><p>执行完成，文档输入：Hello World。</p>
-<p><strong>demo02: 多入口文件</strong></p>
-<p>多入口文件是合法的，它通常被应用于<strong>一个多页应用程序</strong></p>
-<p>入口文件1, main1.js:</p>
-<pre><code>document.write(&apos;&lt;h1&gt;Hello World&lt;/h1&gt;&apos;);
-</code></pre><p>入口文件2, main2.js:</p>
-<pre><code>document.write(&apos;&lt;h1&gt;Hello Webpack&lt;/h1&gt;&apos;);
-</code></pre><p>index.html文件：</p>
-<pre><code>&lt;html&gt;
-  &lt;body&gt;
-    &lt;script src=&quot;bundle1.js&quot;&gt;&lt;/script&gt;
-    &lt;script src=&quot;bundle2.js&quot;&gt;&lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>webpack.config.js文件配置：</p>
-<pre><code>module.exports = {
-  entry: {
-    bundle1: &apos;./main1.js&apos;,
-    bundle2: &apos;./main2.js&apos;
-  },
-  output: {
-    filename: &apos;[name].js&apos;
-  }
-};
-</code></pre><p>最终构建–多个出口文件bundle1.js、bundle2.js。<br>执行完成，文档输入：Hello World、Hello Webpack。</p>
-<p><strong>demo03: Babel-loader</strong></p>
-<p>loaders（加载器）是可以转换您的应用程序资源（更多信息）文件的一个预处理器，例如Babel-loader可以将JSX / ES6文件转换为JS文件。官方文档有一个完整的loaders（加载器） ）列表。</p>
-<p>入口文件main.jsx，是一个JSX文件。</p>
-<pre><code>const React = require(&apos;react&apos;);
-const ReactDOM = require(&apos;react-dom&apos;);
-
-ReactDOM.render(
-  &lt;h1&gt;Hello, world!&lt;/h1&gt;,
-  document.querySelector(&apos;#wrapper&apos;)
-);
-</code></pre><p>index.html文件：</p>
-<pre><code>&lt;html&gt;
-  &lt;body&gt;
-    &lt;div id=&quot;wrapper&quot;&gt;&lt;/div&gt;
-    &lt;script src=&quot;bundle.js&quot;&gt;&lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>webpack.config.js文件配置：</p>
-<pre><code>module.exports = {
-  entry: &apos;./main.jsx&apos;,
-  output: {
-    filename: &apos;bundle.js&apos;
-  },
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: &apos;babel-loader&apos;,
-          options: {
-            presets: [&apos;es2015&apos;, &apos;react&apos;]
-          }
-        }
-      }
-    ]
-  }
-};
-</code></pre><p>上面的片段使用babel-loaderBabel的预设插件babel-preset-es2015和babel-preset-react来转换ES6和React。</p>
-<p><strong>demo04： CSS-loader</strong></p>
-<p>Webpack允许您将CSS包含在JS文件中，然后使用CSS-loader预处理CSS文件。</p>
-<p>入口文件main.js:</p>
-<pre><code>require(&apos;./app.css&apos;);
-</code></pre><p>css样式文件app.css:</p>
-<pre><code>body {
-  background-color: blue;
+</code></pre><p>Good:</p>
+<pre><code>//用len缓存长度值
+for(var i = 0,len = arr.length;i&lt;len;i++){
+// 具体操作
 }
-</code></pre><p>index.html文件：</p>
-<pre><code>&lt;html&gt;
-  &lt;head&gt;
-    &lt;script type=&quot;text/javascript&quot; src=&quot;bundle.js&quot;&gt;&lt;/script&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;h1&gt;Hello World&lt;/h1&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>webpack.config.js文件配置：</p>
-<pre><code>module.exports = {
-  entry: &apos;./main.js&apos;,
-  output: {
-    filename: &apos;bundle.js&apos;
-  },
-  module: {
-    rules:[
-      {
-        test: /\.css$/,
-        use: [ &apos;style-loader&apos;, &apos;css-loader&apos; ]
-      },
-    ]
-  }
-};
-</code></pre><p>这里使用两个加载器来转换CSS文件。首先是CSS-loader读取CSS文件，另一个是Style-loader将<code>&lt;style&gt;</code>标签插入HTML页面。</p>
-<p>执行完成，Webpack会将内部样式表插入其中index.html。</p>
-<pre><code>&lt;head&gt;
-  &lt;script type=&quot;text/javascript&quot; src=&quot;bundle.js&quot;&gt;&lt;/script&gt;
-  &lt;style type=&quot;text/css&quot;&gt;
-    body {
-      background-color: blue;
+</code></pre><p>2.2  使用for-in时，增加hasOwnProperty()判断</p>
+<p>目的: 为了过滤对象本身属性/方法 与原型链的属性/方法</p>
+<pre><code>for(var key in obj){
+    if(obj.hasOwnProperty(key)){
+     // 对象本身的属性或者方法(不包括来自原型方法/属性)
     }
-  &lt;/style&gt;
-&lt;/head&gt;
-</code></pre><p><strong>demo05: Image loader</strong></p>
-<p>Webpack还可以在JS文件中包含图像。</p>
-<p>入口文件main.js： </p>
-<pre><code>var img1 = document.createElement(&quot;img&quot;);
-img1.src = require(&quot;./small.png&quot;);
-document.body.appendChild(img1);
+    else{
+     // 原型链的属性和方法(可能来自父类/原型)
+    }
+}
+</code></pre><p><strong>3.方法</strong></p>
+<p>3.1 保持函数功能的单一性</p>
+<p>Bad:</p>
+<pre><code>function emailClients(clients) {
+  clients.forEach(client =&gt; {
+    const clientRecord = database.lookup(client)
+    if (clientRecord.isActive()) {
+      email(client)
+    }
+  })
+}
+</code></pre><p>Good:</p>
+<pre><code>// 遍历执行
+function emailActiveClients(clients) {
+  clients.filter(isActiveClient).forEach(email)
+}
+// 校验
+function isActiveClient(client) {
+    const clientRecord = database.lookup(client)
+    return clientRecord.isActive()
+}
+</code></pre><p>3.2 使用默认变量替代短路运算或条件</p>
+<p>Bad:</p>
+<pre><code>function createMicrobrewery(name) {
+    const breweryName = name || &apos;Hipster Brew Co.&apos;
+      // ...
+}
+</code></pre><p>缺点:</p>
+<ul>
+<li>如果参数name赋值为’’/0/false，则该赋值不起作用。得先判断该值是否等于undefined。</li>
+</ul>
+<p>Good:</p>
+<p>ES6允许为函数的参数设置默认值，即直接写在参数定义的后面。参数为对象时，可采用解构。</p>
+<pre><code>function createMicrobrewery(breweryName = &apos;Hipster Brew Co.&apos;) {
+      // ...
+}
+</code></pre><p>优点:</p>
+<ul>
+<li>无上述问题，且直观简洁。</li>
+</ul>
+<p>3.3 函数参数 (理想情况下应不超过 2 个)</p>
+<p>避免三个以上参数的函数。通常情况下，参数超过三个意味着函数功能过于复杂，这时需要重新优化你的函数。当确实需要多个参数时，大多情况下可以考虑这些参数封装成一个对象。</p>
+<p>Bad:</p>
+<pre><code>function createMenu(title, body, buttonText, cancellable) {
+  // ...
+}
+</code></pre><p>Good:</p>
+<pre><code>function createMenu({ title, body, buttonText, cancellable }) {
+// ...
+}
 
-var img2 = document.createElement(&quot;img&quot;);
-img2.src = require(&quot;./big.png&quot;);
-document.body.appendChild(img2);
-</code></pre><p>index.html文件：</p>
-<pre><code>&lt;html&gt;
-  &lt;body&gt;
-    &lt;script type=&quot;text/javascript&quot; src=&quot;bundle.js&quot;&gt;&lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>webpack.config.js文件配置：</p>
-<pre><code>module.exports = {
-  entry: &apos;./main.js&apos;,
-  output: {
-    filename: &apos;bundle.js&apos;
-  },
-  module: {
-    rules:[
-      {
-        test: /\.(png|jpg)$/,
-        use: [
-          {
-            loader: &apos;url-loader&apos;,
-            options: {
-              limit: 8192
-            }
-          }
-        ]
-      }
-    ]
+createMenu({
+  title: &apos;Foo&apos;,
+  body: &apos;Bar&apos;,
+  buttonText: &apos;Baz&apos;,
+  cancellable: true
+})
+</code></pre><p>3.4 移除重复代码</p>
+<p>重复代码在 Bad Smell 中排在第一位，所以，竭尽你的全力去避免重复代码。因为它意味着当你需要修改一些逻辑时会有多个地方需要修改。</p>
+<p>Bad:</p>
+<pre><code>function showDeveloperList(developers) {
+  developers.forEach(developer =&gt; {
+    const expectedSalary = developer.calculateExpectedSalary()
+    const experience = developer.getExperience()
+    const githubLink = developer.getGithubLink()
+    const data = {
+      expectedSalary,
+      experience,
+      githubLink,
+    }
+
+    render(data)
+  })
+}
+
+function showManagerList(managers) {
+  managers.forEach(manager =&gt; {
+    const expectedSalary = manager.calculateExpectedSalary()
+    const experience = manager.getExperience()
+    const portfolio = manager.getMBAProjects()
+    const data = {
+      expectedSalary,
+      experience,
+      portfolio,
+    }
+
+    render(data)
+  })
+}
+</code></pre><p>Good:</p>
+<pre><code>function showEmployeeList(employees) {
+  employees.forEach(employee =&gt; {
+    const expectedSalary = employee.calculateExpectedSalary()
+    const experience = employee.getExperience()
+
+    const data = {
+      expectedSalary,
+      experience,
+    }
+
+    switch (employee.type) {
+      case &apos;manager&apos;:
+        data.portfolio = employee.getMBAProjects()
+        break
+      case &apos;developer&apos;:
+        data.githubLink = employee.getGithubLink()
+        break
+    }
+
+    render(data)
+  })
+}
+</code></pre><p>3.5 避免副作用</p>
+<p>当函数产生了除了“接受一个值并返回一个结果”之外的行为时，称该函数产生了副作用。(如更改某个不需要改变的变量)。</p>
+<p>Bad:</p>
+<pre><code>const addItemToCart = (cart, item) =&gt; {
+  cart.push({ item, date: Date.now() }) // cart 发生了变化
+}
+</code></pre><p>Good:</p>
+<pre><code>const addItemToCart = (cart, item) =&gt; {
+    return [...cart, { item, date: Date.now() }]
+}
+</code></pre><p>3.6 避免条件判断</p>
+<ul>
+<li>使用对象结构取代switch…case</li>
+</ul>
+<p>Bad:</p>
+<pre><code>switch(column.property) {
+    case &quot;money&quot;:
+    sums[index] = (this.sumFooter.moneySum / 100).toFixed(2)；
+    break;
+    case &quot;profit&quot;:
+    sums[index] = this.sumFooter.profitSum / 100;
+    break;
+    default:
+    break;
+}
+</code></pre><p>Good:</p>
+<pre><code>let mapSum = {
+    &apos;money&apos;: function(f) {
+    return sums[index] = (f.moneySum / 100).toFixed(2)
+    },
+    &apos;profit&apos;: function(f) {
+    return sums[index] = f.profitSum / 100
+    }
+}
+let action = mapSum[column.property]
+if(!action) return
+action(this.sumFooter)
+</code></pre><ul>
+<li>Array.includes 与条件判断</li>
+</ul>
+<p>Bad:</p>
+<pre><code>// condition
+function test(fruit) {
+  if (fruit == &quot;apple&quot; || fruit == &quot;strawberry&quot;) {
+    console.log(&quot;red&quot;);
   }
-};
-</code></pre><p>url-loader将图像文件转换为<strong><img></strong>标记。如果图像大小小于8192字节，则将其转换为数据URL(base64); 否则，它将转换为普通的URL。</p>
-<p>执行完成，结果如下：</p>
-<pre><code>&lt;img src=&quot;data:image/png;base64,iVBOR...uQmCC&quot;&gt;
-&lt;img src=&quot;4853ca667a2b8b8844eb2693ac1b2578.png&quot;&gt;
-</code></pre><p><strong>demo06: CSS Module</strong></p>
-<p>css-loader?modules（查询参数模块）启用CSS模块，它为您的JS模块的CSS提供<strong>本地范围</strong>的CSS。您可以使用:global(selector)（更多信息）将其关闭（即作用全局）。</p>
-<p>入口文件main.js：</p>
-<pre><code>var React = require(&apos;react&apos;);
-var ReactDOM = require(&apos;react-dom&apos;);
-var style = require(&apos;./app.css&apos;);
-
-ReactDOM.render(
-  &lt;div&gt;
-    &lt;h1 className={style.h1}&gt;Hello World&lt;/h1&gt;
-    &lt;h2 className=&quot;h2&quot;&gt;Hello Webpack&lt;/h2&gt;
-  &lt;/div&gt;,
-  document.getElementById(&apos;example&apos;)
-);
-</code></pre><p>css样式文件：</p>
-<pre><code>.h1 {
-  color:red;
 }
-
-:global(.h2) {
-  color: blue;
-}
-</code></pre><p>index.html文件：</p>
-<pre><code>&lt;html&gt;
-&lt;body&gt;
-  &lt;h1 class=&quot;h1&quot;&gt;Hello World&lt;/h1&gt;
-  &lt;h2 class=&quot;h2&quot;&gt;Hello Webpack&lt;/h2&gt;
-  &lt;div id=&quot;example&quot;&gt;&lt;/div&gt;
-  &lt;script src=&quot;./bundle.js&quot;&gt;&lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre><p>webpack.config.js文件配置：</p>
-<pre><code>module.exports = {
-  entry: &apos;./main.jsx&apos;,
-  output: {
-    filename: &apos;bundle.js&apos;
+</code></pre><p>Good:</p>
+<pre><code>function test(fruit) {
+    const redFruits = [&quot;apple&quot;, &quot;strawberry&quot;, &quot;cherry&quot;,&quot;cranberries&quot;];
+  if (redFruits.includes(fruit)) {
+    console.log(&quot;red&quot;);
+  }
+}        
+</code></pre><p>3.7 采用函数式编程 </p>
+<p>需要先把数组 foo 中的对象结构更改，然后从中挑选出一些符合条件的对象，并且把这些对象放进新数组 result 里。</p>
+<pre><code>let foo = [
+  {
+    name: &quot;Stark&quot;,
+    age: 21
   },
-  module: {
-    rules:[
+  {
+    name: &quot;Jarvis&quot;,
+    age: 20
+  },
+  {
+    name: &quot;Pepper&quot;,
+    age: 16
+  }
+];
+
+//我们希望得到结构稍微不同，age大于16的对象：
+let result = [
+  {
+    person: {
+      name: &quot;Stark&quot;,
+      age: 21
+    },
+    friends: []
+  },
+  {
+    person: {
+      name: &quot;Jarvis&quot;,
+      age: 20
+    },
+    friends: []
+  }
+];
+</code></pre><p>Bad:</p>
+<pre><code>let result = [];
+foo.forEach(function(person){
+    if(person.age &gt; 16){
+        let newItem = {
+            person: person,
+            friends: [];
+        };
+        result.push(newItem);
+    }
+})
+</code></pre><p>Good:</p>
+<pre><code>let result = foo
+  .filter(person =&gt; person.age &gt; 16)
+  .map(person =&gt; ({
+    person: person,
+    friends: []
+  }));
+</code></pre><p>4.使用ES6/ES7 新特性</p>
+<p>4.1 箭头函数</p>
+<p>Bad: </p>
+<pre><code>function foo() {
+  // code
+}
+</code></pre><p>Good:</p>
+<pre><code>let foo = () =&gt; {
+      // code
+}
+</code></pre><p>4.2 模板字符串</p>
+<p>Bad:</p>
+<pre><code>var message = &apos;Hello &apos; + name + &apos;, it\&apos;s &apos; + time + &apos; now&apos;
+</code></pre><p>Good:</p>
+<pre><code>const message = `Hello ${name}, it&apos;s ${time} now`
+</code></pre><p>4.3 解构</p>
+<p>Bad:</p>
+<pre><code>var data = { name: &apos;dys&apos;, age: 1 }
+var name = data.name,
+age = data.age
+</code></pre><p>Good:</p>
+<pre><code>const data = {name:&apos;dys&apos;, age:1} 
+const {name, age} = data 
+</code></pre><p>4.4 使用 ES6 的 class 而不是 ES5 的 Function</p>
+<p>典型的 ES5 的类(function)在继承、构造和方法定义方面可读性较差，当需要继承时，优先选用 class。</p>
+<p>Bad:</p>
+<pre><code>// 原型链继承，此处省略
+</code></pre><p>Good:</p>
+<pre><code>class Animal {
+    constructor(age) {
+    this.age = age
+   }
+  move() {
+    /* ... */
+  }
+}
+
+class Mammal extends Animal {
+  constructor(age, furColor) {
+    super(age)
+    this.furColor = furColor
+  }
+
+  liveBirth() {
+    /* ... */
+  }
+}
+
+class Human extends Mammal {
+  constructor(age, furColor, languageSpoken) {
+    super(age, furColor)
+    this.languageSpoken = languageSpoken
+  }
+
+  speak() {
+    /* ... */
+  }
+}
+</code></pre><p>4.5 Async/Await 是比 Promise 和回调更好的选择</p>
+<p>回调不够整洁，并会造成大量的嵌套，ES6 内嵌了 Promises，但 ES7 中的 async 和 await 更胜过 Promises。</p>
+<p>Promise 代码的意思是：“我想执行这个操作，然后(then)在其他操作中使用它的结果”。await 有效地反转了这个意思，使得它更像：“我想要取得这个操作的结果”。</p>
+<p>Bad:</p>
+<pre><code>require(&apos;request-promise&apos;)
+  .get(&apos;https://en.wikipedia.org/wiki/Robert_Cecil_Martin&apos;)
+  .then(function(response) {
+    return require(&apos;fs-promise&apos;).writeFile(&apos;article.html&apos;, response)
+  })
+  .then(function() {
+    console.log(&apos;File written&apos;)
+  })
+  .catch(function(err) {
+    console.error(err)
+})
+</code></pre><p>Good:</p>
+<pre><code>async function getCleanCodeArticle() {
+  try {
+    var request = await require(&apos;request-promise&apos;)
+    var response = await request.get(
+      &apos;https://en.wikipedia.org/wiki/Robert_Cecil_Martin&apos;,
+    )
+    var fileHandle = await require(&apos;fs-promise&apos;)
+
+    await fileHandle.writeFile(&apos;article.html&apos;, response)
+    console.log(&apos;File written&apos;)
+  } catch (err) {
+    console.log(err)
+  }
+}
+</code></pre><p><strong>5.Babel</strong></p>
+<p>ES6 标准发布后，前端人员也开发渐渐了解到了ES6，但是由于兼容性的问题，仍然没有得到广泛的推广，不过业界也用了一些折中性的方案来解决兼容性和开发体系问题。其中最有名的莫过于 Babel 了，Babel 是一个广泛使用的转码器，他的目标是使用 Babel 可以转换所有 ES6 新语法，从而在现有环境执行。</p>
+<p>Babel 不仅能够转换 ES6 代码，同时还是 ES7 的试验场。比如已经支持 async/await，使开发者更容易编写异步代码。虽然主流浏览器可能还需要一段时间才能支持这个异步编码方式，但是基于 Babel，开发者现在就可以在生产环境使用上它。这得益于 Babel 与 JavaScript 技术委员会保持高度一致，能够在 ECMAScript 新特性在标准化之前提供现实世界可用的实现。因此开发者能 在生产环境大量使用未发布或未广泛支持的语言特性。</p>
+<p>Babel 最简单的使用方式如下：</p>
+<pre><code># 安装 babel-cli 和 babel-preset-es2015 插件
+npm install -g babel-cli
+npm install --save babel-preset-es2015
+</code></pre><p>在当前目录下建立文件.babelrc，写入：</p>
+<pre><code>{
+      &quot;presets&quot;: [&apos;es2015&apos;]
+}
+</code></pre><p>更多的功能请参考<a href="https://babeljs.io/" target="_blank" rel="external">官网</a>。</p>
+<p><strong>6.ESLint(转载)</strong></p>
+<p>一个高质量的项目必须包含完善的 lint，如果一个项目中还是 tab、两个空格、四个空格各种混搭风，一个函数动不动上百行，各种 if、嵌套、回调好几层。加上前面提到的各种 JavaScript 糟粕和鸡肋，一股浓厚的城乡结合部风扑面而来，这还怎么写代码，每天调调代码格式好了。</p>
+<p>目前 ESLint 将是一个很好的选择。ESLint 的安装过程就不介绍了，请参考<a href="https://eslint.org/" target="_blank" rel="external">官网</a>，下面讲一个非常严格的 ESLint 的配置，这是对上面编写简洁的 JavaScript 代码一节最好的回应。</p>
+<pre><code>{
+  parser: &apos;babel-eslint&apos;,
+  extends: [&apos;airbnb&apos;, &apos;plugin:react/recommended&apos;, &apos;prettier&apos;, &apos;prettier/react&apos;],
+  plugins: [&apos;react&apos;, &apos;prettier&apos;],
+  rules: {
+    // prettier 配置用于自动化格式代码
+    &apos;prettier/prettier&apos;: [
+      &apos;error&apos;,
       {
-        test: /\.js[x]?$/,
-        exclude: /node_modules/,
-        use: {
-          loader: &apos;babel-loader&apos;,
-          options: {
-            presets: [&apos;es2015&apos;, &apos;react&apos;]
-          }
-        }
+        singleQuote: true,
+        semi: false,
+        trailingComma: &apos;all&apos;,
+        bracketSpacing: true,
+        jsxBracketSameLine: true,
       },
-      {
-        test: /\.css$/,
-        use: [
-          {
-            loader: &apos;style-loader&apos;
-          },
-          {
-             loader: &apos;css-loader&apos;,
-             options: {
-               modules: true
-             }
-          }
-        ]
-      }
-    ]
-  }
-};
+    ],
+    // 一个函数的复杂性不超过 10，所有分支、循环、回调加在一起，在一个函数里不超过 10 个
+    complexity: [2, 10],
+    // 一个函数的嵌套不能超过 4 层，多个 for 循环，深层的 if-else，这些都是罪恶之源
+    &apos;max-depth&apos;: [2, 4],
+    // 一个函数最多有 3 层 callback，使用 async/await
+    &apos;max-nested-callbacks&apos;: [2, 3],
+    // 一个函数最多 5 个参数。参数太多的函数，意味着函数功能过于复杂，请拆分
+    &apos;max-params&apos;: [2, 5],
+    // 一个函数最多有 50 行代码，如果超过了，请拆分之，或者精简之
+    &apos;max-statements&apos;: [2, 50],
+    // 坚定的 semicolon-less 拥护者
+    semi: [2, &apos;never&apos;],
+  },
+  env: {
+    browser: true,
+  },
+}
 </code></pre>
       
     </div>
@@ -739,8 +879,8 @@ ReactDOM.render(
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/16/html_xml_xhtml区别/" rel="next" title="HTML、XML、XHTML区别">
-                <i class="fa fa-chevron-left"></i> HTML、XML、XHTML区别
+              <a href="/2019/01/18/字典(map)/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
@@ -748,10 +888,6 @@ ReactDOM.render(
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/20/模块规范基础/" rel="prev" title="CommonJS(NodeJs)、AMD(RequireJS)、CMD、UMD关系">
-                CommonJS(NodeJs)、AMD(RequireJS)、CMD、UMD关系 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -766,10 +902,10 @@ ReactDOM.render(
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2018/11/19/webpack/"
-     data-title="webpack学习（—）"
+        <div class="ds-share flat" data-thread-key="2019/01/23/js代码优化/"
+     data-title="js代码的优雅书写(—)"
      data-content=""
-     data-url="http://www.skyshu.com/2018/11/19/webpack/">
+     data-url="http://www.skyshu.com/2019/01/23/js代码优化/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -796,8 +932,8 @@ ReactDOM.render(
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2018/11/19/webpack/"
-           data-title="webpack学习（—）" data-url="http://www.skyshu.com/2018/11/19/webpack/">
+      <div class="ds-thread" data-thread-key="2019/01/23/js代码优化/"
+           data-title="js代码的优雅书写(—)" data-url="http://www.skyshu.com/2019/01/23/js代码优化/">
       </div>
     
   </div>

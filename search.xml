@@ -4,6 +4,442 @@
   
     
     <entry>
+      <title><![CDATA[js代码的优雅书写(—)]]></title>
+      <url>http://www.skyshu.com/2019/01/23/js%E4%BB%A3%E7%A0%81%E4%BC%98%E5%8C%96/</url>
+      <content type="html"><![CDATA[<p><strong>1.变量</strong></p>
+<p>1.1 变量声明可读性</p>
+<p>Bad:</p>
+<pre><code>var yyyymmdstr = moment().format(&apos;YYYY/MM/DD&apos;)
+</code></pre><p>Good:</p>
+<pre><code>var yearMonthDay = moment().format(&apos;YYYY/MM/DD&apos;)    
+</code></pre><p>1.2 函数单一 var/let 原则</p>
+<p>指：把函数内部的所有变量，放到顶部声明。</p>
+<p>Good:</p>
+<pre><code>function A(){
+     var a = 1,
+         b = 2,
+         c = a + b ;
+}
+</code></pre><p>优点：</p>
+<ul>
+<li>便于查找函数内部使用的局部变量</li>
+<li>防止变量未定义时就被使用</li>
+<li>防止<strong>变量声明</strong>提升后引发的误解</li>
+</ul>
+<p>Bad: </p>
+<pre><code>var x = 1;
+function A(){
+console.log(x);// undefined
+var x = 2;
+console.log(x);// 2  
+} 
+</code></pre><p>等价于:</p>
+<pre><code>var x = 1;
+function A(){
+var x;//提升到顶部
+console.log(x);//此时已声明 未赋值
+x = 2;//赋值
+console.log(x);
+} 
+</code></pre><p>1.3 const 定义常量</p>
+<p>反例中使用”var”定义的”常量”是可变的，在声明一个常量时，该常量在整个程序中都应该是不可变的。</p>
+<p>Bad:</p>
+<pre><code>var FIRST_US_PRESIDENT = &quot;George Washington&quot;
+</code></pre><p>Good:</p>
+<pre><code>const FIRST_US_PRESIDENT = &quot;George Washington&quot;
+</code></pre><p>1.4 使用易于检索的名称</p>
+<p>Bad:</p>
+<pre><code>// What the heck is 86400000 for?
+setTimeout(blastOff, 86400000)
+</code></pre><p>Good:</p>
+<pre><code>// Declare them as capitalized `const` globals.
+const MILLISECONDS_IN_A_DAY = 86400000
+setTimeout(blastOff, MILLISECONDS_IN_A_DAY)
+</code></pre><p><strong>2.for循环</strong></p>
+<p>2.1 使用for循环，缓存长度值</p>
+<p>Bad:</p>
+<pre><code>for(var i = 0;i&lt;arr.length;i++){
+// 具体操作
+}
+</code></pre><p>Good:</p>
+<pre><code>//用len缓存长度值
+for(var i = 0,len = arr.length;i&lt;len;i++){
+// 具体操作
+}
+</code></pre><p>2.2  使用for-in时，增加hasOwnProperty()判断</p>
+<p>目的: 为了过滤对象本身属性/方法 与原型链的属性/方法</p>
+<pre><code>for(var key in obj){
+    if(obj.hasOwnProperty(key)){
+     // 对象本身的属性或者方法(不包括来自原型方法/属性)
+    }
+    else{
+     // 原型链的属性和方法(可能来自父类/原型)
+    }
+}
+</code></pre><p><strong>3.方法</strong></p>
+<p>3.1 保持函数功能的单一性</p>
+<p>Bad:</p>
+<pre><code>function emailClients(clients) {
+  clients.forEach(client =&gt; {
+    const clientRecord = database.lookup(client)
+    if (clientRecord.isActive()) {
+      email(client)
+    }
+  })
+}
+</code></pre><p>Good:</p>
+<pre><code>// 遍历执行
+function emailActiveClients(clients) {
+  clients.filter(isActiveClient).forEach(email)
+}
+// 校验
+function isActiveClient(client) {
+    const clientRecord = database.lookup(client)
+    return clientRecord.isActive()
+}
+</code></pre><p>3.2 使用默认变量替代短路运算或条件</p>
+<p>Bad:</p>
+<pre><code>function createMicrobrewery(name) {
+    const breweryName = name || &apos;Hipster Brew Co.&apos;
+      // ...
+}
+</code></pre><p>缺点:</p>
+<ul>
+<li>如果参数name赋值为’’/0/false，则该赋值不起作用。得先判断该值是否等于undefined。</li>
+</ul>
+<p>Good:</p>
+<p>ES6允许为函数的参数设置默认值，即直接写在参数定义的后面。参数为对象时，可采用解构。</p>
+<pre><code>function createMicrobrewery(breweryName = &apos;Hipster Brew Co.&apos;) {
+      // ...
+}
+</code></pre><p>优点:</p>
+<ul>
+<li>无上述问题，且直观简洁。</li>
+</ul>
+<p>3.3 函数参数 (理想情况下应不超过 2 个)</p>
+<p>避免三个以上参数的函数。通常情况下，参数超过三个意味着函数功能过于复杂，这时需要重新优化你的函数。当确实需要多个参数时，大多情况下可以考虑这些参数封装成一个对象。</p>
+<p>Bad:</p>
+<pre><code>function createMenu(title, body, buttonText, cancellable) {
+  // ...
+}
+</code></pre><p>Good:</p>
+<pre><code>function createMenu({ title, body, buttonText, cancellable }) {
+// ...
+}
+
+createMenu({
+  title: &apos;Foo&apos;,
+  body: &apos;Bar&apos;,
+  buttonText: &apos;Baz&apos;,
+  cancellable: true
+})
+</code></pre><p>3.4 移除重复代码</p>
+<p>重复代码在 Bad Smell 中排在第一位，所以，竭尽你的全力去避免重复代码。因为它意味着当你需要修改一些逻辑时会有多个地方需要修改。</p>
+<p>Bad:</p>
+<pre><code>function showDeveloperList(developers) {
+  developers.forEach(developer =&gt; {
+    const expectedSalary = developer.calculateExpectedSalary()
+    const experience = developer.getExperience()
+    const githubLink = developer.getGithubLink()
+    const data = {
+      expectedSalary,
+      experience,
+      githubLink,
+    }
+
+    render(data)
+  })
+}
+
+function showManagerList(managers) {
+  managers.forEach(manager =&gt; {
+    const expectedSalary = manager.calculateExpectedSalary()
+    const experience = manager.getExperience()
+    const portfolio = manager.getMBAProjects()
+    const data = {
+      expectedSalary,
+      experience,
+      portfolio,
+    }
+
+    render(data)
+  })
+}
+</code></pre><p>Good:</p>
+<pre><code>function showEmployeeList(employees) {
+  employees.forEach(employee =&gt; {
+    const expectedSalary = employee.calculateExpectedSalary()
+    const experience = employee.getExperience()
+
+    const data = {
+      expectedSalary,
+      experience,
+    }
+
+    switch (employee.type) {
+      case &apos;manager&apos;:
+        data.portfolio = employee.getMBAProjects()
+        break
+      case &apos;developer&apos;:
+        data.githubLink = employee.getGithubLink()
+        break
+    }
+
+    render(data)
+  })
+}
+</code></pre><p>3.5 避免副作用</p>
+<p>当函数产生了除了“接受一个值并返回一个结果”之外的行为时，称该函数产生了副作用。(如更改某个不需要改变的变量)。</p>
+<p>Bad:</p>
+<pre><code>const addItemToCart = (cart, item) =&gt; {
+  cart.push({ item, date: Date.now() }) // cart 发生了变化
+}
+</code></pre><p>Good:</p>
+<pre><code>const addItemToCart = (cart, item) =&gt; {
+    return [...cart, { item, date: Date.now() }]
+}
+</code></pre><p>3.6 避免条件判断</p>
+<ul>
+<li>使用对象结构取代switch…case</li>
+</ul>
+<p>Bad:</p>
+<pre><code>switch(column.property) {
+    case &quot;money&quot;:
+    sums[index] = (this.sumFooter.moneySum / 100).toFixed(2)；
+    break;
+    case &quot;profit&quot;:
+    sums[index] = this.sumFooter.profitSum / 100;
+    break;
+    default:
+    break;
+}
+</code></pre><p>Good:</p>
+<pre><code>let mapSum = {
+    &apos;money&apos;: function(f) {
+    return sums[index] = (f.moneySum / 100).toFixed(2)
+    },
+    &apos;profit&apos;: function(f) {
+    return sums[index] = f.profitSum / 100
+    }
+}
+let action = mapSum[column.property]
+if(!action) return
+action(this.sumFooter)
+</code></pre><ul>
+<li>Array.includes 与条件判断</li>
+</ul>
+<p>Bad:</p>
+<pre><code>// condition
+function test(fruit) {
+  if (fruit == &quot;apple&quot; || fruit == &quot;strawberry&quot;) {
+    console.log(&quot;red&quot;);
+  }
+}
+</code></pre><p>Good:</p>
+<pre><code>function test(fruit) {
+    const redFruits = [&quot;apple&quot;, &quot;strawberry&quot;, &quot;cherry&quot;,&quot;cranberries&quot;];
+  if (redFruits.includes(fruit)) {
+    console.log(&quot;red&quot;);
+  }
+}        
+</code></pre><p>3.7 采用函数式编程 </p>
+<p>需要先把数组 foo 中的对象结构更改，然后从中挑选出一些符合条件的对象，并且把这些对象放进新数组 result 里。</p>
+<pre><code>let foo = [
+  {
+    name: &quot;Stark&quot;,
+    age: 21
+  },
+  {
+    name: &quot;Jarvis&quot;,
+    age: 20
+  },
+  {
+    name: &quot;Pepper&quot;,
+    age: 16
+  }
+];
+
+//我们希望得到结构稍微不同，age大于16的对象：
+let result = [
+  {
+    person: {
+      name: &quot;Stark&quot;,
+      age: 21
+    },
+    friends: []
+  },
+  {
+    person: {
+      name: &quot;Jarvis&quot;,
+      age: 20
+    },
+    friends: []
+  }
+];
+</code></pre><p>Bad:</p>
+<pre><code>let result = [];
+foo.forEach(function(person){
+    if(person.age &gt; 16){
+        let newItem = {
+            person: person,
+            friends: [];
+        };
+        result.push(newItem);
+    }
+})
+</code></pre><p>Good:</p>
+<pre><code>let result = foo
+  .filter(person =&gt; person.age &gt; 16)
+  .map(person =&gt; ({
+    person: person,
+    friends: []
+  }));
+</code></pre><p>4.使用ES6/ES7 新特性</p>
+<p>4.1 箭头函数</p>
+<p>Bad: </p>
+<pre><code>function foo() {
+  // code
+}
+</code></pre><p>Good:</p>
+<pre><code>let foo = () =&gt; {
+      // code
+}
+</code></pre><p>4.2 模板字符串</p>
+<p>Bad:</p>
+<pre><code>var message = &apos;Hello &apos; + name + &apos;, it\&apos;s &apos; + time + &apos; now&apos;
+</code></pre><p>Good:</p>
+<pre><code>const message = `Hello ${name}, it&apos;s ${time} now`
+</code></pre><p>4.3 解构</p>
+<p>Bad:</p>
+<pre><code>var data = { name: &apos;dys&apos;, age: 1 }
+var name = data.name,
+age = data.age
+</code></pre><p>Good:</p>
+<pre><code>const data = {name:&apos;dys&apos;, age:1} 
+const {name, age} = data 
+</code></pre><p>4.4 使用 ES6 的 class 而不是 ES5 的 Function</p>
+<p>典型的 ES5 的类(function)在继承、构造和方法定义方面可读性较差，当需要继承时，优先选用 class。</p>
+<p>Bad:</p>
+<pre><code>// 原型链继承，此处省略
+</code></pre><p>Good:</p>
+<pre><code>class Animal {
+    constructor(age) {
+    this.age = age
+   }
+  move() {
+    /* ... */
+  }
+}
+
+class Mammal extends Animal {
+  constructor(age, furColor) {
+    super(age)
+    this.furColor = furColor
+  }
+
+  liveBirth() {
+    /* ... */
+  }
+}
+
+class Human extends Mammal {
+  constructor(age, furColor, languageSpoken) {
+    super(age, furColor)
+    this.languageSpoken = languageSpoken
+  }
+
+  speak() {
+    /* ... */
+  }
+}
+</code></pre><p>4.5 Async/Await 是比 Promise 和回调更好的选择</p>
+<p>回调不够整洁，并会造成大量的嵌套，ES6 内嵌了 Promises，但 ES7 中的 async 和 await 更胜过 Promises。</p>
+<p>Promise 代码的意思是：“我想执行这个操作，然后(then)在其他操作中使用它的结果”。await 有效地反转了这个意思，使得它更像：“我想要取得这个操作的结果”。</p>
+<p>Bad:</p>
+<pre><code>require(&apos;request-promise&apos;)
+  .get(&apos;https://en.wikipedia.org/wiki/Robert_Cecil_Martin&apos;)
+  .then(function(response) {
+    return require(&apos;fs-promise&apos;).writeFile(&apos;article.html&apos;, response)
+  })
+  .then(function() {
+    console.log(&apos;File written&apos;)
+  })
+  .catch(function(err) {
+    console.error(err)
+})
+</code></pre><p>Good:</p>
+<pre><code>async function getCleanCodeArticle() {
+  try {
+    var request = await require(&apos;request-promise&apos;)
+    var response = await request.get(
+      &apos;https://en.wikipedia.org/wiki/Robert_Cecil_Martin&apos;,
+    )
+    var fileHandle = await require(&apos;fs-promise&apos;)
+
+    await fileHandle.writeFile(&apos;article.html&apos;, response)
+    console.log(&apos;File written&apos;)
+  } catch (err) {
+    console.log(err)
+  }
+}
+</code></pre><p><strong>5.Babel</strong></p>
+<p>ES6 标准发布后，前端人员也开发渐渐了解到了ES6，但是由于兼容性的问题，仍然没有得到广泛的推广，不过业界也用了一些折中性的方案来解决兼容性和开发体系问题。其中最有名的莫过于 Babel 了，Babel 是一个广泛使用的转码器，他的目标是使用 Babel 可以转换所有 ES6 新语法，从而在现有环境执行。</p>
+<p>Babel 不仅能够转换 ES6 代码，同时还是 ES7 的试验场。比如已经支持 async/await，使开发者更容易编写异步代码。虽然主流浏览器可能还需要一段时间才能支持这个异步编码方式，但是基于 Babel，开发者现在就可以在生产环境使用上它。这得益于 Babel 与 JavaScript 技术委员会保持高度一致，能够在 ECMAScript 新特性在标准化之前提供现实世界可用的实现。因此开发者能 在生产环境大量使用未发布或未广泛支持的语言特性。</p>
+<p>Babel 最简单的使用方式如下：</p>
+<pre><code># 安装 babel-cli 和 babel-preset-es2015 插件
+npm install -g babel-cli
+npm install --save babel-preset-es2015
+</code></pre><p>在当前目录下建立文件.babelrc，写入：</p>
+<pre><code>{
+      &quot;presets&quot;: [&apos;es2015&apos;]
+}
+</code></pre><p>更多的功能请参考<a href="https://babeljs.io/" target="_blank" rel="external">官网</a>。</p>
+<p><strong>6.ESLint(转载)</strong></p>
+<p>一个高质量的项目必须包含完善的 lint，如果一个项目中还是 tab、两个空格、四个空格各种混搭风，一个函数动不动上百行，各种 if、嵌套、回调好几层。加上前面提到的各种 JavaScript 糟粕和鸡肋，一股浓厚的城乡结合部风扑面而来，这还怎么写代码，每天调调代码格式好了。</p>
+<p>目前 ESLint 将是一个很好的选择。ESLint 的安装过程就不介绍了，请参考<a href="https://eslint.org/" target="_blank" rel="external">官网</a>，下面讲一个非常严格的 ESLint 的配置，这是对上面编写简洁的 JavaScript 代码一节最好的回应。</p>
+<pre><code>{
+  parser: &apos;babel-eslint&apos;,
+  extends: [&apos;airbnb&apos;, &apos;plugin:react/recommended&apos;, &apos;prettier&apos;, &apos;prettier/react&apos;],
+  plugins: [&apos;react&apos;, &apos;prettier&apos;],
+  rules: {
+    // prettier 配置用于自动化格式代码
+    &apos;prettier/prettier&apos;: [
+      &apos;error&apos;,
+      {
+        singleQuote: true,
+        semi: false,
+        trailingComma: &apos;all&apos;,
+        bracketSpacing: true,
+        jsxBracketSameLine: true,
+      },
+    ],
+    // 一个函数的复杂性不超过 10，所有分支、循环、回调加在一起，在一个函数里不超过 10 个
+    complexity: [2, 10],
+    // 一个函数的嵌套不能超过 4 层，多个 for 循环，深层的 if-else，这些都是罪恶之源
+    &apos;max-depth&apos;: [2, 4],
+    // 一个函数最多有 3 层 callback，使用 async/await
+    &apos;max-nested-callbacks&apos;: [2, 3],
+    // 一个函数最多 5 个参数。参数太多的函数，意味着函数功能过于复杂，请拆分
+    &apos;max-params&apos;: [2, 5],
+    // 一个函数最多有 50 行代码，如果超过了，请拆分之，或者精简之
+    &apos;max-statements&apos;: [2, 50],
+    // 坚定的 semicolon-less 拥护者
+    semi: [2, &apos;never&apos;],
+  },
+  env: {
+    browser: true,
+  },
+}
+</code></pre>]]></content>
+    </entry>
+    
+    <entry>
+      <title></title>
+      <url>http://www.skyshu.com/2019/01/18/%E5%AD%97%E5%85%B8(map)/</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[CommonJS(NodeJs)、AMD(RequireJS)、CMD、UMD关系]]></title>
       <url>http://www.skyshu.com/2018/11/20/%E6%A8%A1%E5%9D%97%E8%A7%84%E8%8C%83%E5%9F%BA%E7%A1%80/</url>
       <content type="html"><![CDATA[<p><strong>1.CommonJS</strong></p>
@@ -185,6 +621,8 @@ define(function (requie, exports, module) {
 </ul>
 <p>虽然 AMD也支持CMD写法，但依赖前置是官方文档的默认模块定义写法。</p>
 <p>AMD的API默认是一个当多个用，CMD严格的区分推崇职责单一。例如：AMD里require分全局的和局部的。CMD里面没有全局的 require，提供 seajs.use()来实现模块系统的加载启动。CMD里每个API都简单纯粹。</p>
+<p>另外AMD依赖前置，js可以方便知道依赖模块是谁，立即加载；</p>
+<p>而CMD就近依赖，需要使用把模块变为字符串解析一遍才知道依赖了那些模块，这也是很多人诟病CMD的一点，牺牲性能来带来开发的便利性，实际上解析模块用的时间短到可以忽略。</p>
 <p><strong>4.UMD</strong></p>
 <p>UMD是AMD和CommonJS的糅合</p>
 <p>AMD模块以浏览器第一的原则发展，异步加载模块。<br>CommonJS模块以服务器第一原则发展，选择同步加载，它的模块无需包装(unwrapped modules)。<br>这迫使人们又想出另一个更通用的模式UMD （Universal Module Definition）。希望解决跨平台的解决方案。</p>

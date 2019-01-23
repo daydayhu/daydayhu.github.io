@@ -94,7 +94,7 @@
 <meta property="og:description" content="1.CommonJS
 背景:
 2009年，美国程序员Ryan Dahl创造了node.js项目，将javascript语言用于服务器端编程。这标志”Javascript模块化编程“正式诞生。这是由于在浏览器环境下，没有模块也不是特别大的问题，毕竟网页程序的复杂性有限；但是在服务器端，一定要有模块，与操作系统和其他应用程序互动，否则根本没法编程。NodeJS是CommonJS规范的实现，webpac">
-<meta property="og:updated_time" content="2018-11-21T06:34:51.150Z">
+<meta property="og:updated_time" content="2018-11-21T07:06:05.606Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CommonJS(NodeJs)、AMD(RequireJS)、CMD、UMD关系">
 <meta name="twitter:description" content="1.CommonJS
@@ -342,7 +342,7 @@
             <span class="post-meta-item-icon">
               <i class="fa fa-calendar-check-o"></i>
             </span>
-            <time title="Post modified" itemprop="dateModified" datetime="2018-11-21T14:34:51+08:00">
+            <time title="Post modified" itemprop="dateModified" datetime="2018-11-21T15:06:05+08:00">
               2018-11-21
             </time>
 
@@ -560,6 +560,8 @@ define(function (requie, exports, module) {
 </ul>
 <p>虽然 AMD也支持CMD写法，但依赖前置是官方文档的默认模块定义写法。</p>
 <p>AMD的API默认是一个当多个用，CMD严格的区分推崇职责单一。例如：AMD里require分全局的和局部的。CMD里面没有全局的 require，提供 seajs.use()来实现模块系统的加载启动。CMD里每个API都简单纯粹。</p>
+<p>另外AMD依赖前置，js可以方便知道依赖模块是谁，立即加载；</p>
+<p>而CMD就近依赖，需要使用把模块变为字符串解析一遍才知道依赖了那些模块，这也是很多人诟病CMD的一点，牺牲性能来带来开发的便利性，实际上解析模块用的时间短到可以忽略。</p>
 <p><strong>4.UMD</strong></p>
 <p>UMD是AMD和CommonJS的糅合</p>
 <p>AMD模块以浏览器第一的原则发展，异步加载模块。<br>CommonJS模块以服务器第一原则发展，选择同步加载，它的模块无需包装(unwrapped modules)。<br>这迫使人们又想出另一个更通用的模式UMD （Universal Module Definition）。希望解决跨平台的解决方案。</p>
@@ -641,6 +643,10 @@ define(function (requie, exports, module) {
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/01/18/字典(map)/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -721,7 +727,7 @@ define(function (requie, exports, module) {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">27</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -811,7 +817,7 @@ define(function (requie, exports, module) {
         <div class="copyright" >
   
   &copy;  2016 - 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
